@@ -48,10 +48,15 @@ B = {
     'nameA'     : {'t': 'x', 's' : '//INPUT[@name="СтрокаИмя"]', 'a': 'value'},
     'surnameA'  : {'t': 'x', 's' : '//INPUT[@name="СтрокаОтчество"]', 'a': 'value'},
 'firm_full_nameA':{'t': 'x', 's' : '//INPUT[@name="СтрокаПолноеНазвание"]', 'a': 'value'},
+   'act_num1000': {'t': 'x', 's': '//DIV[@class="custom-select-option"][@value="1000"]'},
     'cats'      : {'t': 'c', 's' : 'controls-DropdownList__item-text'},
     'firms_c'   : {'t': 'c', 's' : 'controls-DataGridView__tr'},
-    'ch_surname': {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__surname'},
-    'ch_name'   : {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__name'},
+   'ch_surnameA': {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__surname', 'a': 'text'},
+    'ch_nameA'  : {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__name', 'a': 'text'},
+    'gen_infoA' : {'t': 'c', 's' : 'Contragents-ContragentCardGeneralInfo__State', 'a': 'text'},
+    'act_link'  : {'t': 'c', 's' : 'Contragents-ContragentCardGeneralInfo__ActivityTypes__title'},
+    'act_num'   : {'t': 'c', 's' : 'custom-select-text'},
+    'acts'      : {'t': 'c', 's' : 'ws-browser-table-row'},
 
 }
 
@@ -111,14 +116,20 @@ def p(d, t, f, s, a = '', data_id = ''):
             if a == '':
                 return foo
             else:
-                return foo.get_attribute(a)
+                if a == 'text':
+                    return foo.text
+                else:
+                    return foo.get_attribute(a)
         elif f == 'v':
             foo = WebDriverWait(d, 20).until(EC.visibility_of_element_located((By.ID, s + data_id)))
             wj(d)
             if a == '':
                 return foo
             else:
-                return foo.get_attribute(a)
+                if a == 'text':
+                    return foo.text
+                else:
+                    return foo.get_attribute(a)
         elif f == 'vs':
             return WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.ID, s + data_id)))
         elif f == 'p':
@@ -129,7 +140,10 @@ def p(d, t, f, s, a = '', data_id = ''):
                 if a == '':
                     return foo
                 else:
-                    return foo.get_attribute(a)
+                    if a == 'text':
+                        return foo.text
+                    else:
+                        return foo.get_attribute(a)
             else:
                 return
         elif f == 'ps':
@@ -143,14 +157,20 @@ def p(d, t, f, s, a = '', data_id = ''):
             if a == '':
                 return foo
             else:
-                return foo.get_attribute(a)
+                if a == 'text':
+                    return foo.text
+                else:
+                    return foo.get_attribute(a)
         elif f == 'v':
             foo = WebDriverWait(d, 20).until(EC.visibility_of_element_located((By.XPATH, s+data_id)))
             wj(d)
             if a == '':
                 return foo
             else:
-                return foo.get_attribute(a)
+                if a == 'text':
+                    return foo.text
+                else:
+                    return foo.get_attribute(a)
         elif f == 'vs':
             return WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.XPATH, s + data_id)))
         elif f == 'p':
@@ -161,7 +181,10 @@ def p(d, t, f, s, a = '', data_id = ''):
                 if a == '':
                     return foo
                 else:
-                    return foo.get_attribute(a)
+                    if a == 'text':
+                        return foo.text
+                    else:
+                        return foo.get_attribute(a)
             else:
                 return
         elif f == 'ps':
@@ -174,13 +197,19 @@ def p(d, t, f, s, a = '', data_id = ''):
             if a == '':
                 return foo
             else:
-                return foo.get_attribute(a)
+                if a == 'text':
+                    return foo.text
+                else:
+                    return foo.get_attribute(a)
         elif f == 'v':
             foo = WebDriverWait(d, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, B[s]+data_id)))
             if a == '':
                 return foo
             else:
-                return foo.get_attribute(a)
+                if a == 'text':
+                    return foo.text
+                else:
+                    return foo.get_attribute(a)
         elif f == 'vs':
             return WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.CLASS_NAME, s + data_id)))
         elif f == 'p':
@@ -191,7 +220,10 @@ def p(d, t, f, s, a = '', data_id = ''):
                 if a == '':
                     return foo
                 else:
-                    return foo.get_attribute(a)
+                    if a == 'text':
+                        return foo.text
+                    else:
+                        return foo.get_attribute(a)
             else:
                 return
         elif f == 'ps':
@@ -314,7 +346,6 @@ while g < 1000:
             time.sleep(1)
             break
         if firm.location['y'] > (height - 79):
-            wj(driver)
             f = p(d = driver, f = 'c', **B['next'])
             wj(driver)
             f.click()
@@ -338,9 +369,29 @@ while g < 1000:
             if firm_full_name == '':
                 firm_full_name = p(d = driver, f = 'p', **B['familyA']) + ' ' + p(d = driver, f = 'p', **B['nameA'])\
                                  + ' ' + p(d = driver, f = 'p', **B['surnameA'])
-            sql = 'INSERT INTO main (data_id, inn, kpp, firm_full_name) VALUES(' + data_id + ', ' + inn + ', '+ kpp + \
-                  ", " + firm_full_name + ", " + ');'
-            write_cursor.execute(sql)
+            gen_info = p(d = driver, f = 'p', **B['gen_infoA'])
+            act_link = p(d = driver, f = 'c', **B['act_link']) # Страница видов деятельности
+            wj(driver)
+            act_link.click()
+            wj(driver)
+            time.sleep(4)
+            act_n = p(d = driver, f = 'c', **B['act_num']) # Список по сколько на страницу
+            wj(driver)
+            act_n.click()
+            act_num1000 = p(d = driver, f = 'c', **B['act_num1000']) # Выбираем 1000
+            acts =  p(d = driver, f = 'ps', **B['acts'])
+            act_list = ''
+            for j, act in enumerate(acts):
+                wj(driver)
+                if act.is_displayed() and act.get_attribute('rowkey').find('.') > -1:
+                    wj(driver)
+                    act_list += act.get_attribute('rowkey') + ' '
+            wj(driver)
+            act_link.click()
+            wj(driver)
+            time.sleep(4)
+            sql = 'INSERT INTO main(data_id, inn, kpp, firm_full_name, act_num, act_list) VALUES(%s, %s, %s, %s, %s, %s, %s)'
+            write_cursor.execute(sql, (data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list))
             dbconn.commit()
             wj(driver)
             close = p(d = driver, f = 'c', **B['close'])
