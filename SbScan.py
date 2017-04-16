@@ -35,15 +35,24 @@ B = {
                                                                     'js-controls-ListView__item"]'},
     'data_id'   : {'t': 'x', 's' : '//TR[@class="controls-DataGridView__tr controls-ListView__item '
                                                           'js-controls-ListView__item"][@data-id="'},
+    'data_idA'  : {'t': 'x', 's' : '//TR[@class="controls-DataGridView__tr controls-ListView__item '
+                                    'js-controls-ListView__item"][@data-id="', 'a' : 'data-id'},
     'close'     : {'t': 'x', 's' : '//DIV[@class="sbisname-window-title-close ws-button-classic ws-component '
                         'ws-control-inactive ws-enabled ws-field-button ws-float-close-right ws-no-select"]'},
     'first'     : {'t': 'x', 's' : '(//I[@sbisname="PagingBegin"])[1]'},
     'next'      : {'t': 'x', 's' : '(//I[@sbisname="PagingNext"])[1]'},
     'prev'      : {'t': 'x', 's' : '(//I[@sbisname="PagingPrev"])[1]'},
-    'cats'      : {'t': 'c', 's': 'controls-DropdownList__item-text'},
-    'firms_c'   : {'t': 'c', 's': 'controls-DataGridView__tr'},
-    'ch_surname': {'t': 'c', 's': 'Contragents-ContragentCard__Chief__surname'},
-    'ch_name'   : {'t': 'c', 's': 'Contragents-ContragentCard__Chief__name'},
+    'innA'      : {'t': 'x', 's' : '//INPUT[@name="СтрокаИНН"]', 'a' : 'value'},
+    'kppA'      : {'t': 'x', 's' : '//INPUT[@name="СтрокаКПП"]', 'a': 'value'},
+    'familyA'   : {'t': 'x', 's' : '//INPUT[@name="СтрокаФамилия"]', 'a': 'value'},
+    'nameA'     : {'t': 'x', 's' : '//INPUT[@name="СтрокаИмя"]', 'a': 'value'},
+    'surnameA'  : {'t': 'x', 's' : '//INPUT[@name="СтрокаОтчество"]', 'a': 'value'},
+'firm_full_nameA':{'t': 'x', 's' : '//INPUT[@name="СтрокаПолноеНазвание"]', 'a': 'value'},
+    'cats'      : {'t': 'c', 's' : 'controls-DropdownList__item-text'},
+    'firms_c'   : {'t': 'c', 's' : 'controls-DataGridView__tr'},
+    'ch_surname': {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__surname'},
+    'ch_name'   : {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__name'},
+
 }
 
 def wj(driver):  # Ждем, пока динамическая ява завершит все свои процессы
@@ -52,7 +61,7 @@ def wj(driver):  # Ждем, пока динамическая ява завер
     Еще варианты фреймворков/библиотек:
     "return Ajax.activeRequestCount == 0"
     "return dojo.io.XMLHTTPTransport.inFlight.length == 0"
-    Ожидание пока все набранные буквы от-явятся:
+    Ожидание пока все набранные буквы отработют явой:
     element = WebDriverWait(ff, 10).until(EC.presence_of_element_located((By.ID, "keywordSuggestion")))
     """
     return
@@ -98,12 +107,14 @@ def p(d, t, f, s, a = '', data_id = ''):
     if t == 'i':
         if   f == 'c':
             foo = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.ID, s + data_id)))
+            wj(d)
             if a == '':
                 return foo
             else:
                 return foo.get_attribute(a)
         elif f == 'v':
             foo = WebDriverWait(d, 20).until(EC.visibility_of_element_located((By.ID, s + data_id)))
+            wj(d)
             if a == '':
                 return foo
             else:
@@ -111,11 +122,16 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'vs':
             return WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.ID, s + data_id)))
         elif f == 'p':
-            foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.ID, s + data_id)))
-            if a == '':
-                return foo
+            if chk(d = d, t = t, s = s + data_id):
+                wj(d)
+                foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.ID, s + data_id)))
+                wj(d)
+                if a == '':
+                    return foo
+                else:
+                    return foo.get_attribute(a)
             else:
-                return foo.get_attribute(a)
+                return
         elif f == 'ps':
             return WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.ID, s + data_id)))
         else:
@@ -123,12 +139,14 @@ def p(d, t, f, s, a = '', data_id = ''):
     elif t == 'x':
         if   f == 'c':
             foo = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.XPATH, s+data_id)))
+            wj(d)
             if a == '':
                 return foo
             else:
                 return foo.get_attribute(a)
         elif f == 'v':
             foo = WebDriverWait(d, 20).until(EC.visibility_of_element_located((By.XPATH, s+data_id)))
+            wj(d)
             if a == '':
                 return foo
             else:
@@ -136,11 +154,16 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'vs':
             return WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.XPATH, s + data_id)))
         elif f == 'p':
-            foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.XPATH, s + data_id)))
-            if a == '':
-                return foo
+            if chk(d = d, t = t, s = s + data_id):
+                wj(d)
+                foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.XPATH, s + data_id)))
+                wj(d)
+                if a == '':
+                    return foo
+                else:
+                    return foo.get_attribute(a)
             else:
-                return foo.get_attribute(a)
+                return
         elif f == 'ps':
             return WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.XPATH, s + data_id)))
         else:
@@ -161,20 +184,20 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'vs':
             return WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.CLASS_NAME, s + data_id)))
         elif f == 'p':
-            foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.CLASS_NAME, s + data_id)))
-            if a == '':
-                return foo
+            if chk(d = d, t = t, s = s + data_id):
+                wj(d)
+                foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.CLASS_NAME, s + data_id)))
+                wj(d)
+                if a == '':
+                    return foo
+                else:
+                    return foo.get_attribute(a)
             else:
-                return foo.get_attribute(a)
+                return
         elif f == 'ps':
             return WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.CLASS_NAME, s + data_id)))
         else:
             return
-
-
-def xc_dataid(d,name_of_xpath,data_id):
-    wj(d)
-    return WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.XPATH, BXPATH['data_id']+str(data_id)+"']")))
 
 def authorize(driver, login, password, authorize_page=''):
     time.sleep(1)
@@ -252,7 +275,7 @@ fillconfig = read_config(section='fill')
 dbconfig = read_config(section='mysql')
 
 driver = webdriver.Chrome()  # Инициализация драйвера
-driver.implicitly_wait(20) # Ждать ответа на каждый запрос до 10 сек
+driver.implicitly_wait(10) # Неявное ожидание - ждать ответа на каждый запрос до 10 сек
 
 
 authorize(driver, **webconfig)  # Авторизация
@@ -305,10 +328,18 @@ while g < 1000:
             firma = p(d = driver, f = 'c', **B['data_id'], data_id = str(firm.get_attribute('data-id')))
 #            xc_dataid(driver,'data_id',str(firm.get_attribute('data-id')))
             wj(driver)
+            data_id = firma.get_attribute('data-id')
             firma.click()
             wj(driver)
             time.sleep(4)
-            sql = 'INSERT INTO main (data_id, inn, kpp) VALUES(' + firma.get_attribute('data-id')+',1,1);'
+            inn = p(d = driver, f = 'p', **B['innA'])
+            kpp = p(d = driver, f = 'p', **B['kppA'])
+            firm_full_name = p(d = driver, f = 'p', **B['firm_full_nameA'])
+            if firm_full_name == '':
+                firm_full_name = p(d = driver, f = 'p', **B['familyA']) + ' ' + p(d = driver, f = 'p', **B['nameA'])\
+                                 + ' ' + p(d = driver, f = 'p', **B['surnameA'])
+            sql = 'INSERT INTO main (data_id, inn, kpp, firm_full_name) VALUES(' + data_id + ', ' + inn + ', '+ kpp + \
+                  ", " + firm_full_name + ", " + ');'
             write_cursor.execute(sql)
             dbconn.commit()
             wj(driver)
