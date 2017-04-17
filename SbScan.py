@@ -17,6 +17,7 @@ from openpyxl.writer.write_only import WriteOnlyCell
 import NormalizeFields as norm
 import datetime
 import time
+import string
 
 # DRIVER_PATH = 'drivers/chromedriver.exe'
 #DRIVER_PATH = 'drivers/chromedriver'
@@ -55,8 +56,18 @@ B = {
     'owners'    : {'t': 'x', 's': '//SPAN[@class="ContragentCard_RightAccordion-content"][text()="Владельцы"]'},
     'summA'     : {'t': 'x', 's': '//SPAN[@class="Contragents-ContragentCardRatingBanner__title-Revenue  '
                                   'ctrg-subseparator"][text()="Выручка: "]/SPAN', 'a': 'text'},
-    'summ_posA' : {'t': 'x', 's' : '//DIV[@class="Contragents-ContragentCardRatingBanner__positions"]/DIV/SPAN',
-                   'a': 'text'},
+    'costA'     : {'t': 'x', 's': '//SPAN[@class="Contragents-ContragentCardRatingBanner__title-Cost  '
+                                  'ctrg-subseparator"][text()="Стоимость бизнеса: "]/SPAN', 'a': 'text'},
+    'rat_sumA'  : {'t': 'x', 's' : '//DIV[@class="ctrg-half-left"]//DIV[@class="Contragents-'
+                                   'ContragentCardRatingBanner__positions"]/DIV/SPAN', 'a': 'title'},
+    'rat_costA' : {'t': 'x', 's' : '//DIV[@class="ctrg-half-right"]//DIV[@class="Contragents-'
+                                   'ContragentCardRatingBanner__positions"]/DIV/SPAN', 'a': 'title'},
+    'phonesA'   : {'t': 'x', 's': '//DIV[@sbisname="Таблица телефонов"]//DIV[@class="crm-phone-number crm-noicon '
+                                  'ContragentCardPhones-Ellipsis"]', 'a': 'text'},
+   'phones_typA': {'t': 'x', 's': '//DIV[@sbisname="Таблица телефонов"]//SPAN[@class="crm-phone-comment '
+                                  'ContragentCardPhones-Ellipsis"]', 'a': 'text'},
+
+
 
     'cats'      : {'t': 'c', 's' : 'controls-DropdownList__item-text'},
     'firms_c'   : {'t': 'c', 's' : 'controls-DataGridView__tr'},
@@ -141,7 +152,15 @@ def p(d, t, f, s, a = '', data_id = ''):
                 else:
                     return foo.get_attribute(a)
         elif f == 'vs':
-            return WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.ID, s + data_id)))
+            foo = WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.ID, s + data_id)))
+            wj(d)
+            if a == '':
+                return foo
+            else:
+                if a == 'text':
+                    return [atr.text for atr in foo]
+                else:
+                    return [atr.get_attribute(a) for atr in foo]
         elif f == 'p':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
@@ -157,7 +176,19 @@ def p(d, t, f, s, a = '', data_id = ''):
             else:
                 return
         elif f == 'ps':
-            return WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.ID, s + data_id)))
+            if chk(d = d, t = t, s = s + data_id):
+                wj(d)
+                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.ID, s + data_id)))
+                wj(d)
+                if a == '':
+                    return foo
+                else:
+                    if a == 'text':
+                        return [atr.text for atr in foo]
+                    else:
+                        return [atr.get_attribute(a) for atr in foo]
+            else:
+                return
         else:
             return
     elif t == 'x':
@@ -182,7 +213,15 @@ def p(d, t, f, s, a = '', data_id = ''):
                 else:
                     return foo.get_attribute(a)
         elif f == 'vs':
-            return WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.XPATH, s + data_id)))
+            foo = WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.XPATH, s + data_id)))
+            wj(d)
+            if a == '':
+                return foo
+            else:
+                if a == 'text':
+                    return [atr.text for atr in foo]
+                else:
+                    return [atr.get_attribute(a) for atr in foo]
         elif f == 'p':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
@@ -198,7 +237,19 @@ def p(d, t, f, s, a = '', data_id = ''):
             else:
                 return
         elif f == 'ps':
-            return WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.XPATH, s + data_id)))
+            if chk(d = d, t = t, s = s + data_id):
+                wj(d)
+                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.XPATH, s + data_id)))
+                wj(d)
+                if a == '':
+                    return foo
+                else:
+                    if a == 'text':
+                        return [atr.text for atr in foo]
+                    else:
+                        return [atr.get_attribute(a) for atr in foo]
+            else:
+                return
         else:
             return
     elif t == 'c':
@@ -221,7 +272,15 @@ def p(d, t, f, s, a = '', data_id = ''):
                 else:
                     return foo.get_attribute(a)
         elif f == 'vs':
-            return WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.CLASS_NAME, s + data_id)))
+            foo = WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.CLASS_NAME, s + data_id)))
+            wj(d)
+            if a == '':
+                return foo
+            else:
+                if a == 'text':
+                    return [atr.text for atr in foo]
+                else:
+                    return [atr.get_attribute(a) for atr in foo]
         elif f == 'p':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
@@ -237,7 +296,19 @@ def p(d, t, f, s, a = '', data_id = ''):
             else:
                 return
         elif f == 'ps':
-            return WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.CLASS_NAME, s + data_id)))
+            if chk(d = d, t = t, s = s + data_id):
+                wj(d)
+                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.CLASS_NAME, s + data_id)))
+                wj(d)
+                if a == '':
+                    return foo
+                else:
+                    if a == 'text':
+                        return [atr.text for atr in foo]
+                    else:
+                        return [atr.get_attribute(a) for atr in foo]
+            else:
+                return
         else:
             return
 
@@ -410,11 +481,42 @@ while g < 1000:
             else:
                 ch_fio = ch_surname + ' ' + ch_name
             summ = p(d = driver, f = 'p', **B['summA'])
+            cost = p(d = driver, f = 'p', **B['costA'])
+            s_rats = p(d = driver, f = 'ps', **B['rat_sumA'])
+            c_rats = p(d = driver, f = 'ps', **B['rat_costA'])
+            while len(s_rats) < 2:
+                s_rats.append('')
+            while len(c_rats) < 2:
+                c_rats.append('')
+            ph = p(d = driver, f = 'ps', **B['phonesA'])
+            ph_t = p(d = driver, f = 'ps', **B['phones_typA'])
+            while len(ph) < 5:
+                ph.append('')
+            ph_n = []
+            for j, phone in enumerate(ph):
+                tel = str(tel).strip()
+                if tel == '' or tel == None:
+                    ph_n.append(0)
+                else:
+                    tel = ''.join([char for char in tel if char in string.digits])
+                    if len(tel) == 11:
+                        if tel[0] in ['8', '9']:
+                            ph_n.append(int('7' + tel[1:]))
+                    elif len(tel) == 10:
+                        ph_n.append(int('7' + tel))
+                    else:
+                        ph_n.append(0)
+            while len(ph) < 5:
+                ph_t.append('')
+
             sql = 'INSERT INTO main(data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title, ' \
-                  'ch_fio, summ) ' \
-                  'VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
-            write_cursor.execute(sql, (data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list,
-                                       ch_title, ch_fio, summ))
+                  'ch_fio, summ, cost, sum_rat1, sum_rat2, cost_rat1, cost_rat2, t_phone_1, phone_1, t_phone_2,' \
+                  ' phone_2, t_phone_3, phone_3, t_phone_4, phone_4, t_phone_5, phone_5) ' \
+                  'VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,' \
+                  ' %s, %s)'
+            write_cursor.execute(sql, (data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title,
+                                       ch_fio, summ, cost, s_rats[0], s_rats[1], c_rats[0], c_rats[1], ph_t[0],
+                                       ph_n[0], ph_t[1], ph_n[1], ph_t[2], ph_n[2], ph_t[3], ph_n[3], ph_t[4], ph_n[4]))
             dbconn.commit()
             wj(driver)
             close = p(d = driver, f = 'c', **B['close'])
