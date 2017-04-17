@@ -49,15 +49,21 @@ B = {
     'surnameA'  : {'t': 'x', 's' : '//INPUT[@name="СтрокаОтчество"]', 'a': 'value'},
 'firm_full_nameA':{'t': 'x', 's' : '//INPUT[@name="СтрокаПолноеНазвание"]', 'a': 'value'},
    'act_num1000': {'t': 'x', 's': '//DIV[@class="custom-select-option"][@value="1000"]'},
+    'about'     : {'t': 'x', 's': '//SPAN[@class="ContragentCard_RightAccordion-content"][text()="О компании"]'},
+    'contacts'  : {'t': 'x', 's': '//SPAN[@class="ContragentCard_RightAccordion-content"][text()="Контактные данные"]'},
+    'rekv'      : {'t': 'x', 's': '//SPAN[@class="ContragentCard_RightAccordion-content"][text()="Реквизиты"]'},
+    'owners'    : {'t': 'x', 's': '//SPAN[@class="ContragentCard_RightAccordion-content"][text()="Владельцы"]'},
+    'summA'     : {'t': 'x', 's': '//SPAN[@class="Contragents-ContragentCardRatingBanner"][text()="Выручка: "]/SPAN', 'a': 'text'},
     'cats'      : {'t': 'c', 's' : 'controls-DropdownList__item-text'},
     'firms_c'   : {'t': 'c', 's' : 'controls-DataGridView__tr'},
    'ch_surnameA': {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__surname', 'a': 'text'},
     'ch_nameA'  : {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__name', 'a': 'text'},
+    'ch_titleA' : {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__title', 'a': 'text'},
     'gen_infoA' : {'t': 'c', 's' : 'Contragents-ContragentCardGeneralInfo__State', 'a': 'text'},
     'act_link'  : {'t': 'c', 's' : 'Contragents-ContragentCardGeneralInfo__ActivityTypes__title'},
-    'act_num'   : {'t': 'c', 's' : 'custom-select-text'},
+  'act_by_count': {'t': 'c', 's' : 'custom-select-text'},
     'acts'      : {'t': 'c', 's' : 'ws-browser-table-row'},
-
+    'act_numA'  : {'t': 'c', 's' : 'Contragents-ContragentCardGeneralInfo__ActivityTypes__counter', 'a': 'text'},
 }
 
 def wj(driver):  # Ждем, пока динамическая ява завершит все свои процессы
@@ -370,15 +376,16 @@ while g < 1000:
                 firm_full_name = p(d = driver, f = 'p', **B['familyA']) + ' ' + p(d = driver, f = 'p', **B['nameA'])\
                                  + ' ' + p(d = driver, f = 'p', **B['surnameA'])
             gen_info = p(d = driver, f = 'p', **B['gen_infoA'])
+            act_num = p(d = driver, f = 'p', **B['act_numA'])
             act_link = p(d = driver, f = 'c', **B['act_link']) # Страница видов деятельности
             wj(driver)
             act_link.click()
             wj(driver)
             time.sleep(4)
-            act_n = p(d = driver, f = 'c', **B['act_num']) # Список по сколько на страницу
+            act_by_count = p(d = driver, f = 'c', **B['act_by_count']) # Список по сколько на страницу
             wj(driver)
-            act_n.click()
-            act_num1000 = p(d = driver, f = 'c', **B['act_num1000']) # Выбираем 1000
+            act_by_count.click()
+            act_num1000 = p(d = driver, f = 'c', **B['act_num1000']) # Выбираем по 1000 на страницу
             acts =  p(d = driver, f = 'ps', **B['acts'])
             act_list = ''
             for j, act in enumerate(acts):
@@ -390,8 +397,20 @@ while g < 1000:
             act_link.click()
             wj(driver)
             time.sleep(4)
-            sql = 'INSERT INTO main(data_id, inn, kpp, firm_full_name, act_num, act_list) VALUES(%s, %s, %s, %s, %s, %s, %s)'
-            write_cursor.execute(sql, (data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list))
+            ch_title = p(d = driver, f = 'p', **B['ch_titleA'])
+            ch_name = p(d = driver, f = 'p', **B['ch_nameA'])
+            ch_surname = p(d = driver, f = 'p', **B['ch_surnameA'])
+            if ch_name == '' and ch_surname == '':
+                ch_fio = gen_info
+                ch_title = 'Индивидуальный предприниматель'
+            else:
+                ch_fio = ch_surname + ch_name
+            summ = p(d = driver, f = 'p', **B['summA'])
+            sql = 'INSERT INTO main(data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title, ' \
+                  'ch_fio, summ) ' \
+                  'VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+            write_cursor.execute(sql, (data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list,
+                                       ch_title, ch_fio, summ))
             dbconn.commit()
             wj(driver)
             close = p(d = driver, f = 'c', **B['close'])
