@@ -53,7 +53,11 @@ B = {
     'contacts'  : {'t': 'x', 's': '//SPAN[@class="ContragentCard_RightAccordion-content"][text()="Контактные данные"]'},
     'rekv'      : {'t': 'x', 's': '//SPAN[@class="ContragentCard_RightAccordion-content"][text()="Реквизиты"]'},
     'owners'    : {'t': 'x', 's': '//SPAN[@class="ContragentCard_RightAccordion-content"][text()="Владельцы"]'},
-    'summA'     : {'t': 'x', 's': '//SPAN[@class="Contragents-ContragentCardRatingBanner"][text()="Выручка: "]/SPAN', 'a': 'text'},
+    'summA'     : {'t': 'x', 's': '//SPAN[@class="Contragents-ContragentCardRatingBanner__title-Revenue  '
+                                  'ctrg-subseparator"][text()="Выручка: "]/SPAN', 'a': 'text'},
+    'summ_posA' : {'t': 'x', 's' : '//DIV[@class="Contragents-ContragentCardRatingBanner__positions"]/DIV/SPAN',
+                   'a': 'text'},
+
     'cats'      : {'t': 'c', 's' : 'controls-DropdownList__item-text'},
     'firms_c'   : {'t': 'c', 's' : 'controls-DataGridView__tr'},
    'ch_surnameA': {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__surname', 'a': 'text'},
@@ -404,7 +408,7 @@ while g < 1000:
                 ch_fio = gen_info
                 ch_title = 'Индивидуальный предприниматель'
             else:
-                ch_fio = ch_surname + ch_name
+                ch_fio = ch_surname + ' ' + ch_name
             summ = p(d = driver, f = 'p', **B['summA'])
             sql = 'INSERT INTO main(data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title, ' \
                   'ch_fio, summ) ' \

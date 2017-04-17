@@ -13,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SbScan$SbScan.coverage" NAME="SbScan Coverage Results" MODIFIED="1492402021374" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SbScan$SbScan.coverage" NAME="SbScan Coverage Results" MODIFIED="1492412279937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
@@ -21,12 +21,12 @@
       <file leaf-file-name="SbScan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SbScan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="413" column="27" lean-forward="true" selection-start-line="413" selection-start-column="27" selection-end-line="413" selection-end-column="27" />
+            <state relative-caret-position="178">
+              <caret line="58" column="19" lean-forward="true" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
               <folding>
                 <element signature="e#25#55#0" expanded="true" />
-                <marker date="1492402533335" expanded="true" signature="13902:13954" ph="SELECT data_... main" />
-                <marker date="1492402533335" expanded="true" signature="17146:17343" ph="INSERT INTO main... " />
+                <marker date="1492413381652" expanded="true" signature="14120:14172" ph="SELECT data_... main" />
+                <marker date="1492413381652" expanded="true" signature="17370:17567" ph="INSERT INTO main... " />
               </folding>
             </state>
           </provider>
@@ -325,12 +325,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492370112803</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Добавил about, contacts,rekv,owners,summ,ch_title&#10;Исправил и отладил подстраницу &quot;виды деятельности&quot;">
+      <created>1492402727801</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1492402727801</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="768" y="24" width="1144" height="1056" extended-state="4" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24936602" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -341,7 +347,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38300106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38300106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -382,35 +388,36 @@
     <MESSAGE value="Реорганизовал библиотеку меток (добавил возможность выбора атрибута, поиска по параметру или индексу) и сделал из множества фукций единую, обслуживающую библиотеку меток функцию p(). Добавил определение попадания строки списка фирм в видимую часть окна и использование листания страниц. Отладил, вроде все работает." />
     <MESSAGE value="Добавил пауз wj(). &#10;Исправил ошибку при отсутствии web-элемента в функции p() при f='p'.&#10;Начал заполнять поля данных из карточки фирмы.&#10;Не решил: Как быть с кавычками в текстовом поле таблицы mysql" />
     <MESSAGE value="Работаю с полями" />
-    <option name="LAST_COMMIT_MESSAGE" value="Работаю с полями" />
+    <MESSAGE value="Добавил about, contacts,rekv,owners,summ,ch_title&#10;Исправил и отладил подстраницу &quot;виды деятельности&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил about, contacts,rekv,owners,summ,ch_title&#10;Исправил и отладил подстраницу &quot;виды деятельности&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>277</line>
+          <line>281</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>302</line>
+          <line>306</line>
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>304</line>
+          <line>308</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>275</line>
+          <line>279</line>
           <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SbScan.py</url>
           <line>411</line>
-          <option name="timeStamp" value="109" />
+          <option name="timeStamp" value="115" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -420,7 +427,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="110" />
+      <option name="time" value="116" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -435,8 +442,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492402533335" expanded="true" signature="13902:13954" ph="SELECT data_... main" />
-            <marker date="1492402533335" expanded="true" signature="17146:17343" ph="INSERT INTO main... " />
+            <marker date="1492413381652" expanded="true" signature="14120:14172" ph="SELECT data_... main" />
+            <marker date="1492413381652" expanded="true" signature="17370:17567" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -513,8 +520,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492402533335" expanded="true" signature="13902:13954" ph="SELECT data_... main" />
-            <marker date="1492402533335" expanded="true" signature="17146:17343" ph="INSERT INTO main... " />
+            <marker date="1492413381652" expanded="true" signature="14120:14172" ph="SELECT data_... main" />
+            <marker date="1492413381652" expanded="true" signature="17370:17567" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -614,8 +621,8 @@
           <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="13" />
           <folding>
             <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492402533335" expanded="true" signature="13902:13954" ph="SELECT data_... main" />
-            <marker date="1492402533335" expanded="true" signature="17146:17343" ph="INSERT INTO main... " />
+            <marker date="1492413381652" expanded="true" signature="14120:14172" ph="SELECT data_... main" />
+            <marker date="1492413381652" expanded="true" signature="17370:17567" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -670,8 +677,8 @@
           <caret line="203" column="10" lean-forward="true" selection-start-line="203" selection-start-column="10" selection-end-line="203" selection-end-column="10" />
           <folding>
             <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492402533335" expanded="true" signature="13902:13954" ph="SELECT data_... main" />
-            <marker date="1492402533335" expanded="true" signature="17146:17343" ph="INSERT INTO main... " />
+            <marker date="1492413381652" expanded="true" signature="14120:14172" ph="SELECT data_... main" />
+            <marker date="1492413381652" expanded="true" signature="17370:17567" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -811,12 +818,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SbScan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="413" column="27" lean-forward="true" selection-start-line="413" selection-start-column="27" selection-end-line="413" selection-end-column="27" />
+        <state relative-caret-position="178">
+          <caret line="58" column="19" lean-forward="true" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
           <folding>
             <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492402533335" expanded="true" signature="13902:13954" ph="SELECT data_... main" />
-            <marker date="1492402533335" expanded="true" signature="17146:17343" ph="INSERT INTO main... " />
+            <marker date="1492413381652" expanded="true" signature="14120:14172" ph="SELECT data_... main" />
+            <marker date="1492413381652" expanded="true" signature="17370:17567" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
