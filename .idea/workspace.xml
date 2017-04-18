@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8790ffec-efa4-44f8-a374-4c0199b9d568" name="Default" comment="">
+    <list default="true" id="8790ffec-efa4-44f8-a374-4c0199b9d568" name="Default" comment="Отладил телефоны (изменил функцию p), начал работу с полем warn.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SbScan.py" afterPath="$PROJECT_DIR$/SbScan.py" />
     </list>
@@ -13,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SbScan$SbScan.coverage" NAME="SbScan Coverage Results" MODIFIED="1492482989713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SbScan$SbScan.coverage" NAME="SbScan Coverage Results" MODIFIED="1492538054689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
@@ -21,32 +21,73 @@
       <file leaf-file-name="SbScan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SbScan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="68" column="107" lean-forward="false" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="107" />
+            <state relative-caret-position="11736">
+              <caret line="652" column="58" lean-forward="false" selection-start-line="652" selection-start-column="58" selection-end-line="652" selection-end-column="58" />
               <folding>
                 <element signature="e#25#55#0" expanded="true" />
-                <marker date="1492484297290" expanded="true" signature="17638:17690" ph="SELECT data_... main" />
-                <marker date="1492484297290" expanded="true" signature="22047:22498" ph="INSERT INTO main... " />
+                <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
+                <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
+                <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="apport_python_hook.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python3/dist-packages/apport_python_hook.py">
+      <file leaf-file-name="_pydev_execfile.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cursor.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python3/dist-packages/mysql/connector/cursor.py">
+      <file leaf-file-name="pydevd.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10962">
-              <caret line="615" column="8" lean-forward="false" selection-start-line="615" selection-start-column="8" selection-end-line="615" selection-end-column="8" />
+            <state relative-caret-position="181">
+              <caret line="1014" column="0" lean-forward="false" selection-start-line="1014" selection-start-column="0" selection-end-line="1014" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wait.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/support/wait.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/lib/python3.5/http/client.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="258" column="0" lean-forward="false" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="remote_connection.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/remote/remote_connection.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="463" column="0" lean-forward="false" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webdriver.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/remote/webdriver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="483" column="0" lean-forward="false" selection-start-line="483" selection-start-column="0" selection-end-line="483" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -82,10 +123,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="645" />
-    <option name="y" value="24" />
-    <option name="width" value="1263" />
-    <option name="height" value="1056" />
+    <option name="x" value="816" />
+    <option name="y" value="145" />
+    <option name="width" value="1058" />
+    <option name="height" value="770" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -356,22 +397,29 @@
       <option name="project" value="LOCAL" />
       <updated>1492458827207</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Отладил телефоны (изменил функцию p), начал работу с полем warn.">
+      <created>1492485967014</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1492485967014</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="645" y="24" width="1263" height="1056" extended-state="4" />
+    <frame x="816" y="145" width="1058" height="770" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24936602" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3827957" sideWeight="0.5028759" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843652" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3204301" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3827957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.55279505" sideWeight="0.49712408" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -423,40 +471,26 @@
     <MESSAGE value="Добавил about, contacts,rekv,owners,summ,ch_title&#10;Исправил и отладил подстраницу &quot;виды деятельности&quot;" />
     <MESSAGE value="Исправи summA, добавил summ_posA - пока не работает" />
     <MESSAGE value="Добавил/отладил поля summ, cost, s_rats, c_rats, 5 телефонов и их типов&#10;Телефоны пока не работают, надо из p() для аргументов всегда возвращать &#10;'' или ['']" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил/отладил поля summ, cost, s_rats, c_rats, 5 телефонов и их типов&#10;Телефоны пока не работают, надо из p() для аргументов всегда возвращать &#10;'' или ['']" />
+    <MESSAGE value="Отладил телефоны (изменил функцию p), начал работу с полем warn." />
+    <option name="LAST_COMMIT_MESSAGE" value="Отладил телефоны (изменил функцию p), начал работу с полем warn." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>371</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>396</line>
+          <line>429</line>
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>398</line>
+          <line>431</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>369</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>530</line>
-          <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>535</line>
-          <option name="timeStamp" value="119" />
+          <line>404</line>
+          <option name="timeStamp" value="125" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -466,7 +500,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="123" />
+      <option name="time" value="154" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -481,8 +515,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492484297290" expanded="true" signature="17638:17690" ph="SELECT data_... main" />
-            <marker date="1492484297290" expanded="true" signature="22047:22498" ph="INSERT INTO main... " />
+            <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
+            <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
+            <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -559,8 +594,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492484297290" expanded="true" signature="17638:17690" ph="SELECT data_... main" />
-            <marker date="1492484297290" expanded="true" signature="22047:22498" ph="INSERT INTO main... " />
+            <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
+            <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
+            <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -660,8 +696,9 @@
           <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="13" />
           <folding>
             <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492484297290" expanded="true" signature="17638:17690" ph="SELECT data_... main" />
-            <marker date="1492484297290" expanded="true" signature="22047:22498" ph="INSERT INTO main... " />
+            <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
+            <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
+            <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -716,8 +753,9 @@
           <caret line="203" column="10" lean-forward="true" selection-start-line="203" selection-start-column="10" selection-end-line="203" selection-end-column="10" />
           <folding>
             <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492484297290" expanded="true" signature="17638:17690" ph="SELECT data_... main" />
-            <marker date="1492484297290" expanded="true" signature="22047:22498" ph="INSERT INTO main... " />
+            <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
+            <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
+            <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -775,39 +813,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17604">
-          <caret line="1014" column="0" lean-forward="false" selection-start-line="1014" selection-start-column="0" selection-end-line="1014" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/support/wait.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="70" column="44" lean-forward="false" selection-start-line="70" selection-start-column="44" selection-end-line="70" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/remote/errorhandler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3186">
           <caret line="192" column="0" lean-forward="false" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/remote/remote_connection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="463" column="0" lean-forward="false" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -819,25 +828,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/remote/webdriver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13428">
-          <caret line="760" column="8" lean-forward="false" selection-start-line="760" selection-start-column="8" selection-end-line="760" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="12" column="89" lean-forward="false" selection-start-line="12" selection-start-column="89" selection-end-line="12" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.5/http/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15138">
-          <caret line="849" column="0" lean-forward="false" selection-start-line="849" selection-start-column="0" selection-end-line="849" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -864,14 +858,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/remote/remote_connection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="463" column="0" lean-forward="false" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/remote/webdriver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="483" column="0" lean-forward="false" selection-start-line="483" selection-start-column="0" selection-end-line="483" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="1014" column="0" lean-forward="false" selection-start-line="1014" selection-start-column="0" selection-end-line="1014" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/support/wait.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.5/http/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="258" column="0" lean-forward="false" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SbScan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="68" column="107" lean-forward="false" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="107" />
+        <state relative-caret-position="11736">
+          <caret line="652" column="58" lean-forward="false" selection-start-line="652" selection-start-column="58" selection-end-line="652" selection-end-column="58" />
           <folding>
             <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492484297290" expanded="true" signature="17638:17690" ph="SELECT data_... main" />
-            <marker date="1492484297290" expanded="true" signature="22047:22498" ph="INSERT INTO main... " />
+            <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
+            <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
+            <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>

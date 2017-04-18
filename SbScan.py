@@ -23,32 +23,33 @@ import string
 #DRIVER_PATH = 'drivers/chromedriver'
 
 B = {
-    'menuIII'   : {'t': 'i', 's' : 'compact-mode-btn'},
-    'login'     : {'t': 'x', 's' : '//INPUT[@class="controls-TextBox__field js-controls-TextBox__field  "]'},
-    'password'  : {'t': 'x', 's' : '//INPUT[@class="js-controls-TextBox__field controls-TextBox__field"]'},
-    'a-button'  : {'t': 'x', 's' : '//DIV[@class="loginForm__sendButton"]'},
-    'menu>>'    : {'t': 'x', 's' : '//SPAN[@class="navigation-LeftNavigation__event icon-View"]'
+    'menuIII'   : {'t': 'i', 's': 'compact-mode-btn'},
+    'login'     : {'t': 'x', 's': '//INPUT[@class="controls-TextBox__field js-controls-TextBox__field  "]'},
+    'password'  : {'t': 'x', 's': '//INPUT[@class="js-controls-TextBox__field controls-TextBox__field"]'},
+    'a-button'  : {'t': 'x', 's': '//DIV[@class="loginForm__sendButton"]'},
+    'menu>>'    : {'t': 'x', 's': '//SPAN[@class="navigation-LeftNavigation__event icon-View"]'
                                                     '[@data-go-event="onClickContragentIcon"]'},
-    'menuCats'  : {'t': 'x', 's' : '(//SPAN[@class="controls-DropdownList__text"])[2]'},
-    'firms_x'   : {'t': 'x', 's' : '//DIV[@class="Contragents-CommonRenders__InnCorner '
+    'menuCats'  : {'t': 'x', 's': '(//SPAN[@class="controls-DropdownList__text"])[2]'},
+    'firms_x'   : {'t': 'x', 's': '//DIV[@class="Contragents-CommonRenders__InnCorner '
                                                     'Contragents-CommonRenders__Inn ws-ellipsis"]'},
-    'firms_tr'  : {'t': 'x', 's' : '//TR[@class="controls-DataGridView__tr controls-ListView__item '
+    'firms_tr'  : {'t': 'x', 's': '//TR[@class="controls-DataGridView__tr controls-ListView__item '
                                                                     'js-controls-ListView__item"]'},
-    'data_id'   : {'t': 'x', 's' : '//TR[@class="controls-DataGridView__tr controls-ListView__item '
+    'firms_trA' : {'t': 'x', 's': '//SPAN[@class="Contragents-CommonRenders__Name"]/../../../../..', 'a': 'data-id'},
+    'data_id'   : {'t': 'x', 's': '//TR[@class="controls-DataGridView__tr controls-ListView__item '
                                                           'js-controls-ListView__item"][@data-id="'},
-    'data_idA'  : {'t': 'x', 's' : '//TR[@class="controls-DataGridView__tr controls-ListView__item '
+    'data_idA'  : {'t': 'x', 's': '//TR[@class="controls-DataGridView__tr controls-ListView__item '
                                     'js-controls-ListView__item"][@data-id="', 'a' : 'data-id'},
-    'close'     : {'t': 'x', 's' : '//DIV[@class="sbisname-window-title-close ws-button-classic ws-component '
+    'close'     : {'t': 'x', 's': '//DIV[@class="sbisname-window-title-close ws-button-classic ws-component '
                         'ws-control-inactive ws-enabled ws-field-button ws-float-close-right ws-no-select"]'},
-    'first'     : {'t': 'x', 's' : '(//I[@sbisname="PagingBegin"])[1]'},
-    'next'      : {'t': 'x', 's' : '(//I[@sbisname="PagingNext"])[1]'},
-    'prev'      : {'t': 'x', 's' : '(//I[@sbisname="PagingPrev"])[1]'},
-    'innA'      : {'t': 'x', 's' : '//INPUT[@name="СтрокаИНН"]', 'a' : 'value'},
-    'kppA'      : {'t': 'x', 's' : '//INPUT[@name="СтрокаКПП"]', 'a': 'value'},
-    'familyA'   : {'t': 'x', 's' : '//INPUT[@name="СтрокаФамилия"]', 'a': 'value'},
-    'nameA'     : {'t': 'x', 's' : '//INPUT[@name="СтрокаИмя"]', 'a': 'value'},
-    'surnameA'  : {'t': 'x', 's' : '//INPUT[@name="СтрокаОтчество"]', 'a': 'value'},
-'firm_full_nameA':{'t': 'x', 's' : '//INPUT[@name="СтрокаПолноеНазвание"]', 'a': 'value'},
+    'first'     : {'t': 'x', 's': '(//I[@sbisname="PagingBegin"])[1]'},
+    'next'      : {'t': 'x', 's': '(//I[@sbisname="PagingNext"])[1]'},
+    'prev'      : {'t': 'x', 's': '(//I[@sbisname="PagingPrev"])[1]'},
+    'innA'      : {'t': 'x', 's': '//INPUT[@name="СтрокаИНН"]', 'a' : 'value'},
+    'kppA'      : {'t': 'x', 's': '//INPUT[@name="СтрокаКПП"]', 'a': 'value'},
+    'familyA'   : {'t': 'x', 's': '//INPUT[@name="СтрокаФамилия"]', 'a': 'value'},
+    'nameA'     : {'t': 'x', 's': '//INPUT[@name="СтрокаИмя"]', 'a': 'value'},
+    'surnameA'  : {'t': 'x', 's': '//INPUT[@name="СтрокаОтчество"]', 'a': 'value'},
+'firm_full_nameA':{'t': 'x', 's': '//INPUT[@name="СтрокаПолноеНазвание"]', 'a': 'value'},
    'act_num1000': {'t': 'x', 's': '//DIV[@class="custom-select-option"][@value="1000"]'},
     'about'     : {'t': 'x', 's': '//SPAN[@class="ContragentCard_RightAccordion-content"][text()="О компании"]'},
     'contacts'  : {'t': 'x', 's': '//SPAN[@class="ContragentCard_RightAccordion-content"][text()="Контактные данные"]'},
@@ -58,28 +59,43 @@ B = {
                                   'ctrg-subseparator"][text()="Выручка: "]/SPAN', 'a': 'text'},
     'costA'     : {'t': 'x', 's': '//SPAN[@class="Contragents-ContragentCardRatingBanner__title-Cost  '
                                   'ctrg-subseparator"][text()="Стоимость бизнеса: "]/SPAN', 'a': 'text'},
-    'rat_sumA'  : {'t': 'x', 's' : '//DIV[@class="ctrg-half-left"]//DIV[@class="Contragents-'
-                                   'ContragentCardRatingBanner__positions"]/DIV/SPAN', 'a': 'title'},
-    'rat_costA' : {'t': 'x', 's' : '//DIV[@class="ctrg-half-right"]//DIV[@class="Contragents-'
-                                   'ContragentCardRatingBanner__positions"]/DIV/SPAN', 'a': 'title'},
+    'rat_sumA'  : {'t': 'x', 's': '//DIV[@class="ctrg-half-left"]//DIV[@class="Contragents-'
+                                  'ContragentCardRatingBanner__positions"]/DIV/SPAN', 'a': 'title'},
+    'rat_costA' : {'t': 'x', 's': '//DIV[@class="ctrg-half-right"]//DIV[@class="Contragents-'
+                                  'ContragentCardRatingBanner__positions"]/DIV/SPAN', 'a': 'title'},
     'phonesA'   : {'t': 'x', 's': '//DIV[@sbisname="Таблица телефонов"]//DIV[@class="crm-phone-number crm-noicon '
                                   'ContragentCardPhones-Ellipsis"]', 'a': 'text'},
    'phones_typA': {'t': 'x', 's': '//DIV[@sbisname="Таблица телефонов"]//SPAN[@class="crm-phone-comment '
                                   'ContragentCardPhones-Ellipsis"]', 'a': 'text'},
-         'warnA': {'t': 'x', 's': '//DIV[@sbisname="Реестры"]//SPAN[@data-component="SBIS3.CONTROLS.Link"]',
-                   'a': 'text'},
+         'warnA': {'t': 'x', 's': '//DIV[@sbisname="Реестры"]//DIV[@class="Contragents-ContragentCardIndicators'
+                                  '__itemTitle "]//SPAN[@data-component="SBIS3.CONTROLS.Link"]', 'a': 'text'},
+    'warn_dataA': {'t': 'x', 's': '//DIV[@sbisname="Реестры"]//DIV[@class="Contragents-ContragentCardIndicators_'
+                                  '_listItemFooter"]//SPAN[@data-component="SBIS3.CONTROLS.Link"]', 'a': 'text'},
+    'filialsA'  : {'t': 'x', 's': '//DIV[@sbisname="Таблица филиалов"]//DIV[@title]', 'a': 'text'},
+    'ogrnA'     : {'t': 'x', 's': '//DIV[@sbisname="СтрокаОГРН"]//SPAN[@title]', 'a': 'text'},
+    'okpoA'     : {'t': 'x', 's': '//DIV[@sbisname="СтрокаОКПО"]//SPAN[@title]', 'a': 'text'},
+    'oktmoA'    : {'t': 'x', 's': '//DIV[@sbisname="СтрокаОКТМО"]//SPAN[@title]', 'a': 'text'},
+    'reg_N_pfrA': {'t': 'x', 's': '//DIV[@sbisname="СтрокаРегНомерПФ"]//SPAN[@title]', 'a': 'text'},
+    'reg_comp'  : {'t': 'x', 's': '//DIV[@class="ContragentCardRegistration-Data"]', 'a': 'text'},
+    'reg_org'   : {'t': 'x', 's': '//DIV[@class="ContragentCardRegistrationGosOrg-Data"]', 'a': 'text'},
+    'uchred'    : {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//DIV[@class="ws-browser-cell-paddings"]'
+                                  '/DIV[@title]', 'a': 'title'},
+    'dochki'    : {'t': 'x', 's': '//DIV[@sbisname="brwДочерниеКомпании"]//DIV[@class="ws-browser-cell-paddings"]'
+                                  '/DIV[@title]', 'a': 'title'},
+    'cats'      : {'t': 'c', 's': 'controls-DropdownList__item-text'},
+    'firms_c'   : {'t': 'c', 's': 'controls-DataGridView__tr'},
+   'ch_surnameA': {'t': 'c', 's': 'Contragents-ContragentCard__Chief__surname', 'a': 'text'},
+    'ch_nameA'  : {'t': 'c', 's': 'Contragents-ContragentCard__Chief__name', 'a': 'text'},
+    'ch_titleA' : {'t': 'c', 's': 'Contragents-ContragentCard__Chief__title', 'a': 'text'},
+    'gen_infoA' : {'t': 'c', 's': 'Contragents-ContragentCardGeneralInfo__State', 'a': 'text'},
+    'act_link'  : {'t': 'c', 's': 'Contragents-ContragentCardGeneralInfo__ActivityTypes__title'},
+  'act_by_count': {'t': 'c', 's': 'custom-select-text'},
+    'acts'      : {'t': 'c', 's': 'ws-browser-table-row'},
+    'act_numA'  : {'t': 'c', 's': 'Contragents-ContragentCardGeneralInfo__ActivityTypes__counter', 'a': 'text'},
+    'emp_qtyA'  : {'t': 'c', 's': 'Contragents-ContragentCard__EmployeesQuantity__qty', 'a': 'text'},
+    'addressA'  : {'t': 'c', 's': 'ContragentCardAddresses-blackLink', 'a': 'text'},
+    'predstavA' : {'t': 'c', 's': 'user-info-cell', 'a': 'text'},
 
-
-    'cats'      : {'t': 'c', 's' : 'controls-DropdownList__item-text'},
-    'firms_c'   : {'t': 'c', 's' : 'controls-DataGridView__tr'},
-   'ch_surnameA': {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__surname', 'a': 'text'},
-    'ch_nameA'  : {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__name', 'a': 'text'},
-    'ch_titleA' : {'t': 'c', 's' : 'Contragents-ContragentCard__Chief__title', 'a': 'text'},
-    'gen_infoA' : {'t': 'c', 's' : 'Contragents-ContragentCardGeneralInfo__State', 'a': 'text'},
-    'act_link'  : {'t': 'c', 's' : 'Contragents-ContragentCardGeneralInfo__ActivityTypes__title'},
-  'act_by_count': {'t': 'c', 's' : 'custom-select-text'},
-    'acts'      : {'t': 'c', 's' : 'ws-browser-table-row'},
-    'act_numA'  : {'t': 'c', 's' : 'Contragents-ContragentCardGeneralInfo__ActivityTypes__counter', 'a': 'text'},
 }
 
 def wj(driver):  # Ждем, пока динамическая ява завершит все свои процессы
@@ -263,6 +279,23 @@ def p(d, t, f, s, a = '', data_id = ''):
                     return []
                 else:
                     return ['']
+        elif f == 'vv':
+            if chk(d = d, t = t, s = s + data_id):
+                wj(d)
+                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.XPATH, s + data_id)))
+                wj(d)
+                if a == '':
+                    return foo
+                else:
+                    if a == 'text':
+                        return [atr.text for atr in foo if atr.is_displayed()]
+                    else:
+                        return [atr.get_attribute(a) for atr in foo if atr.is_displayed()]
+            else:
+                if a == '':
+                    return []
+                else:
+                    return ['']
         else:
             return
     elif t == 'c':
@@ -407,7 +440,7 @@ fillconfig = read_config(section='fill')
 dbconfig = read_config(section='mysql')
 
 driver = webdriver.Chrome()  # Инициализация драйвера
-driver.implicitly_wait(10) # Неявное ожидание - ждать ответа на каждый запрос до 10 сек
+driver.implicitly_wait(1) # Неявное ожидание - ждать ответа на каждый запрос до 10 сек
 
 
 authorize(driver, **webconfig)  # Авторизация
@@ -425,38 +458,41 @@ write_cursor = dbconn.cursor()
 g = 0
 height = driver.get_window_size()['height'] # Высота окна
 while g < 1000:
-    firms = p(d = driver, f = 'vs', **B['firms_tr'])
+    firms = p(d = driver, f = 'vv', **B['firms_trA'])
     read_cursor.execute('SELECT data_id, inn, kpp FROM main WHERE data_id >-1;')
     rows = read_cursor.fetchall()
     for i, firm in enumerate(firms):
         pass_string = False
         wj(driver)
         for row in rows:
-            if row[0] == int(firm.get_attribute('data-id')):
+            if row[0] == int(firm):
                 pass_string = True
         if pass_string:
             continue
-        if firm.location['y'] < 105:
+        firmu = p(d=driver, f='p', **B['data_id'], data_id=firm)
+        if firmu.location['y'] < 105:
             wj(driver)
             f = p(d = driver, f = 'c', **B['prev'])
             wj(driver)
+            time.sleep(1)
             f.click()
             wj(driver)
             print('prev')
             time.sleep(1)
             break
-        if firm.location['y'] > (height - 79):
+        if firmu.location['y'] > (height - 79):
             f = p(d = driver, f = 'c', **B['next'])
             wj(driver)
+            time.sleep(1)
             f.click()
             wj(driver)
             print('next')
             time.sleep(1)
             break
         wj(driver)
-        if firm.is_displayed():
+        if firmu.is_displayed():
             wj(driver)                                      # Если DOM изменилось доступ через data-id (он не меняется)
-            firma = p(d = driver, f = 'c', **B['data_id'], data_id = str(firm.get_attribute('data-id')))
+            firma = p(d = driver, f = 'c', **B['data_id'], data_id = firm)
 #            xc_dataid(driver,'data_id',str(firm.get_attribute('data-id')))
             wj(driver)
             data_id = firma.get_attribute('data-id')
@@ -507,15 +543,18 @@ while g < 1000:
                 s_rats.append('')
             while len(c_rats) < 2:
                 c_rats.append('')
+            havnt_in_about = []  # Что не нашли на странице "О компании"
             ph = p(d = driver, f = 'ps', **B['phonesA'])
+            if ph[0] == '':
+                havnt_in_about.append('phones')
             ph_t = p(d = driver, f = 'ps', **B['phones_typA'])
             while len(ph) < 5:
-                ph.append('')
+                ph.append(None)
             ph_n = []
             for j, tel in enumerate(ph):
                 tel = str(tel).strip()
                 if tel == '' or tel == None:
-                    ph_n.append(0)
+                    ph_n.append(None)
                 else:
                     tel = ''.join([char for char in tel if char in string.digits])
                     if len(tel) == 11:
@@ -524,18 +563,139 @@ while g < 1000:
                     elif len(tel) == 10:
                         ph_n.append(int('7' + tel))
                     else:
-                        ph_n.append(0)
+                        ph_n.append(None)
             while len(ph_t) < 5:
-                ph_t.append('')
+                ph_t.append(None)
+            warns = p(d = driver, f = 'ps', **B['warnA'])
+            if warns[0] == '':
+                havnt_in_about.append('warnings')
+            warn_datas = p(d = driver, f = 'ps', **B['warn_dataA'])
+            warn = ''
+            for j, w in enumerate(warns):
+                if j < len(warn_datas):
+                    if warn_datas[j] != '':
+                        warn += w + ' (' + warn_datas[j] + ') '
+                    else:
+                        warn += w + ' '
+                else:
+                    warn += w + ' '
+            emp_qty = p(d = driver, f = 'p', **B['emp_qtyA'])
+            address = p(d = driver, f = 'p', **B['addressA'])
+            region = address.split(',')[0]
+            if address == '':
+                havnt_in_about.append('address')
+            predstavs = p(d = driver, f = 'ps', **B['predstavA'])
+            if predstavs[0] == '':
+                havnt_in_about.append('predstavs')
+            predstav = ''
+            for w in predstavs:
+                predstav += w.replace('\n',' - ') + ' '
+            filials = p(d = driver, f = 'ps', **B['filialsA'])
+            fils = ''
+            if filials[0] != '':
+                for j, w in enumerate(filials):
+                    if j % 2 == 0:
+                        fils += w
+                    else:
+                        fils += ' (' + w + ') '
+            else:
+                havnt_in_about.append('filials')
+
+            if chk(d = driver, **B['contacts']):
+                contacts_page = p(d = driver, f = 'c', **B['contacts'])
+                wj(driver)
+                contacts_page.click()
+                for havnt in havnt_in_about:
+                    if havnt == 'phones':
+                        ph = p(d=driver, f='ps', **B['phonesA'])
+                        ph_t = p(d=driver, f='ps', **B['phones_typA'])
+                        while len(ph) < 5:
+                            ph.append(None)
+                        ph_n = []
+                        for j, tel in enumerate(ph):
+                            tel = str(tel).strip()
+                            if tel == '' or tel == None:
+                                ph_n.append(None)
+                            else:
+                                tel = ''.join([char for char in tel if char in string.digits])
+                                if len(tel) == 11:
+                                    if tel[0] in ['8', '9']:
+                                        ph_n.append(int('7' + tel[1:]))
+                                elif len(tel) == 10:
+                                    ph_n.append(int('7' + tel))
+                                else:
+                                    ph_n.append(None)
+                        while len(ph_t) < 5:
+                            ph_t.append(None)
+                    elif havnt == 'warnings':
+                        warns = p(d=driver, f='ps', **B['warnA'])
+                        warn_datas = p(d=driver, f='ps', **B['warn_dataA'])
+                        warn = ''
+                        for j, w in enumerate(warns):
+                            if j < len(warn_datas):
+                                if warn_datas[j] != '':
+                                    warn += w + ' (' + warn_datas[j] + ') '
+                                else:
+                                    warn += w + ' '
+                            else:
+                                warn += w + ' '
+                    elif havnt == 'address':
+                        address = p(d=driver, f='p', **B['addressA'])
+                        region = address.split(',')[0]
+                    elif havnt == 'predstavs':
+                        predstavs = p(d=driver, f='ps', **B['predstavA'])
+                        predstav = ''
+                        for w in predstavs:
+                            predstav += w.replace('\n', ' - ') + ' '
+                    elif havnt == 'filials':
+                        filials = p(d=driver, f='ps', **B['filialsA'])
+                        if filials[0] != '':
+                            for j, w in enumerate(filials):
+                                if j % 2 == 0:
+                                    fils += w
+                                else:
+                                    fils += ' (' + w + ') '
+
+            if chk(d = driver, **B['rekv']):
+                rekv_page = p(d = driver, f = 'c', **B['rekv'])
+                wj(driver)
+                rekv_page.click()
+            ogrn = p(d=driver, f='p', **B['ogrnA'])
+            okpo = p(d=driver, f='p', **B['okpoA'])
+            oktmo = p(d=driver, f='p', **B['oktmoA'])
+            reg_N_pfr = p(d=driver, f='p', **B['reg_N_pfrA'])
+            reg_comp =  p(d=driver, f='p', **B['reg_comp']).replace('\n',' ')
+            reg_gos =  p(d=driver, f='p', **B['reg_org']).replace('\n',' ')
+
+            if chk(d = driver, **B['owners']):
+                own_page = p(d = driver, f = 'c', **B['owners'])
+                wj(driver)
+                own_page.click()
+            u = []
+            uchreds = p(d=driver, f='ps', **B['uchred'])
+            for j in range(int(len(uchreds)/3)):
+                u.append('(' + uchreds[j*3 + 2] + '% / ' + uchreds[j*3 + 1] + ' руб.) '+ uchreds[j*3])
+            while len(u) < 5:
+                u.append(None)
+            d = []
+            dochki = p(d=driver, f='ps', **B['dochki'])
+            for j in range(int(len(dochki)/2)):
+                d.append('(ИНН ' + dochki[j*2 + 1] + ') '+ dochki[j*2])
+            while len(d) < 5:
+                d.append(None)
 
             sql = 'INSERT INTO main(data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title, ' \
                   'ch_fio, summ, cost, sum_rat1, sum_rat2, cost_rat1, cost_rat2, t_phone_1, phone_1, t_phone_2,' \
-                  ' phone_2, t_phone_3, phone_3, t_phone_4, phone_4, t_phone_5, phone_5) ' \
+                  ' phone_2, t_phone_3, phone_3, t_phone_4, phone_4, t_phone_5, phone_5, warn, emp_qty, address,' \
+                  ' region, predstav, fils, ogrn, okpo, oktmo, reg_N_pfr, reg_comp, reg_gos, u1, u2, u3, u4, u5,' \
+                  'd1, d2, d3, d4, d5) ' \
                   'VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,' \
-                  ' %s, %s)'
+                  ' %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
             write_cursor.execute(sql, (data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title,
                                        ch_fio, summ, cost, s_rats[0], s_rats[1], c_rats[0], c_rats[1], ph_t[0],
-                                       ph_n[0], ph_t[1], ph_n[1], ph_t[2], ph_n[2], ph_t[3], ph_n[3], ph_t[4], ph_n[4]))
+                                       ph_n[0], ph_t[1], ph_n[1], ph_t[2], ph_n[2], ph_t[3], ph_n[3], ph_t[4], ph_n[4],
+                                       warn, emp_qty, address, region, predstav, fils, ogrn, okpo, oktmo, reg_N_pfr,
+                                       reg_comp, reg_gos, u[0], u[1], u[2], u[3], u[4], d[0], d[1], d[2], d[3], d[4]))
             dbconn.commit()
             wj(driver)
             close = p(d = driver, f = 'c', **B['close'])
@@ -543,6 +703,14 @@ while g < 1000:
             close.click()
             wj(driver)
             time.sleep(4)
+    if i == len(firms)-1:
+        f = p(d=driver, f='c', **B['next'])
+        wj(driver)
+        time.sleep(1)
+        f.click()
+        wj(driver)
+        print('next')
+        time.sleep(1)
 
 dbconn.close()
 driver.close()
