@@ -66,7 +66,8 @@ B = {
                                   'ContragentCardPhones-Ellipsis"]', 'a': 'text'},
    'phones_typA': {'t': 'x', 's': '//DIV[@sbisname="Таблица телефонов"]//SPAN[@class="crm-phone-comment '
                                   'ContragentCardPhones-Ellipsis"]', 'a': 'text'},
-
+         'warnA': {'t': 'x', 's': '//DIV[@sbisname="Реестры"]//SPAN[@data-component="SBIS3.CONTROLS.Link"]',
+                   'a': 'text'},
 
 
     'cats'      : {'t': 'c', 's' : 'controls-DropdownList__item-text'},
@@ -174,7 +175,10 @@ def p(d, t, f, s, a = '', data_id = ''):
                     else:
                         return foo.get_attribute(a)
             else:
-                return
+                if a == '':
+                    return
+                else:
+                    return ''
         elif f == 'ps':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
@@ -188,7 +192,10 @@ def p(d, t, f, s, a = '', data_id = ''):
                     else:
                         return [atr.get_attribute(a) for atr in foo]
             else:
-                return
+                if a == '':
+                    return []
+                else:
+                    return ['']
         else:
             return
     elif t == 'x':
@@ -235,7 +242,10 @@ def p(d, t, f, s, a = '', data_id = ''):
                     else:
                         return foo.get_attribute(a)
             else:
-                return
+                if a == '':
+                    return
+                else:
+                    return ''
         elif f == 'ps':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
@@ -249,7 +259,10 @@ def p(d, t, f, s, a = '', data_id = ''):
                     else:
                         return [atr.get_attribute(a) for atr in foo]
             else:
-                return
+                if a == '':
+                    return []
+                else:
+                    return ['']
         else:
             return
     elif t == 'c':
@@ -294,7 +307,10 @@ def p(d, t, f, s, a = '', data_id = ''):
                     else:
                         return foo.get_attribute(a)
             else:
-                return
+                if a == '':
+                    return
+                else:
+                    return ''
         elif f == 'ps':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
@@ -308,7 +324,10 @@ def p(d, t, f, s, a = '', data_id = ''):
                     else:
                         return [atr.get_attribute(a) for atr in foo]
             else:
-                return
+                if a == '':
+                    return []
+                else:
+                    return ['']
         else:
             return
 
@@ -493,7 +512,7 @@ while g < 1000:
             while len(ph) < 5:
                 ph.append('')
             ph_n = []
-            for j, phone in enumerate(ph):
+            for j, tel in enumerate(ph):
                 tel = str(tel).strip()
                 if tel == '' or tel == None:
                     ph_n.append(0)
@@ -506,7 +525,7 @@ while g < 1000:
                         ph_n.append(int('7' + tel))
                     else:
                         ph_n.append(0)
-            while len(ph) < 5:
+            while len(ph_t) < 5:
                 ph_t.append('')
 
             sql = 'INSERT INTO main(data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title, ' \
