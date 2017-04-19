@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8790ffec-efa4-44f8-a374-4c0199b9d568" name="Default" comment="Отладил телефоны (изменил функцию p), начал работу с полем warn.">
+    <list default="true" id="8790ffec-efa4-44f8-a374-4c0199b9d568" name="Default" comment="Доделал всё, кроме:&#10;  Не работают виды деятельности (только первые 20)&#10;  Размножить p(f='vv') на t='c' и t='i'">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SbScan.py" afterPath="$PROJECT_DIR$/SbScan.py" />
     </list>
@@ -13,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SbScan$SbScan.coverage" NAME="SbScan Coverage Results" MODIFIED="1492538054689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SbScan$SbScan.coverage" NAME="SbScan Coverage Results" MODIFIED="1492570916720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
@@ -21,13 +21,13 @@
       <file leaf-file-name="SbScan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SbScan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11736">
-              <caret line="652" column="58" lean-forward="false" selection-start-line="652" selection-start-column="58" selection-end-line="652" selection-end-column="58" />
+            <state relative-caret-position="216">
+              <caret line="12" column="45" lean-forward="true" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
               <folding>
-                <element signature="e#25#55#0" expanded="true" />
-                <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
-                <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
-                <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
+                <marker date="1492571552764" expanded="true" signature="21615:21667" ph="SELECT data_... main" />
+                <marker date="1492571552764" expanded="true" signature="32802:33167" ph="INSERT INTO main... " />
+                <marker date="1492571552764" expanded="true" signature="32802:33547" ph="INSERT INTO main... " />
+                <marker date="1492571552764" expanded="true" signature="34219:34262" ph="SELECT count... main" />
               </folding>
             </state>
           </provider>
@@ -46,7 +46,7 @@
       <file leaf-file-name="pydevd.py" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
+            <state relative-caret-position="17604">
               <caret line="1014" column="0" lean-forward="false" selection-start-line="1014" selection-start-column="0" selection-end-line="1014" selection-end-column="0" />
               <folding />
             </state>
@@ -56,7 +56,7 @@
       <file leaf-file-name="wait.py" pinned="false" current-in-tab="false">
         <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/support/wait.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="1350">
               <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding />
             </state>
@@ -66,7 +66,7 @@
       <file leaf-file-name="client.py" pinned="false" current-in-tab="false">
         <entry file="file:///usr/lib/python3.5/http/client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="4500">
               <caret line="258" column="0" lean-forward="false" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
               <folding />
             </state>
@@ -76,7 +76,7 @@
       <file leaf-file-name="remote_connection.py" pinned="false" current-in-tab="false">
         <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/remote/remote_connection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="8280">
               <caret line="463" column="0" lean-forward="false" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
               <folding />
             </state>
@@ -86,7 +86,7 @@
       <file leaf-file-name="webdriver.py" pinned="false" current-in-tab="false">
         <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/remote/webdriver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="8442">
               <caret line="483" column="0" lean-forward="false" selection-start-line="483" selection-start-column="0" selection-end-line="483" selection-end-column="0" />
               <folding />
             </state>
@@ -102,7 +102,11 @@
       <find>update</find>
       <find>menu&gt;&gt;</find>
       <find>menu</find>
+      <find>main</find>
     </findStrings>
+    <replaceStrings>
+      <replace>debug</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -123,10 +127,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="816" />
-    <option name="y" value="145" />
-    <option name="width" value="1058" />
-    <option name="height" value="770" />
+    <option name="x" value="541" />
+    <option name="y" value="24" />
+    <option name="width" value="1379" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -404,23 +408,31 @@
       <option name="project" value="LOCAL" />
       <updated>1492485967014</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Доделал всё, кроме:&#10;  Не работают виды деятельности (только первые 20)&#10;  Размножить p(f='vv') на t='c' и t='i'">
+      <created>1492538814294</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1492538814294</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="816" y="145" width="1058" height="770" extended-state="0" />
+    <frame x="541" y="24" width="1379" height="1056" extended-state="4" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24936602" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3827957" sideWeight="0.5028759" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843652" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3204301" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843652" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.55279505" sideWeight="0.49712408" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45806453" sideWeight="0.49712408" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -472,27 +484,11 @@
     <MESSAGE value="Исправи summA, добавил summ_posA - пока не работает" />
     <MESSAGE value="Добавил/отладил поля summ, cost, s_rats, c_rats, 5 телефонов и их типов&#10;Телефоны пока не работают, надо из p() для аргументов всегда возвращать &#10;'' или ['']" />
     <MESSAGE value="Отладил телефоны (изменил функцию p), начал работу с полем warn." />
-    <option name="LAST_COMMIT_MESSAGE" value="Отладил телефоны (изменил функцию p), начал работу с полем warn." />
+    <MESSAGE value="Доделал всё, кроме:&#10;  Не работают виды деятельности (только первые 20)&#10;  Размножить p(f='vv') на t='c' и t='i'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Доделал всё, кроме:&#10;  Не работают виды деятельности (только первые 20)&#10;  Размножить p(f='vv') на t='c' и t='i'" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>429</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>431</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SbScan.py</url>
-          <line>404</line>
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -500,7 +496,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="154" />
+      <option name="time" value="159" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -514,10 +510,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
-            <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
-            <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="21615:21667" ph="SELECT data_... main" />
+            <marker date="1492571552764" expanded="true" signature="32802:33167" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="32802:33547" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="34219:34262" ph="SELECT count... main" />
           </folding>
         </state>
       </provider>
@@ -593,10 +589,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
-            <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
-            <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="21615:21667" ph="SELECT data_... main" />
+            <marker date="1492571552764" expanded="true" signature="32802:33167" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="32802:33547" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="34219:34262" ph="SELECT count... main" />
           </folding>
         </state>
       </provider>
@@ -695,10 +691,10 @@
         <state relative-caret-position="3168">
           <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="13" />
           <folding>
-            <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
-            <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
-            <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="21615:21667" ph="SELECT data_... main" />
+            <marker date="1492571552764" expanded="true" signature="32802:33167" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="32802:33547" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="34219:34262" ph="SELECT count... main" />
           </folding>
         </state>
       </provider>
@@ -752,10 +748,10 @@
         <state relative-caret-position="3654">
           <caret line="203" column="10" lean-forward="true" selection-start-line="203" selection-start-column="10" selection-end-line="203" selection-end-column="10" />
           <folding>
-            <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
-            <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
-            <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="21615:21667" ph="SELECT data_... main" />
+            <marker date="1492571552764" expanded="true" signature="32802:33167" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="32802:33547" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="34219:34262" ph="SELECT count... main" />
           </folding>
         </state>
       </provider>
@@ -846,7 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10962">
           <caret line="615" column="8" lean-forward="false" selection-start-line="615" selection-start-column="8" selection-end-line="615" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -854,13 +849,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/remote/remote_connection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
+        <state relative-caret-position="8280">
           <caret line="463" column="0" lean-forward="false" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
           <folding />
         </state>
@@ -868,7 +862,7 @@
     </entry>
     <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/remote/webdriver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
+        <state relative-caret-position="8442">
           <caret line="483" column="0" lean-forward="false" selection-start-line="483" selection-start-column="0" selection-end-line="483" selection-end-column="0" />
           <folding />
         </state>
@@ -876,7 +870,7 @@
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
+        <state relative-caret-position="17604">
           <caret line="1014" column="0" lean-forward="false" selection-start-line="1014" selection-start-column="0" selection-end-line="1014" selection-end-column="0" />
           <folding />
         </state>
@@ -892,7 +886,7 @@
     </entry>
     <entry file="file:///usr/local/lib/python3.5/dist-packages/selenium/webdriver/support/wait.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
+        <state relative-caret-position="1350">
           <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding />
         </state>
@@ -900,7 +894,7 @@
     </entry>
     <entry file="file:///usr/lib/python3.5/http/client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
+        <state relative-caret-position="4500">
           <caret line="258" column="0" lean-forward="false" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
           <folding />
         </state>
@@ -908,13 +902,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SbScan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11736">
-          <caret line="652" column="58" lean-forward="false" selection-start-line="652" selection-start-column="58" selection-end-line="652" selection-end-column="58" />
+        <state relative-caret-position="216">
+          <caret line="12" column="45" lean-forward="true" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
           <folding>
-            <element signature="e#25#55#0" expanded="true" />
-            <marker date="1492538054632" expanded="true" signature="20002:20054" ph="SELECT data_... main" />
-            <marker date="1492538054632" expanded="true" signature="30170:30523" ph="INSERT INTO main... " />
-            <marker date="1492538054632" expanded="true" signature="30170:30891" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="21615:21667" ph="SELECT data_... main" />
+            <marker date="1492571552764" expanded="true" signature="32802:33167" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="32802:33547" ph="INSERT INTO main... " />
+            <marker date="1492571552764" expanded="true" signature="34219:34262" ph="SELECT count... main" />
           </folding>
         </state>
       </provider>
