@@ -441,7 +441,7 @@ def to_spisok(driver):
             print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Ошибка в to_spisok', ee)
             continue
 
-def set_filter(driver):
+def set_filter(driver, category = ''):
     g = 0
     while g < 1000:
         try:
@@ -453,7 +453,7 @@ def set_filter(driver):
             wj(driver)
             for i, cat in enumerate(cats):
                 wj(driver)
-                if cat.text == 'Страхование, пенсионное обеспечение' and cat.is_displayed():
+                if cat.text == category and cat.is_displayed():
                     wj(driver)
                     cat.click()
                     break
@@ -476,6 +476,7 @@ def set_filter(driver):
 webconfig = read_config(section='web')
 fillconfig = read_config(section='fill')
 dbconfig = read_config(section='mysql')
+scanconfig = read_config(section='scan')
 
 driver = webdriver.Chrome()  # Инициализация драйвера
 driver.implicitly_wait(1) # Неявное ожидание - ждать ответа на каждый запрос до 10 сек
@@ -489,7 +490,7 @@ try:
     wj(driver)
     to_spisok(driver)
     wj(driver)
-    set_filter(driver)
+    set_filter(driver, **scanconfig)
     wj(driver)
 
     g = 0
