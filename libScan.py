@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+#
+# Библиотека функций
+#
+
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
@@ -28,8 +32,7 @@ B = {
     'menuCats'  : {'t': 'x', 's': '(//SPAN[@class="controls-DropdownList__text"])[2]'},
     'firms_x'   : {'t': 'x', 's': '//DIV[@class="Contragents-CommonRenders__InnCorner '
                                                     'Contragents-CommonRenders__Inn ws-ellipsis"]'},
-    'firms_tr'  : {'t': 'x', 's': '//TR[@class="controls-DataGridView__tr controls-ListView__item '
-                                                                    'js-controls-ListView__item"]'},
+    'firms_tr'  : {'t': 'x', 's': '//DIV[@sbisname="contragentsBrowser"]//TR[@data-id]'},
     'firms_trA' : {'t': 'x', 's': '//SPAN[@class="Contragents-CommonRenders__Name"]/../../../../..', 'a': 'data-id'},
     'data_id'   : {'t': 'x', 's': '//TR[@class="controls-DataGridView__tr controls-ListView__item '
                                                           'js-controls-ListView__item"][@data-id="'},
@@ -81,6 +84,8 @@ B = {
     'cats-link' : {'t': 'x', 's': '//DIV[@sbisname="DropdownList_buttonHasMore"]/SPAN'},
     'inn_spisA' : {'t': 'x', 's': '//DIV[@sbisname="contragentsBrowser"]//DIV[@class="Contragents-CommonRenders_'
                                   '_InnCorner Contragents-CommonRenders__Inn ws-ellipsis"]', 'a': 'text'},
+    'search'    : {'t': 'x', 's': '//DIV[@sbisname="strSearch"]//INPUT'},
+
     'cats'      : {'t': 'c', 's': 'controls-DropdownList__item-text'},
     'firms_c'   : {'t': 'c', 's': 'controls-DataGridView__tr'},
    'ch_surnameA': {'t': 'c', 's': 'Contragents-ContragentCard__Chief__surname', 'a': 'text'},

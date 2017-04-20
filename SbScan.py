@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+#
+# Самый первый вариант сканера. Сканирует все и список и внутренности
+#
+
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
