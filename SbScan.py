@@ -83,6 +83,7 @@ B = {
                                   '/DIV[@title]', 'a': 'title'},
     'dochki'    : {'t': 'x', 's': '//DIV[@sbisname="brwДочерниеКомпании"]//DIV[@class="ws-browser-cell-paddings"]'
                                   '/DIV[@title]', 'a': 'title'},
+    'cats-link' : {'t': 'x', 's': '//DIV[@sbisname="DropdownList_buttonHasMore"]/SPAN'},
     'cats'      : {'t': 'c', 's': 'controls-DropdownList__item-text'},
     'firms_c'   : {'t': 'c', 's': 'controls-DataGridView__tr'},
    'ch_surnameA': {'t': 'c', 's': 'Contragents-ContragentCard__Chief__surname', 'a': 'text'},
@@ -460,7 +461,7 @@ def set_filter(driver, category = ''):
             wj(driver)
             if chk(d = driver, **B['menuCats']):
                 wj(driver)
-                if p(d = driver, f = 'p', **B['menuCats']).text == 'Страхование, пенсионное обеспечение':
+                if p(d = driver, f = 'p', **B['menuCats']).text == category:
                     wj(driver)
                     return
                 wj(driver)
