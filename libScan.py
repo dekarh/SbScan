@@ -80,7 +80,7 @@ B = {
                                   '/DIV[@title]', 'a': 'title'},
     'cats-link' : {'t': 'x', 's': '//DIV[@sbisname="DropdownList_buttonHasMore"]/SPAN'},
     'inn_spisA' : {'t': 'x', 's': '//DIV[@sbisname="contragentsBrowser"]//DIV[@class="Contragents-CommonRenders_'
-                                  '_InnCorner Contragents-CommonRenders__Inn ws-ellipsis"][@data-id="', 'a': 'text'},
+                                  '_InnCorner Contragents-CommonRenders__Inn ws-ellipsis"]', 'a': 'text'},
     'cats'      : {'t': 'c', 's': 'controls-DropdownList__item-text'},
     'firms_c'   : {'t': 'c', 's': 'controls-DataGridView__tr'},
    'ch_surnameA': {'t': 'c', 's': 'Contragents-ContragentCard__Chief__surname', 'a': 'text'},

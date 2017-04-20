@@ -27,14 +27,14 @@ dbconn = MySQLConnection(**dbconfig)  # Открываем БД из конфи�
 read_cursor = dbconn.cursor()
 write_cursor = dbconn.cursor()
 
-try:
-    authorize(driver, **webconfig)  # Авторизация
-    wj(driver)
-    to_spisok(driver)
-    wj(driver)
-    set_filter(driver, **scanconfig)
-    wj(driver)
+authorize(driver, **webconfig)  # Авторизация
+wj(driver)
+to_spisok(driver)
+wj(driver)
+set_filter(driver, **scanconfig)
+wj(driver)
 
+try:
     g = 0
     height = driver.get_window_size()['height'] # Высота окна
     while g < 1000:
@@ -49,8 +49,8 @@ try:
                     pass_string = True
             if pass_string:
                 continue
-            sql = 'INSERT INTO pre_scan(inn) VALUES(%s)'
-            write_cursor.execute(sql, (inn))
+            write_cursor.execute('INSERT INTO pre_scan(inn, inn2) VALUES( %s, %s )',
+                                 (inn, inn))
             dbconn.commit()
             read_cursor.execute('SELECT count(*) FROM pre_scan WHERE id >-1;')
             rows = read_cursor.fetchall()
