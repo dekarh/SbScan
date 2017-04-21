@@ -65,6 +65,7 @@ for pre_inn in pre_inns:
             else:
                 inn_str = '{:0>10d}'.format(inn)
             search.clear()
+            wj(driver)
             search.send_keys(inn_str)
             wj(driver)
             firma = p(d = driver, f = 'c', **B['firms_tr'])

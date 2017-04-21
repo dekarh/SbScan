@@ -81,10 +81,16 @@ B = {
                                   '/DIV[@title]', 'a': 'title'},
     'dochki'    : {'t': 'x', 's': '//DIV[@sbisname="brwДочерниеКомпании"]//DIV[@class="ws-browser-cell-paddings"]'
                                   '/DIV[@title]', 'a': 'title'},
-    'cats-link' : {'t': 'x', 's': '//DIV[@sbisname="DropdownList_buttonHasMore"]/SPAN'},
     'inn_spisA' : {'t': 'x', 's': '//DIV[@sbisname="contragentsBrowser"]//DIV[@class="Contragents-CommonRenders_'
                                   '_InnCorner Contragents-CommonRenders__Inn ws-ellipsis"]', 'a': 'text'},
     'search'    : {'t': 'x', 's': '//DIV[@sbisname="strSearch"]//INPUT'},
+ 'cats_all_link': {'t': 'x', 's': '//DIV[@class="controls-DropdownList__buttonsBlock"]//SPAN[text()="Еще..."]'},
+    'okved-tab' : {'t': 'x', 's': '//DIV[@data-component="SBIS3.CONTROLS.TabButton"][@data-id="ОКВЭД"]'},
+    'sbis-tab'  : {'t': 'x', 's': '//DIV[@data-component="SBIS3.CONTROLS.TabButton"][@data-id="Категории"]'},
+   'okved-listA': {'t': 'x', 's': '//DIV[@sbisname="okvedSelector"]//TR[@data-id]//DIV[@title]', 'a': 'title'},
+   'okved-listD': {'t': 'x', 's': '//DIV[@sbisname="okvedSelector"]//TR[@data-id]//DIV[@title="'},
+    'sbis-listA': {'t': 'x', 's': '//DIV[@sbisname="vdSelector"]//TR[@data-id]//DIV[text()]', 'a': 'text'},
+    'sbis-listD': {'t': 'x', 's': '//DIV[@sbisname="vdSelector"]//TR[@data-id]//DIV[text()="'},
 
     'cats'      : {'t': 'c', 's': 'controls-DropdownList__item-text'},
     'firms_c'   : {'t': 'c', 's': 'controls-DataGridView__tr'},
@@ -444,30 +450,63 @@ def to_spisok(driver):
             print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Ошибка в to_spisok', ee)
             continue
 
-def set_filter(driver, category = ''):
+def set_filter(driver, type_category = 'СБИС', category = 'Страхование, пенсионное обеспечение'):
     g = 0
     while g < 1000:
         try:
-            elem = p(d = driver, f = 'v', **B['menuCats']) # Открываем дроплист
+            drop = p(d = driver, f = 'c', **B['menuCats']) # Открываем дроплист
             wj(driver)
-            elem.click()
+            drop.click()
             wj(driver)
-            cats = p(d = driver, f = 'vs', **B['cats'])  # Выбираем категорию
+            cats_all_link = p(d = driver, f = 'vs', **B['cats_all_link']) # Переходим ко всем категориям
+            cats_all_link[0].click()
             wj(driver)
-            for i, cat in enumerate(cats):
+            time.sleep(4)
+            if type_category == 'ОКВЭД':
+                category = category.strip() + ' '
+                okved_tab = p(d = driver, f = 'c', **B['okved-tab'])
                 wj(driver)
-                if cat.text == category and cat.is_displayed():
+                okved_tab.click()
+                search = p(d = driver, f = 'c', **B['search'])
+                wj(driver)
+                search.clear()
+                wj(driver)
+                search.send_keys(category.strip())
+                wj(driver)
+                time.sleep(2)
+                okved_list = p(d = driver, f = 'ps', **B['okved-listA'])
+                wj(driver)
+                for okved_str in okved_list:
                     wj(driver)
-                    cat.click()
-                    break
-            wj(driver)
-            if chk(d = driver, **B['menuCats']):
+                    if okved_str[:(len(category))] == category:
+                        okved = p(d = driver, f = 'c', **B['okved-listD'], data_id=okved_str)
+                        okved.click()
+                        wj(driver)
+                        time.sleep(4)
+                        break
+            elif type_category == 'СБИС':
+                sbis_tab = p(d = driver, f = 'c', **B['sbis-tab'])
                 wj(driver)
-                if p(d = driver, f = 'p', **B['menuCats']).text == category:
-                    wj(driver)
-                    return
+                sbis_tab.click()
+                search = p(d = driver, f = 'c', **B['search'])
                 wj(driver)
-            continue
-        except  Exception as ee:
+                search.clear()
+                wj(driver)
+                search.send_keys(category.strip())
+                wj(driver)
+                time.sleep(2)
+                sbis_list = p(d = driver, f = 'vs', **B['sbis-listA'])
+                wj(driver)
+                for sbis_str in sbis_list:
+                    if sbis_str.strip() == category.strip():
+                        sbis = p(d = driver, f = 'c', **B['sbis-listD'], data_id=sbis_str.strip())
+                        sbis.click()
+                        wj(driver)
+                        time.sleep(4)
+                        break
+            else:
+                print(datetime.strftime(datetime.now(), "%H:%M:%S")," Категория (ОКВЭД или СБИС) не найдена")
+                return
+        except Exception as ee:
             print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Ошибка в to_spisok', ee)
             continue
