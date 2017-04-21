@@ -259,14 +259,14 @@ for pre_inn in pre_inns:
             while len(d) < 5:
                 d.append(None)
 
-            sql = 'INSERT INTO main(data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title, ' \
+            sql = 'INSERT INTO main( inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title, ' \
                   'ch_fio, summ, cost, sum_rat1, sum_rat2, cost_rat1, cost_rat2, t_phone_1, phone_1, t_phone_2,' \
                   ' phone_2, t_phone_3, phone_3, t_phone_4, phone_4, t_phone_5, phone_5, warn, emp_qty, address,' \
                   ' region, predstav, fils, ogrn, okpo, oktmo, reg_N_pfr, reg_comp, reg_gos, u1, u2, u3, u4, u5,' \
                   'd1, d2, d3, d4, d5) ' \
                   'VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,' \
-                  ' %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
-            write_cursor.execute(sql, (i(data_id), i(inn), i(kpp), firm_full_name, gen_info, i(act_num), act_list,
+                  ' %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+            write_cursor.execute(sql, ( i(inn), i(kpp), firm_full_name, gen_info, i(act_num), act_list,
                                        ch_title, ch_fio, summ, cost, s_rats[0], s_rats[1], c_rats[0], c_rats[1],
                                        ph_t[0], ph_n[0], ph_t[1], ph_n[1], ph_t[2], ph_n[2], ph_t[3], ph_n[3],
                                        ph_t[4], ph_n[4], warn, emp_qty, address, region, predstav, fils, i(ogrn),
@@ -275,8 +275,8 @@ for pre_inn in pre_inns:
             dbconn.commit()
             read_cursor.execute('SELECT count(*) FROM main WHERE data_id >-1;')
             rows = read_cursor.fetchall()
-            if int(rows[0][0]) % 100 == 0:
-                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Спарсено', int(rows[0][0]))
+            if int(i(rows[0][0])) % 100 == 0:
+                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Спарсено', int(i(rows[0][0])))
             wj(driver)
             close = p(d = driver, f = 'c', **B['close'])
             wj(driver)

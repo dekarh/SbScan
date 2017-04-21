@@ -60,7 +60,7 @@ while g < 1000:
             pass_string = False
             wj(driver)
             for row in rows:
-                if row[0] == int(inn):
+                if row[0] == i(inn):
                     pass_string = True
             if pass_string:
                 continue
@@ -68,8 +68,8 @@ while g < 1000:
             dbconn.commit()
             read_cursor.execute('SELECT count(*) FROM pre_scan WHERE id >-1;')
             rows = read_cursor.fetchall()
-            if int(rows[0][0]) % 100 == 0:
-                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Сканировано из списка: ', int(rows[0][0]))
+            if i(rows[0][0]) % 100 == 0:
+                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Сканировано из списка: ', i(rows[0][0]))
 
 #        f = p(d=driver, f='c', **B['next'])
 #        wj(driver)
