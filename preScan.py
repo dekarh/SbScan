@@ -19,7 +19,7 @@ import datetime
 from datetime import datetime
 import time
 import string
-from libScan import wj, p, B, chk, authorize, to_spisok, set_filter
+from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, i
 
 webconfig = read_config(section='web')
 fillconfig = read_config(section='fill')
@@ -64,8 +64,7 @@ while g < 1000:
                     pass_string = True
             if pass_string:
                 continue
-            write_cursor.execute('INSERT INTO pre_scan(inn, inn2) VALUES( %s, %s )',
-                                 (inn, inn))
+            write_cursor.execute('INSERT INTO pre_scan(inn, inn2) VALUES( %s, %s )', (i(inn), i(inn)))
             dbconn.commit()
             read_cursor.execute('SELECT count(*) FROM pre_scan WHERE id >-1;')
             rows = read_cursor.fetchall()

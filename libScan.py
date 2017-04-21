@@ -108,6 +108,19 @@ B = {
 
 }
 
+def i(a):
+    try:
+        if a != None:
+            a = str(a).strip()
+            if  a != '':
+                a = ''.join([char for char in a if char in string.digits])
+                return int(a)
+        return 0
+    except TypeError:
+        return 0
+
+
+
 def wj(driver):  # Ждем, пока динамическая ява завершит все свои процессы
     WebDriverWait(driver, 50).until(lambda driver: driver.execute_script("return jQuery.active == 0"))
     """

@@ -18,7 +18,7 @@ import datetime
 from datetime import datetime
 import time
 import string
-from libScan import wj, p, B, chk, authorize, to_spisok, set_filter
+from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, i
 
 # driver = webdriver.Chrome(DRIVER_PATH)  # Инициализация драйвера
 #driver = webdriver.Firefox()  # Инициализация драйвера
@@ -45,9 +45,9 @@ wj(driver)
 
 read_cursor.execute('SELECT inn FROM pre_scan WHERE id >-1;')
 pre_inns = read_cursor.fetchall()
+read_cursor.execute('SELECT inn FROM main WHERE data_id >-1;')
+had_inns = read_cursor.fetchall()
 for pre_inn in pre_inns:
-    read_cursor.execute('SELECT inn FROM main WHERE data_id >-1;')
-    had_inns = read_cursor.fetchall()
     pass_string = False
     for had_inn in had_inns:
         if had_inn[0] == pre_inn[0]:
@@ -266,11 +266,12 @@ for pre_inn in pre_inns:
                   'd1, d2, d3, d4, d5) ' \
                   'VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,' \
                   ' %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
-            write_cursor.execute(sql, (data_id, inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title,
-                                       ch_fio, summ, cost, s_rats[0], s_rats[1], c_rats[0], c_rats[1], ph_t[0],
-                                       ph_n[0], ph_t[1], ph_n[1], ph_t[2], ph_n[2], ph_t[3], ph_n[3], ph_t[4], ph_n[4],
-                                       warn, emp_qty, address, region, predstav, fils, ogrn, okpo, oktmo, reg_N_pfr,
-                                       reg_comp, reg_gos, u[0], u[1], u[2], u[3], u[4], d[0], d[1], d[2], d[3], d[4]))
+            write_cursor.execute(sql, (i(data_id), i(inn), i(kpp), firm_full_name, gen_info, i(act_num), act_list,
+                                       ch_title, ch_fio, summ, cost, s_rats[0], s_rats[1], c_rats[0], c_rats[1],
+                                       ph_t[0], ph_n[0], ph_t[1], ph_n[1], ph_t[2], ph_n[2], ph_t[3], ph_n[3],
+                                       ph_t[4], ph_n[4], warn, emp_qty, address, region, predstav, fils, i(ogrn),
+                                       i(okpo), i(oktmo), reg_N_pfr, reg_comp, reg_gos, u[0], u[1], u[2], u[3],
+                                       u[4], d[0], d[1], d[2], d[3], d[4]))
             dbconn.commit()
             read_cursor.execute('SELECT count(*) FROM main WHERE data_id >-1;')
             rows = read_cursor.fetchall()
