@@ -483,7 +483,7 @@ def set_filter(driver, type_category = 'СБИС', category = 'Страхова�
                         okved.click()
                         wj(driver)
                         time.sleep(4)
-                        break
+                        return
             elif type_category == 'СБИС':
                 sbis_tab = p(d = driver, f = 'c', **B['sbis-tab'])
                 wj(driver)
@@ -503,7 +503,7 @@ def set_filter(driver, type_category = 'СБИС', category = 'Страхова�
                         sbis.click()
                         wj(driver)
                         time.sleep(4)
-                        break
+                        return
             else:
                 print(datetime.strftime(datetime.now(), "%H:%M:%S")," Категория (ОКВЭД или СБИС) не найдена")
                 return

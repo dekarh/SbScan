@@ -43,6 +43,7 @@ height = driver.get_window_size()['height']  # Высота окна
 wj(driver)
 while g < 1000:
     try:
+        gg = 0
         while gg < 50:
             ff = p(d=driver, f='c', **B['next'])
             wj(driver)
