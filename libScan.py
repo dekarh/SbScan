@@ -108,7 +108,7 @@ B = {
 
 }
 
-def i(a):
+def l(a):
     try:
         if a != None:
             a = str(a).strip()

@@ -18,7 +18,7 @@ import datetime
 from datetime import datetime
 import time
 import string
-from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, i
+from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l
 
 # driver = webdriver.Chrome(DRIVER_PATH)  # Инициализация драйвера
 #driver = webdriver.Firefox()  # Инициализация драйвера
@@ -266,17 +266,17 @@ for pre_inn in pre_inns:
                   'd1, d2, d3, d4, d5) ' \
                   'VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,' \
                   ' %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
-            write_cursor.execute(sql, ( i(inn), i(kpp), firm_full_name, gen_info, i(act_num), act_list,
+            write_cursor.execute(sql, ( l(inn), l(kpp), firm_full_name, gen_info, l(act_num), act_list,
                                        ch_title, ch_fio, summ, cost, s_rats[0], s_rats[1], c_rats[0], c_rats[1],
                                        ph_t[0], ph_n[0], ph_t[1], ph_n[1], ph_t[2], ph_n[2], ph_t[3], ph_n[3],
-                                       ph_t[4], ph_n[4], warn, emp_qty, address, region, predstav, fils, i(ogrn),
-                                       i(okpo), i(oktmo), reg_N_pfr, reg_comp, reg_gos, u[0], u[1], u[2], u[3],
+                                       ph_t[4], ph_n[4], warn, emp_qty, address, region, predstav, fils, l(ogrn),
+                                       l(okpo), l(oktmo), reg_N_pfr, reg_comp, reg_gos, u[0], u[1], u[2], u[3],
                                        u[4], d[0], d[1], d[2], d[3], d[4]))
             dbconn.commit()
             read_cursor.execute('SELECT count(*) FROM main WHERE data_id >-1;')
             rows = read_cursor.fetchall()
-            if int(i(rows[0][0])) % 100 == 0:
-                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Спарсено', int(i(rows[0][0])))
+            if int(l(rows[0][0])) % 100 == 0:
+                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Спарсено', int(l(rows[0][0])))
             wj(driver)
             close = p(d = driver, f = 'c', **B['close'])
             wj(driver)

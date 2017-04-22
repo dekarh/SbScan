@@ -19,7 +19,7 @@ import datetime
 from datetime import datetime
 import time
 import string
-from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, i
+from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l
 
 webconfig = read_config(section='web')
 fillconfig = read_config(section='fill')
@@ -32,6 +32,7 @@ dbconn = MySQLConnection(**dbconfig)  # Открываем БД из конфи�
 read_cursor = dbconn.cursor()
 write_cursor = dbconn.cursor()
 
+print('\n\n', datetime.strftime(datetime.now(), "%H:%M:%S"), 'Начинаем всё заново')
 authorize(driver, **webconfig)  # Авторизация
 wj(driver)
 to_spisok(driver)
@@ -41,35 +42,43 @@ wj(driver)
 g = 0
 height = driver.get_window_size()['height']  # Высота окна
 wj(driver)
+read_cursor.execute('SELECT inn FROM pre_scan WHERE id >-1;')
+rows = read_cursor.fetchall()
+inns_from_bd = []
+for row in rows:
+    inns_from_bd.append(row[0])
+print(datetime.strftime(datetime.now(), "%H:%M:%S"), ' ', len(inns_from_bd),
+                                             ' ИНН в БД\n-------------------------------------')
 while g < 1000:
     try:
         gg = 0
-        while gg < 50:
+        while gg < 100:
             ff = p(d=driver, f='c', **B['next'])
             wj(driver)
             ff.click()
             wj(driver)
             gg += 1
-            print(datetime.strftime(datetime.now(), "%H:%M:%S"),'next')
-
-        print(datetime.strftime(datetime.now(), "%H:%M:%S"),'50 закэшировал')
+            if gg % 10 == 0:
+                print(datetime.strftime(datetime.now(), "%H:%M:%S"), gg, 'перелистываний')
+        print('---------------------\n', datetime.strftime( datetime.now(), "%H:%M:%S"),'100 страниц закэшировал')
+        wj(driver)
         inns = p(d = driver, f = 'ps', **B['inn_spisA'])
-        read_cursor.execute('SELECT inn FROM pre_scan WHERE id >-1;')
-        rows = read_cursor.fetchall()
+        wj(driver)
+        print(datetime.strftime(datetime.now(), "%H:%M:%S"),len(inns) ,' ИНН в памяти')
+        wj(driver)
         for i, inn in enumerate(inns):
             pass_string = False
             wj(driver)
-            for row in rows:
-                if row[0] == i(inn):
+            for inn_from_bd in inns_from_bd:
+                if inn_from_bd == l(inn):
                     pass_string = True
             if pass_string:
                 continue
-            write_cursor.execute('INSERT INTO pre_scan(inn, inn2) VALUES( %s, %s )', (i(inn), i(inn)))
+            write_cursor.execute('INSERT INTO pre_scan(inn, inn2) VALUES( %s, %s )', (l(inn), l(inn)))
             dbconn.commit()
-            read_cursor.execute('SELECT count(*) FROM pre_scan WHERE id >-1;')
-            rows = read_cursor.fetchall()
-            if i(rows[0][0]) % 100 == 0:
-                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Сканировано из списка: ', i(rows[0][0]))
+            inns_from_bd.append(l(inn))
+            if len(inns_from_bd) % 100 == 0:
+                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Сканировано из списка: ', len(inns_from_bd))
 
 #        f = p(d=driver, f='c', **B['next'])
 #        wj(driver)
@@ -79,7 +88,7 @@ while g < 1000:
 #        print(datetime.strftime(datetime.now(), "%H:%M:%S"),'next внизу')
 #        time.sleep(3)
     except Exception as ee:
-        print(datetime.strftime(datetime.now(), "%H:%M:%S"),'Ошибка: ', ee, '\n перезагружаю')
+        print(datetime.strftime(datetime.now(), "%H:%M:%S"),'Ошибка: ', ee, '\n\nПродолжаем ')
         continue
 
 #    dbconn.close()
