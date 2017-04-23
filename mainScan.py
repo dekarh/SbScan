@@ -46,11 +46,16 @@ wj(driver)
 read_cursor.execute('SELECT inn FROM pre_scan WHERE id >-1;')
 pre_inns = read_cursor.fetchall()
 read_cursor.execute('SELECT inn FROM main WHERE data_id >-1;')
-had_inns = read_cursor.fetchall()
+had_inns_db = read_cursor.fetchall()
+had_inns = []
+for h in had_inns_db:
+    had_inns.append(h[0])
+print('\n\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
+      'Начинаем всего спарсено компаний:', len(had_inns), '\n----------------------------------\n\n\n')
 for pre_inn in pre_inns:
     pass_string = False
     for had_inn in had_inns:
-        if had_inn[0] == pre_inn[0]:
+        if had_inn == pre_inn[0]:
             pass_string = True
     if pass_string:
         continue
@@ -68,7 +73,11 @@ for pre_inn in pre_inns:
             wj(driver)
             search.send_keys(inn_str)
             wj(driver)
-            firma = p(d = driver, f = 'c', **B['firms_tr'])
+            firma = p(d = driver, f = 'p', **B['firms_tr'])
+            wj(driver)
+            if firma == None:
+                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Компания ИНН ', inn_str, ' - не найдена в категории')
+                break
             wj(driver)
             data_id = firma.get_attribute('data-id')
             firma.click()
@@ -273,10 +282,12 @@ for pre_inn in pre_inns:
                                        l(okpo), l(oktmo), reg_N_pfr, reg_comp, reg_gos, u[0], u[1], u[2], u[3],
                                        u[4], d[0], d[1], d[2], d[3], d[4]))
             dbconn.commit()
-            read_cursor.execute('SELECT count(*) FROM main WHERE data_id >-1;')
-            rows = read_cursor.fetchall()
-            if int(l(rows[0][0])) % 100 == 0:
-                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Спарсено', int(l(rows[0][0])))
+            had_inns.append(l(inn))
+            print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Сохраняю компанию ИНН ', inn_str, 'всего компаний:',
+                  len(had_inns))
+            if len(had_inns) % 100 == 0:
+                print('\n---------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
+                      'Спарсено', len(had_inns), '\n---------------------------\n')
             wj(driver)
             close = p(d = driver, f = 'c', **B['close'])
             wj(driver)
@@ -285,7 +296,8 @@ for pre_inn in pre_inns:
             time.sleep(4)
             break
         except Exception as ee:
-            print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Ошибка: ', ee, '\n перезагружаю')
+            print('\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
+                  'Ошибка: ', ee, '\n перезагружаю\n----------------------------------\n\n')
             driver.close()
             driver = webdriver.Chrome()  # Инициализация драйвера
             driver.implicitly_wait(1)  # Неявное ожидание - ждать ответа на каждый запрос до 10 сек
