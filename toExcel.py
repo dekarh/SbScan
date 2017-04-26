@@ -31,8 +31,8 @@ for j, cell in enumerate(read_cursor.column_names):
 ws.append(head)
 
 row = []
-rez_row = []
 for i, row in enumerate(rows):
+    rez_row = []
     for j, cell in enumerate(row):
         if cell == None:
             rez_cell = ''
