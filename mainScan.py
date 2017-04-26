@@ -13,12 +13,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
 from mysql.connector import MySQLConnection, Error
-from python_mysql_dbconfig import read_config
 import datetime
 from datetime import datetime
 import time
 import string
-from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l
+from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l, read_config
 
 # driver = webdriver.Chrome(DRIVER_PATH)  # Инициализация драйвера
 #driver = webdriver.Firefox()  # Инициализация драйвера
@@ -51,7 +50,7 @@ had_inns = []
 for h in had_inns_db:
     had_inns.append(h[0])
 print('\n\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
-      'Начинаем всего спарсено компаний:', len(had_inns), '\n----------------------------------\n\n\n')
+      'Начинаем. Всего спарсено компаний:', len(had_inns), '\n----------------------------------\n\n\n')
 for pre_inn in pre_inns:
     pass_string = False
     for had_inn in had_inns:
@@ -76,7 +75,8 @@ for pre_inn in pre_inns:
             firma = p(d = driver, f = 'p', **B['firms_tr'])
             wj(driver)
             if firma == None:
-                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Компания ИНН ', inn_str, ' - не найдена в категории')
+                print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Компания ИНН ', inn_str,
+                      ' - не найдена в категории')
                 break
             wj(driver)
             data_id = firma.get_attribute('data-id')

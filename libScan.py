@@ -12,8 +12,9 @@ from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
+from configparser import ConfigParser
+
 from mysql.connector import MySQLConnection, Error
-from python_mysql_dbconfig import read_config
 import datetime
 from datetime import datetime
 import time
@@ -107,6 +108,28 @@ B = {
     'predstavA' : {'t': 'c', 's': 'user-info-cell', 'a': 'text'},
 
 }
+
+def read_config(filename='config.ini', section='mysql'):
+    """ Read database configuration file and return a dictionary object
+    :param filename: name of the configuration file
+    :param section: section of database configuration
+    :return: a dictionary of database parameters
+    """
+    # create parser and read ini configuration file
+    parser = ConfigParser()
+    parser.read(filename)
+
+    # get section, default to mysql
+    db = {}
+    if parser.has_section(section):
+        items = parser.items(section)
+        for item in items:
+            db[item[0]] = item[1]
+    else:
+        raise Exception('{0} not found in the {1} file'.format(section, filename))
+
+    return db
+
 
 def l(a):
     try:

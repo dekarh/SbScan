@@ -14,12 +14,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
 from mysql.connector import MySQLConnection, Error
-from python_mysql_dbconfig import read_config
 import datetime
 from datetime import datetime
 import time
 import string
-from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l
+from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l, read_config
 
 webconfig = read_config(section='web')
 fillconfig = read_config(section='fill')
