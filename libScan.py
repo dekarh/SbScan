@@ -30,6 +30,7 @@ B = {
     'a-button'  : {'t': 'x', 's': '//DIV[@class="loginForm__sendButton"]'},
     'menu>>'    : {'t': 'x', 's': '//SPAN[@class="navigation-LeftNavigation__event icon-View"]'
                                                     '[@data-go-event="onClickContragentIcon"]'},
+    'menuRegs'  : {'t': 'x', 's': '(//SPAN[@class="controls-DropdownList__text"])[1]'},
     'menuCats'  : {'t': 'x', 's': '(//SPAN[@class="controls-DropdownList__text"])[2]'},
     'firms_x'   : {'t': 'x', 's': '//DIV[@class="Contragents-CommonRenders__InnCorner '
                                                     'Contragents-CommonRenders__Inn ws-ellipsis"]'},
@@ -85,6 +86,7 @@ B = {
     'inn_spisA' : {'t': 'x', 's': '//DIV[@sbisname="contragentsBrowser"]//DIV[@class="Contragents-CommonRenders_'
                                   '_InnCorner Contragents-CommonRenders__Inn ws-ellipsis"]', 'a': 'text'},
     'search'    : {'t': 'x', 's': '//DIV[@sbisname="strSearch"]//INPUT'},
+    'search_reg': {'t': 'x', 's': '//INPUT[@placeholder="Код или название региона"]'},
  'cats_all_link': {'t': 'x', 's': '//DIV[@class="controls-DropdownList__buttonsBlock"]//SPAN[text()="Еще..."]'},
     'okved-tab' : {'t': 'x', 's': '//DIV[@data-component="SBIS3.CONTROLS.TabButton"][@data-id="ОКВЭД"]'},
     'sbis-tab'  : {'t': 'x', 's': '//DIV[@data-component="SBIS3.CONTROLS.TabButton"][@data-id="Категории"]'},
@@ -106,6 +108,7 @@ B = {
     'emp_qtyA'  : {'t': 'c', 's': 'Contragents-ContragentCard__EmployeesQuantity__qty', 'a': 'text'},
     'addressA'  : {'t': 'c', 's': 'ContragentCardAddresses-blackLink', 'a': 'text'},
     'predstavA' : {'t': 'c', 's': 'user-info-cell', 'a': 'text'},
+    'reg_filter': {'t': 'c', 's': 'Clrs__regionSelectorItemName'},
 
 }
 
@@ -486,10 +489,30 @@ def to_spisok(driver):
             print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Ошибка в to_spisok', ee)
             continue
 
-def set_filter(driver, type_category = 'СБИС', category = 'Страхование, пенсионное обеспечение'):
+def set_filter(driver, type_category = 'СБИС', category = 'Страхование, пенсионное обеспечение', region = '0'):
     g = 0
     while g < 1000:
         try:
+            if int(region) > 0 and int(region) < 100:
+                drop = p(d=driver, f='c', **B['menuRegs'])  # Открываем дроплист
+                wj(driver)
+                drop.click()
+                wj(driver)
+                cats_all_link = p(d=driver, f='vs', **B['cats_all_link'])  # Переходим ко всем категориям
+                cats_all_link[0].click()
+                wj(driver)
+                time.sleep(4)
+                search = p(d = driver, f = 'c', **B['search_reg'])
+                wj(driver)
+                search.clear()
+                wj(driver)
+                search.send_keys(region.strip())
+                wj(driver)
+                time.sleep(2)
+                reg_filter = p(d = driver, f = 'c', **B['reg_filter'])
+                wj(driver)
+                reg_filter.click()
+                wj(driver)
             drop = p(d = driver, f = 'c', **B['menuCats']) # Открываем дроплист
             wj(driver)
             drop.click()
