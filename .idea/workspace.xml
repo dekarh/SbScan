@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a46294c-e140-42a2-acde-f031ebcfc596" name="Default" comment="Добавил категорию">
+    <list default="true" id="1a46294c-e140-42a2-acde-f031ebcfc596" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ini" afterPath="$PROJECT_DIR$/config.ini" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libScan.py" afterPath="$PROJECT_DIR$/libScan.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/preScan.py" afterPath="$PROJECT_DIR$/preScan.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SbScan$preScan.coverage" NAME="preScan Coverage Results" MODIFIED="1493232186778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SbScan$preScan.coverage" NAME="preScan Coverage Results" MODIFIED="1493261472673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SbScan$mainScan.coverage" NAME="toExcel Coverage Results" MODIFIED="1493209352599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
@@ -49,7 +49,7 @@
       <file leaf-file-name="mainScan.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mainScan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
+            <state relative-caret-position="1026">
               <caret line="70" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
               <folding>
                 <element signature="e#114#144#0" expanded="true" />
@@ -64,7 +64,7 @@
       <file leaf-file-name="toExcel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/toExcel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
+            <state relative-caret-position="522">
               <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding>
                 <element signature="e#80#130#0" expanded="true" />
@@ -84,25 +84,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.ini" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.ini" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+            <state relative-caret-position="396">
+              <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="preScan.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="preScan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/preScan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="384">
+              <caret line="82" column="38" lean-forward="false" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
               <folding>
                 <element signature="e#81#111#0" expanded="true" />
-                <marker date="1493202962424" expanded="true" signature="1349:1386" ph="SELECT inn F... pre_scan" />
-                <marker date="1493202962424" expanded="true" signature="2607:2655" ph="INSERT INTO pre_scan... " />
+                <marker date="1493261731263" expanded="true" signature="1483:1520" ph="SELECT inn F... pre_scan" />
+                <marker date="1493261731263" expanded="true" signature="2775:2823" ph="INSERT INTO pre_scan... " />
               </folding>
             </state>
           </provider>
@@ -111,8 +111,8 @@
       <file leaf-file-name="libScan.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libScan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="515" column="0" lean-forward="false" selection-start-line="515" selection-start-column="0" selection-end-line="515" selection-end-column="0" />
+            <state relative-caret-position="7704">
+              <caret line="575" column="22" lean-forward="false" selection-start-line="575" selection-start-column="22" selection-end-line="575" selection-end-column="22" />
               <folding>
                 <element signature="e#51#81#0" expanded="true" />
               </folding>
@@ -123,7 +123,7 @@
       <file leaf-file-name="network.py" pinned="false" current-in-tab="false">
         <entry file="file:///usr/lib/python3/dist-packages/mysql/connector/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
+            <state relative-caret-position="9072">
               <caret line="508" column="0" lean-forward="false" selection-start-line="508" selection-start-column="0" selection-end-line="508" selection-end-column="0" />
               <folding />
             </state>
@@ -157,12 +157,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/fine.py" />
-        <option value="$PROJECT_DIR$/preScan.py" />
         <option value="$PROJECT_DIR$/mainScan.py" />
         <option value="$PROJECT_DIR$/SbScan.py" />
         <option value="$PROJECT_DIR$/toExcel.py" />
-        <option value="$PROJECT_DIR$/libScan.py" />
         <option value="$PROJECT_DIR$/config.ini" />
+        <option value="$PROJECT_DIR$/libScan.py" />
+        <option value="$PROJECT_DIR$/preScan.py" />
       </list>
     </option>
   </component>
@@ -173,13 +173,13 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="873" />
+    <option name="x" value="590" />
     <option name="y" value="24" />
-    <option name="width" value="1047" />
+    <option name="width" value="1328" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -192,24 +192,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SbScan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SbScan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -528,11 +511,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493210543040</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Добавил в фильтр фильтарцию по номеру региона&#10;Надо добавить если 0, то нет фильтрации по категории">
+      <created>1493232387365</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1493232387365</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="873" y="24" width="1047" height="1056" extended-state="4" />
+    <frame x="590" y="24" width="1328" height="1056" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3548753" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -621,17 +611,11 @@
     <MESSAGE value="Сделал информативный лог в mainScan.py&#10;Сделал пропуск сбойных ИНН, не находящихся в категории" />
     <MESSAGE value="Добавил конвертер в excel toExcel.py&#10;Перенес функцию read_config в  libScan.py" />
     <MESSAGE value="Отладил конвертер в excel toExcel.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Отладил конвертер в excel toExcel.py" />
+    <MESSAGE value="Добавил в фильтр фильтарцию по номеру региона&#10;Надо добавить если 0, то нет фильтрации по категории" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил в фильтр фильтарцию по номеру региона&#10;Надо добавить если 0, то нет фильтрации по категории" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/libScan.py</url>
-          <line>515</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -681,8 +665,8 @@
           <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding>
             <element signature="e#81#111#0" expanded="true" />
-            <marker date="1493202962424" expanded="true" signature="1349:1386" ph="SELECT inn F... pre_scan" />
-            <marker date="1493202962424" expanded="true" signature="2607:2655" ph="INSERT INTO pre_scan... " />
+            <marker date="1493261731263" expanded="true" signature="1483:1520" ph="SELECT inn F... pre_scan" />
+            <marker date="1493261731263" expanded="true" signature="2775:2823" ph="INSERT INTO pre_scan... " />
           </folding>
         </state>
       </provider>
@@ -743,8 +727,8 @@
           <caret line="54" column="64" lean-forward="false" selection-start-line="54" selection-start-column="64" selection-end-line="54" selection-end-column="64" />
           <folding>
             <element signature="e#81#111#0" expanded="true" />
-            <marker date="1493202962424" expanded="true" signature="1349:1386" ph="SELECT inn F... pre_scan" />
-            <marker date="1493202962424" expanded="true" signature="2607:2655" ph="INSERT INTO pre_scan... " />
+            <marker date="1493261731263" expanded="true" signature="1483:1520" ph="SELECT inn F... pre_scan" />
+            <marker date="1493261731263" expanded="true" signature="2775:2823" ph="INSERT INTO pre_scan... " />
           </folding>
         </state>
       </provider>
@@ -798,8 +782,8 @@
           <caret line="72" column="35" lean-forward="false" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
           <folding>
             <element signature="e#81#111#0" expanded="true" />
-            <marker date="1493202962424" expanded="true" signature="1349:1386" ph="SELECT inn F... pre_scan" />
-            <marker date="1493202962424" expanded="true" signature="2607:2655" ph="INSERT INTO pre_scan... " />
+            <marker date="1493261731263" expanded="true" signature="1483:1520" ph="SELECT inn F... pre_scan" />
+            <marker date="1493261731263" expanded="true" signature="2775:2823" ph="INSERT INTO pre_scan... " />
           </folding>
         </state>
       </provider>
@@ -853,8 +837,8 @@
           <caret line="71" column="35" lean-forward="true" selection-start-line="71" selection-start-column="35" selection-end-line="71" selection-end-column="35" />
           <folding>
             <element signature="e#81#111#0" expanded="true" />
-            <marker date="1493202962424" expanded="true" signature="1349:1386" ph="SELECT inn F... pre_scan" />
-            <marker date="1493202962424" expanded="true" signature="2607:2655" ph="INSERT INTO pre_scan... " />
+            <marker date="1493261731263" expanded="true" signature="1483:1520" ph="SELECT inn F... pre_scan" />
+            <marker date="1493261731263" expanded="true" signature="2775:2823" ph="INSERT INTO pre_scan... " />
           </folding>
         </state>
       </provider>
@@ -898,8 +882,8 @@
           <caret line="3" column="49" lean-forward="false" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
           <folding>
             <element signature="e#81#111#0" expanded="true" />
-            <marker date="1493202962424" expanded="true" signature="1349:1386" ph="SELECT inn F... pre_scan" />
-            <marker date="1493202962424" expanded="true" signature="2607:2655" ph="INSERT INTO pre_scan... " />
+            <marker date="1493261731263" expanded="true" signature="1483:1520" ph="SELECT inn F... pre_scan" />
+            <marker date="1493261731263" expanded="true" signature="2775:2823" ph="INSERT INTO pre_scan... " />
           </folding>
         </state>
       </provider>
@@ -939,8 +923,8 @@
           <caret line="3" column="49" lean-forward="false" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
           <folding>
             <element signature="e#81#111#0" expanded="true" />
-            <marker date="1493202962424" expanded="true" signature="1349:1386" ph="SELECT inn F... pre_scan" />
-            <marker date="1493202962424" expanded="true" signature="2607:2655" ph="INSERT INTO pre_scan... " />
+            <marker date="1493261731263" expanded="true" signature="1483:1520" ph="SELECT inn F... pre_scan" />
+            <marker date="1493261731263" expanded="true" signature="2775:2823" ph="INSERT INTO pre_scan... " />
           </folding>
         </state>
       </provider>
@@ -996,8 +980,8 @@
           <caret line="41" column="26" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
           <folding>
             <element signature="e#81#111#0" expanded="true" />
-            <marker date="1493202962424" expanded="true" signature="1349:1386" ph="SELECT inn F... pre_scan" />
-            <marker date="1493202962424" expanded="true" signature="2607:2655" ph="INSERT INTO pre_scan... " />
+            <marker date="1493261731263" expanded="true" signature="1483:1520" ph="SELECT inn F... pre_scan" />
+            <marker date="1493261731263" expanded="true" signature="2775:2823" ph="INSERT INTO pre_scan... " />
           </folding>
         </state>
       </provider>
@@ -1069,7 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="324" column="8" lean-forward="false" selection-start-line="324" selection-start-column="8" selection-end-line="324" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1083,7 +1066,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/toExcel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
+        <state relative-caret-position="522">
           <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
             <element signature="e#80#130#0" expanded="true" />
@@ -1094,7 +1077,7 @@
     </entry>
     <entry file="file:///usr/lib/python3/dist-packages/mysql/connector/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
+        <state relative-caret-position="9072">
           <caret line="508" column="0" lean-forward="false" selection-start-line="508" selection-start-column="0" selection-end-line="508" selection-end-column="0" />
           <folding />
         </state>
@@ -1102,7 +1085,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mainScan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
+        <state relative-caret-position="1026">
           <caret line="70" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding>
             <element signature="e#114#144#0" expanded="true" />
@@ -1113,33 +1096,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/preScan.py">
+    <entry file="file://$PROJECT_DIR$/config.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="e#81#111#0" expanded="true" />
-            <marker date="1493202962424" expanded="true" signature="1349:1386" ph="SELECT inn F... pre_scan" />
-            <marker date="1493202962424" expanded="true" signature="2607:2655" ph="INSERT INTO pre_scan... " />
-          </folding>
+        <state relative-caret-position="396">
+          <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libScan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="515" column="0" lean-forward="false" selection-start-line="515" selection-start-column="0" selection-end-line="515" selection-end-column="0" />
+        <state relative-caret-position="7704">
+          <caret line="575" column="22" lean-forward="false" selection-start-line="575" selection-start-column="22" selection-end-line="575" selection-end-column="22" />
           <folding>
             <element signature="e#51#81#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.ini">
+    <entry file="file://$PROJECT_DIR$/preScan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="384">
+          <caret line="82" column="38" lean-forward="false" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
+          <folding>
+            <element signature="e#81#111#0" expanded="true" />
+            <marker date="1493261731263" expanded="true" signature="1483:1520" ph="SELECT inn F... pre_scan" />
+            <marker date="1493261731263" expanded="true" signature="2775:2823" ph="INSERT INTO pre_scan... " />
+          </folding>
         </state>
       </provider>
     </entry>

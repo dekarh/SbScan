@@ -31,7 +31,8 @@ dbconn = MySQLConnection(**dbconfig)  # Открываем БД из конфи�
 read_cursor = dbconn.cursor()
 write_cursor = dbconn.cursor()
 
-print('\n\n', datetime.strftime(datetime.now(), "%H:%M:%S"), 'Начинаем всё заново')
+print('\n-------------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"), 'Начинаем всё заново'
+                                                     '\n-------------------------------------\n')
 authorize(driver, **webconfig)  # Авторизация
 wj(driver)
 to_spisok(driver)
@@ -47,7 +48,7 @@ inns_from_bd = []
 for row in rows:
     inns_from_bd.append(row[0])
 print(datetime.strftime(datetime.now(), "%H:%M:%S"), ' ', len(inns_from_bd),
-                                             ' ИНН в БД\n-------------------------------------')
+                                             ' ИНН в БД\n---------------------')
 while g < 1000:
     try:
         gg = 0
@@ -63,7 +64,7 @@ while g < 1000:
         wj(driver)
         inns = p(d = driver, f = 'ps', **B['inn_spisA'])
         wj(driver)
-        print(datetime.strftime(datetime.now(), "%H:%M:%S"),len(inns) ,' ИНН в памяти')
+        print('---------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),len(inns) ,' ИНН в памяти\n---------------------')
         wj(driver)
         for i, inn in enumerate(inns):
             pass_string = False
@@ -78,8 +79,10 @@ while g < 1000:
             inns_from_bd.append(l(inn))
             if len(inns_from_bd) % 100 == 0:
                 print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Сканировано из списка: ', len(inns_from_bd))
+        print('---------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"), len(inns_from_bd),
+              ' ИНН в БД\n---------------------')
 
-#        f = p(d=driver, f='c', **B['next'])
+        #        f = p(d=driver, f='c', **B['next'])
 #        wj(driver)
 #        time.sleep(3)
 #        f.click()

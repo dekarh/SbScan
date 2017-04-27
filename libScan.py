@@ -489,11 +489,12 @@ def to_spisok(driver):
             print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Ошибка в to_spisok', ee)
             continue
 
-def set_filter(driver, type_category = 'СБИС', category = 'Страхование, пенсионное обеспечение', region = '0'):
+def set_filter(driver, use_category = 'True', type_category = 'СБИС', category = 'Страхование, пенсионное обеспечение',
+               use_region = 'False', region = '30'):
     g = 0
     while g < 1000:
         try:
-            if int(region) > 0 and int(region) < 100:
+            if use_region == 'True' and int(region) > 0 and int(region) < 100:
                 drop = p(d=driver, f='c', **B['menuRegs'])  # Открываем дроплист
                 wj(driver)
                 drop.click()
@@ -513,59 +514,66 @@ def set_filter(driver, type_category = 'СБИС', category = 'Страхова�
                 wj(driver)
                 reg_filter.click()
                 wj(driver)
-            drop = p(d = driver, f = 'c', **B['menuCats']) # Открываем дроплист
-            wj(driver)
-            drop.click()
-            wj(driver)
-            cats_all_link = p(d = driver, f = 'vs', **B['cats_all_link']) # Переходим ко всем категориям
-            cats_all_link[0].click()
-            wj(driver)
-            time.sleep(4)
-            if type_category == 'ОКВЭД':
-                category = category.strip() + ' '
-                okved_tab = p(d = driver, f = 'c', **B['okved-tab'])
-                wj(driver)
-                okved_tab.click()
-                search = p(d = driver, f = 'c', **B['search'])
-                wj(driver)
-                search.clear()
-                wj(driver)
-                search.send_keys(category.strip())
-                wj(driver)
-                time.sleep(2)
-                okved_list = p(d = driver, f = 'ps', **B['okved-listA'])
-                wj(driver)
-                for okved_str in okved_list:
-                    wj(driver)
-                    if okved_str[:(len(category))] == category:
-                        okved = p(d = driver, f = 'c', **B['okved-listD'], data_id=okved_str)
-                        okved.click()
-                        wj(driver)
-                        time.sleep(4)
-                        return
-            elif type_category == 'СБИС':
-                sbis_tab = p(d = driver, f = 'c', **B['sbis-tab'])
-                wj(driver)
-                sbis_tab.click()
-                search = p(d = driver, f = 'c', **B['search'])
-                wj(driver)
-                search.clear()
-                wj(driver)
-                search.send_keys(category.strip())
-                wj(driver)
-                time.sleep(2)
-                sbis_list = p(d = driver, f = 'vs', **B['sbis-listA'])
-                wj(driver)
-                for sbis_str in sbis_list:
-                    if sbis_str.strip() == category.strip():
-                        sbis = p(d = driver, f = 'c', **B['sbis-listD'], data_id=sbis_str.strip())
-                        sbis.click()
-                        wj(driver)
-                        time.sleep(4)
-                        return
             else:
-                print(datetime.strftime(datetime.now(), "%H:%M:%S")," Категория (ОКВЭД или СБИС) не найдена")
+                print(datetime.strftime(datetime.now(), "%H:%M:%S"), " Регион не найден\n\nНЕ МОГУ ПРИМЕНИТЬ ФИЛЬТР !!!")
+                return
+            if use_category == 'True':
+                drop = p(d = driver, f = 'c', **B['menuCats']) # Открываем дроплист
+                wj(driver)
+                drop.click()
+                wj(driver)
+                cats_all_link = p(d = driver, f = 'vs', **B['cats_all_link']) # Переходим ко всем категориям
+                cats_all_link[0].click()
+                wj(driver)
+                time.sleep(4)
+                if type_category == 'ОКВЭД':
+                    category = category.strip() + ' '
+                    okved_tab = p(d = driver, f = 'c', **B['okved-tab'])
+                    wj(driver)
+                    okved_tab.click()
+                    search = p(d = driver, f = 'c', **B['search'])
+                    wj(driver)
+                    search.clear()
+                    wj(driver)
+                    search.send_keys(category.strip())
+                    wj(driver)
+                    time.sleep(2)
+                    okved_list = p(d = driver, f = 'ps', **B['okved-listA'])
+                    wj(driver)
+                    for okved_str in okved_list:
+                        wj(driver)
+                        if okved_str[:(len(category))] == category:
+                            okved = p(d = driver, f = 'c', **B['okved-listD'], data_id=okved_str)
+                            okved.click()
+                            wj(driver)
+                            time.sleep(4)
+                            return
+                elif type_category == 'СБИС':
+                    sbis_tab = p(d = driver, f = 'c', **B['sbis-tab'])
+                    wj(driver)
+                    sbis_tab.click()
+                    search = p(d = driver, f = 'c', **B['search'])
+                    wj(driver)
+                    search.clear()
+                    wj(driver)
+                    search.send_keys(category.strip())
+                    wj(driver)
+                    time.sleep(2)
+                    sbis_list = p(d = driver, f = 'vs', **B['sbis-listA'])
+                    wj(driver)
+                    for sbis_str in sbis_list:
+                        if sbis_str.strip() == category.strip():
+                            sbis = p(d = driver, f = 'c', **B['sbis-listD'], data_id=sbis_str.strip())
+                            sbis.click()
+                            wj(driver)
+                            time.sleep(4)
+                            return
+                else:
+                    print(datetime.strftime(datetime.now(), "%H:%M:%S")," Категория (ОКВЭД или СБИС) не найдена,\n\n"
+                                                                        "НЕ МОГУ ПРИМЕНИТЬ ФИЛЬТР !!!")
+                    return
+            else:
                 return
         except Exception as ee:
-            print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Ошибка в to_spisok', ee)
+            print(datetime.strftime(datetime.now(), "%H:%M:%S"), ' Ошибка в set_filter:\n', ee)
             continue
