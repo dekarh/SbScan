@@ -140,7 +140,10 @@ def l(a):
             a = str(a).strip()
             if  a != '':
                 a = ''.join([char for char in a if char in string.digits])
-                return int(a)
+                if len(a) > 0:
+                    return int(a)
+                else:
+                    return 0
         return 0
     except TypeError:
         return 0
