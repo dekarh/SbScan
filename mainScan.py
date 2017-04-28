@@ -17,10 +17,13 @@ import datetime
 from datetime import datetime
 import time
 import string
+import sys
 from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l, read_config
 
 # driver = webdriver.Chrome(DRIVER_PATH)  # Инициализация драйвера
 #driver = webdriver.Firefox()  # Инициализация драйвера
+
+err_count = 0 # Счетчик ошибок
 
 webconfig = read_config(section='web')
 fillconfig = read_config(section='fill')
@@ -32,7 +35,6 @@ driver.implicitly_wait(1) # Неявное ожидание - ждать отв�
 dbconn = MySQLConnection(**dbconfig)  # Открываем БД из конфиг-файла
 read_cursor = dbconn.cursor()
 write_cursor = dbconn.cursor()
-
 
 authorize(driver, **webconfig)  # Авторизация
 #driver.get(**fillconfig)  # Открытие страницы где надо заполнять
@@ -288,6 +290,7 @@ for pre_inn in pre_inns:
             if len(had_inns) % 100 == 0:
                 print('\n---------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
                       'Спарсено', len(had_inns), '\n---------------------------\n')
+                err_count = 0                              # Обнуляем счетчик ошибок
             wj(driver)
             close = p(d = driver, f = 'c', **B['close'])
             wj(driver)
@@ -296,6 +299,12 @@ for pre_inn in pre_inns:
             time.sleep(4)
             break
         except Exception as ee:
+            err_count += 1
+            if err_count > 10:
+                driver.close()
+                print('\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
+                      'Слишком много ошибок: ', ee, '\n начнем-ка заново :)\n----------------------------------\n\n')
+                sys.exit()
             print('\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
                   'Ошибка: ', ee, '\n перезагружаю\n----------------------------------\n\n')
             driver.close()

@@ -19,6 +19,7 @@ import datetime
 from datetime import datetime
 import time
 import string
+import sys
 
 # DRIVER_PATH = 'drivers/chromedriver.exe'
 #DRIVER_PATH = 'drivers/chromedriver'
@@ -111,6 +112,7 @@ B = {
     'reg_filter': {'t': 'c', 's': 'Clrs__regionSelectorItemName'},
 
 }
+
 
 def read_config(filename='config.ini', section='mysql'):
     """ Read database configuration file and return a dictionary object
@@ -469,6 +471,7 @@ def authorize(driver, login, password, authorize_page=''):
     return
 
 def to_spisok(driver):
+    err_count = 0
     g = 0
     while g < 1000:
         try:
@@ -490,11 +493,16 @@ def to_spisok(driver):
             continue
         except Exception as ee:
             print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Ошибка в to_spisok', ee)
+            err_count += 1
+            if err_count > 10:
+                driver.close()
+                sys.exit()
             continue
 
 def set_filter(driver, use_category = 'True', type_category = 'СБИС', category = 'Страхование, пенсионное обеспечение',
                use_region = 'False', region = '30'):
     g = 0
+    err_count = 0
     while g < 1000:
         try:
             if use_region == 'True' and int(region) > 0 and int(region) < 100:
@@ -578,5 +586,9 @@ def set_filter(driver, use_category = 'True', type_category = 'СБИС', catego
             else:
                 return
         except Exception as ee:
+            err_count += 1
             print(datetime.strftime(datetime.now(), "%H:%M:%S"), ' Ошибка в set_filter:\n', ee)
+            if err_count > 10:
+                driver.close()
+                sys.exit()
             continue
