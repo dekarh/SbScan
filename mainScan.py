@@ -53,7 +53,7 @@ had_inns = []
 for h in had_inns_db:
     had_inns.append(h[0])
 print('\n\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
-      'Начинаем. Всего спарсено компаний:', len(had_inns), '\n----------------------------------\n\n\n')
+      'Начинаем. Всего спарсено компаний:', len(had_inns),' из:', len(pre_inns), '\n----------------------------------\n\n\n')
 for pre_inn in pre_inns:
     pass_string = False
     for had_inn in had_inns:
@@ -287,8 +287,8 @@ for pre_inn in pre_inns:
                                        u[4], d[0], d[1], d[2], d[3], d[4]))
             dbconn.commit()
             had_inns.append(l(inn))
-            print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Сохраняю компанию ИНН ', inn_str, 'всего компаний:',
-                  len(had_inns))
+            print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Сохраняю компанию ИНН ', inn_str, 'всего сохранено:',
+                  len(had_inns), 'из:', len(pre_inns))
             if len(had_inns) % 100 == 0:
                 print('\n---------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
                       'Спарсено', len(had_inns), '\n---------------------------\n')
