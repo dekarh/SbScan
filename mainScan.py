@@ -93,7 +93,6 @@ for pre_inn in pre_inns:
                                  + ' ' + p(d = driver, f = 'p', **B['surnameA'])
             gen_info = p(d = driver, f = 'p', **B['gen_infoA'])
             act_num = p(d = driver, f = 'p', **B['act_numA'])  # Количество видов деятельности
-            act_link = p(d=driver, f='c', **B['act_link'])  # Страница видов деятельности
             act_list = ''
             if act_num != '':
                 act_link = p(d = driver, f = 'c', **B['act_link']) # Страница видов деятельности

@@ -48,13 +48,13 @@
       <file leaf-file-name="mainScan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mainScan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="213" column="63" lean-forward="true" selection-start-line="213" selection-start-column="63" selection-end-line="213" selection-end-column="63" />
+            <state relative-caret-position="252">
+              <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding>
                 <element signature="e#114#144#0" expanded="true" />
-                <marker date="1493476181017" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
-                <marker date="1493476181017" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
-                <marker date="1493476181017" expanded="true" signature="11920:12629" ph="INSERT INTO main... " />
+                <marker date="1493476279904" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
+                <marker date="1493476279904" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
+                <marker date="1493476279904" expanded="true" signature="11830:12539" ph="INSERT INTO main... " />
               </folding>
             </state>
           </provider>
@@ -538,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1493381007782</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Добавил распечатку трассировки ошибки через модуль traceback">
+      <created>1493476224962</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1493476224962</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -635,14 +642,15 @@
     <MESSAGE value="use_region, use_category = True - использовать фильтрацию по категории и региону&#10;Сделал красивее лог в preScan.py" />
     <MESSAGE value="Исправил ошибку в l()" />
     <MESSAGE value="Добавил перезагрузку при 10 ошибках. Обнуляется когда 100 шт закачает в базу" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил перезагрузку при 10 ошибках. Обнуляется когда 100 шт закачает в базу" />
+    <MESSAGE value="Добавил распечатку трассировки ошибки через модуль traceback" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил распечатку трассировки ошибки через модуль traceback" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/mainScan.py</url>
-          <line>313</line>
+          <line>312</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
       </breakpoints>
@@ -672,9 +680,9 @@
           <caret line="271" column="27" lean-forward="false" selection-start-line="271" selection-start-column="27" selection-end-line="271" selection-end-column="27" />
           <folding>
             <element signature="e#114#144#0" expanded="true" />
-            <marker date="1493476181017" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
-            <marker date="1493476181017" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
-            <marker date="1493476181017" expanded="true" signature="11920:12629" ph="INSERT INTO main... " />
+            <marker date="1493476279904" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
+            <marker date="1493476279904" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
+            <marker date="1493476279904" expanded="true" signature="11830:12539" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -727,9 +735,9 @@
           <caret line="136" column="44" lean-forward="false" selection-start-line="136" selection-start-column="40" selection-end-line="136" selection-end-column="44" />
           <folding>
             <element signature="e#114#144#0" expanded="true" />
-            <marker date="1493476181017" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
-            <marker date="1493476181017" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
-            <marker date="1493476181017" expanded="true" signature="11920:12629" ph="INSERT INTO main... " />
+            <marker date="1493476279904" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
+            <marker date="1493476279904" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
+            <marker date="1493476279904" expanded="true" signature="11830:12539" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -789,9 +797,9 @@
           <caret line="58" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
             <element signature="e#114#144#0" expanded="true" />
-            <marker date="1493476181017" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
-            <marker date="1493476181017" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
-            <marker date="1493476181017" expanded="true" signature="11920:12629" ph="INSERT INTO main... " />
+            <marker date="1493476279904" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
+            <marker date="1493476279904" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
+            <marker date="1493476279904" expanded="true" signature="11830:12539" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -844,9 +852,9 @@
           <caret line="58" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
             <element signature="e#114#144#0" expanded="true" />
-            <marker date="1493476181017" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
-            <marker date="1493476181017" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
-            <marker date="1493476181017" expanded="true" signature="11920:12629" ph="INSERT INTO main... " />
+            <marker date="1493476279904" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
+            <marker date="1493476279904" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
+            <marker date="1493476279904" expanded="true" signature="11830:12539" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -899,9 +907,9 @@
           <caret line="286" column="64" lean-forward="true" selection-start-line="286" selection-start-column="18" selection-end-line="286" selection-end-column="64" />
           <folding>
             <element signature="e#114#144#0" expanded="true" />
-            <marker date="1493476181017" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
-            <marker date="1493476181017" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
-            <marker date="1493476181017" expanded="true" signature="11920:12629" ph="INSERT INTO main... " />
+            <marker date="1493476279904" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
+            <marker date="1493476279904" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
+            <marker date="1493476279904" expanded="true" signature="11830:12539" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -983,9 +991,9 @@
           <caret line="282" column="0" lean-forward="false" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
           <folding>
             <element signature="e#114#144#0" expanded="true" />
-            <marker date="1493476181017" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
-            <marker date="1493476181017" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
-            <marker date="1493476181017" expanded="true" signature="11920:12629" ph="INSERT INTO main... " />
+            <marker date="1493476279904" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
+            <marker date="1493476279904" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
+            <marker date="1493476279904" expanded="true" signature="11830:12539" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
@@ -1153,13 +1161,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mainScan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="213" column="63" lean-forward="true" selection-start-line="213" selection-start-column="63" selection-end-line="213" selection-end-column="63" />
+        <state relative-caret-position="252">
+          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding>
             <element signature="e#114#144#0" expanded="true" />
-            <marker date="1493476181017" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
-            <marker date="1493476181017" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
-            <marker date="1493476181017" expanded="true" signature="11920:12629" ph="INSERT INTO main... " />
+            <marker date="1493476279904" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
+            <marker date="1493476279904" expanded="true" signature="1570:1608" ph="SELECT inn F... main" />
+            <marker date="1493476279904" expanded="true" signature="11830:12539" ph="INSERT INTO main... " />
           </folding>
         </state>
       </provider>
