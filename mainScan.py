@@ -18,6 +18,7 @@ from datetime import datetime
 import time
 import string
 import sys
+import traceback
 from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l, read_config
 
 # driver = webdriver.Chrome(DRIVER_PATH)  # Инициализация драйвера
@@ -91,28 +92,30 @@ for pre_inn in pre_inns:
                 firm_full_name = p(d = driver, f = 'p', **B['familyA']) + ' ' + p(d = driver, f = 'p', **B['nameA'])\
                                  + ' ' + p(d = driver, f = 'p', **B['surnameA'])
             gen_info = p(d = driver, f = 'p', **B['gen_infoA'])
-            act_num = p(d = driver, f = 'p', **B['act_numA'])
-            act_link = p(d = driver, f = 'c', **B['act_link']) # Страница видов деятельности
-            wj(driver)
-            act_link.click()
-            wj(driver)
-            time.sleep(4)
-            act_by_count = p(d = driver, f = 'c', **B['act_by_count']) # Список по сколько на страницу
-            wj(driver)
-            act_by_count.click()
-            act_num1000 = p(d = driver, f = 'c', **B['act_num1000']) # Выбираем по 1000 на страницу
-            act_num1000.click()
-            acts =  p(d = driver, f = 'ps', **B['acts'])
+            act_num = p(d = driver, f = 'p', **B['act_numA'])  # Количество видов деятельности
+            act_link = p(d=driver, f='c', **B['act_link'])  # Страница видов деятельности
             act_list = ''
-            for j, act in enumerate(acts):
+            if act_num != '':
+                act_link = p(d = driver, f = 'c', **B['act_link']) # Страница видов деятельности
                 wj(driver)
-                if act.is_displayed() and act.get_attribute('rowkey').find('.') > -1:
+                act_link.click()
+                wj(driver)
+                time.sleep(4)
+                act_by_count = p(d = driver, f = 'c', **B['act_by_count']) # Список по сколько на страницу
+                wj(driver)
+                act_by_count.click()
+                act_num1000 = p(d = driver, f = 'c', **B['act_num1000']) # Выбираем по 1000 на страницу
+                act_num1000.click()
+                acts =  p(d = driver, f = 'ps', **B['acts'])
+                for j, act in enumerate(acts):
                     wj(driver)
-                    act_list += act.get_attribute('rowkey') + ' '
-            wj(driver)
-            act_link.click()
-            wj(driver)
-            time.sleep(4)
+                    if act.is_displayed() and act.get_attribute('rowkey').find('.') > -1:
+                        wj(driver)
+                        act_list += act.get_attribute('rowkey') + ' '
+                wj(driver)
+                act_link.click()
+                wj(driver)
+                time.sleep(4)
             ch_title = p(d = driver, f = 'p', **B['ch_titleA'])
             ch_name = p(d = driver, f = 'p', **B['ch_nameA'])
             ch_surname = p(d = driver, f = 'p', **B['ch_surnameA'])
@@ -129,7 +132,7 @@ for pre_inn in pre_inns:
                 s_rats.append('')
             while len(c_rats) < 2:
                 c_rats.append('')
-            havnt_in_about = []  # Что не нашли на странице "О компании"
+            havnt_in_about = []  # Что не нашли на странице "Общие"
             ph = p(d = driver, f = 'ps', **B['phonesA'])
             if ph[0] == '':
                 havnt_in_about.append('phones')
@@ -301,12 +304,14 @@ for pre_inn in pre_inns:
         except Exception as ee:
             err_count += 1
             if err_count > 10:
-                driver.close()
-                print('\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
+               driver.close()
+               print('\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
                       'Слишком много ошибок: ', ee, '\n начнем-ка заново :)\n----------------------------------\n\n')
-                sys.exit()
+               sys.exit()
             print('\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
-                  'Ошибка: ', ee, '\n перезагружаю\n----------------------------------\n\n')
+                  'Ошибка: ')
+            traceback.print_exception(type(ee), ee, sys.exc_info()[2])
+            print('\n перезагружаю\n----------------------------------\n\n')
             driver.close()
             driver = webdriver.Chrome()  # Инициализация драйвера
             driver.implicitly_wait(1)  # Неявное ожидание - ждать ответа на каждый запрос до 10 сек
