@@ -14,7 +14,7 @@ import string
 import sys
 import traceback
 
-from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l, read_config
+from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l, read_config, unique
 
 err_count = 0 # Счетчик ошибок
 
@@ -129,32 +129,34 @@ for i, had_inn in enumerate(had_inns):
                 wj(driver)
                 time.sleep(4)
 
-            uchred_names = p(d=driver, f='ps', **B['uchred_nameA'])
-            uchred_inns = p(d=driver, f='ps', **B['uchred_innA'])
-            uchred_percents = p(d=driver, f='ps', **B['uchred_%A'])
+            uchred_ids = p(d=driver, f='ps', **B['uchredsA'])
+            uchred_ids = unique(uchred_ids)
             wj(driver)
-            for j, uchred_name in enumerate(uchred_names):
-                if l(uchred_inns[j]) > 9999999999 and l(uchred_percents[j]) > 1:
-                    fio_fio = uchred_names[j].split()
+            for j, uchred_id in enumerate(uchred_ids):
+                uchred_name = p(d=driver, f='p', data_id = uchred_id, **B['uchred_nameAD'])
+                uchred_inn = p(d=driver, f='p', data_id = uchred_id, **B['uchred_innAD'])
+                uchred_percent = p(d=driver, f='p', data_id = uchred_id, **B['uchred_%AD'])
+                if l(uchred_inn) > 9999999999 and l(uchred_percent) > 1:
+                    fio_fio = uchred_name.split()
                     name_fio = fio_fio[1]
                     family_fio = fio_fio[0]
                     if len(fio_fio) > 2:
                         surname_fio = fio_fio[2]
                     else:
                         surname_fio = ''
-                    read_cursor.execute('SELECT * FROM fio WHERE fio.inn_fio = %s;', (uchred_inns[j],))
+                    read_cursor.execute('SELECT * FROM fio WHERE fio.inn_fio = %s;', (uchred_inn,))
                     had_fio = read_cursor.fetchall()
                     if len(had_fio) < 1:
                         sql = 'INSERT INTO fio(inn_fio, name, surname, family) VALUES(%s,%s,%s,%s)'
-                        write_cursor.execute(sql, (uchred_inns[j], name_fio, surname_fio, family_fio))
+                        write_cursor.execute(sql, (uchred_inn, name_fio, surname_fio, family_fio))
                     read_cursor.execute('SELECT * FROM main2fio WHERE main_inn=%s AND main_kpp=%s AND fio_inn_fio = %s;'
-                                        , (inn, kpp, uchred_inns[j]))
+                                        , (inn, kpp, uchred_inn))
                     had_main2fio = read_cursor.fetchall()
                     if len(had_main2fio) < 1:
                         sql = 'INSERT INTO main2fio(percent, cost, summ, main_inn, main_kpp, fio_inn_fio) ' \
                                            'VALUES(%s,%s,%s,%s,%s,%s)'
-                        write_cursor.execute(sql, (uchred_percents[j], int(cost * l(uchred_percents[j])/100),
-                                           int(summ * l(uchred_percents[j])/100), inn, kpp, uchred_inns[j]))
+                        write_cursor.execute(sql, (uchred_percent, int(cost * l(uchred_percent)/100),
+                                           int(summ * l(uchred_percent)/100), inn, kpp, uchred_inn))
                     dbconn.commit()
 
             if had_more_uchred:

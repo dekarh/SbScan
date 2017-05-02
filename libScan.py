@@ -82,12 +82,13 @@ B = {
     'reg_org'   : {'t': 'x', 's': '//DIV[@class="ContragentCardRegistrationGosOrg-Data"]', 'a': 'text'},
     'uchred'    : {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//DIV[@class="ws-browser-cell-paddings"]'
                                   '/DIV[@title]', 'a': 'title'},
-   'uchred_innA': {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//SPAN[@class="Contragents-ContragentCardPersons_'
-                                  '_Inn"]', 'a': 'text'},
-    'uchred_%A' : {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//DIV[@class="Contragents-ContragentCardPersons_'
-                                  '_cellSharePercentage"]', 'a': 'text'},
- 'uchred_nameA' : {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//DIV[@class="ws-ellipsis"]/SPAN[not(@class)]',
-                   'a': 'text'},
+    'uchredsA'  : {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//TR[@rowkey]', 'a': 'rowkey'},
+ 'uchred_innAD' : {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//TR[@rowkey="', 'a': 'text',
+                                  'e' :'//SPAN[@class="Contragents-ContragentCardPersons__Inn"]'},
+   'uchred_%AD' : {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//TR[@rowkey="', 'a': 'text',
+                                  'e': '//DIV[@class="Contragents-ContragentCardPersons__cellSharePercentage"]'},
+'uchred_nameAD' : {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//TR[@rowkey="', 'a': 'text',
+                                  'e': '//DIV[@class="ws-ellipsis"]/SPAN[not(@class)]'},
     'dochki'    : {'t': 'x', 's': '//DIV[@sbisname="brwДочерниеКомпании"]//DIV[@class="ws-browser-cell-paddings"]'
                                   '/DIV[@title]', 'a': 'title'},
     'inn_spisA' : {'t': 'x', 's': '//DIV[@sbisname="contragentsBrowser"]//DIV[@class="Contragents-CommonRenders_'
@@ -120,6 +121,15 @@ B = {
 
 }
 
+def unique(lst):
+    seen = set()
+    result = []
+    for x in lst:
+        if x in seen:
+            continue
+        seen.add(x)
+        result.append(x)
+    return result
 
 def read_config(filename='config.ini', section='mysql'):
     """ Read database configuration file and return a dictionary object
@@ -204,13 +214,13 @@ except AssertionError, e:
     self.verificationErrors.append('presence_of_element_located returned True for Waldo')
 """
 
-def p(d, t, f, s, a = '', data_id = ''):
+def p(d, t, f, s, a = '', data_id = '', e = ''):
     wj(d)
     if data_id != '':
         data_id += '"]'
     if t == 'i':
         if   f == 'c':
-            foo = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.ID, s + data_id)))
+            foo = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.ID, s)))
             wj(d)
             if a == '':
                 return foo
@@ -220,7 +230,7 @@ def p(d, t, f, s, a = '', data_id = ''):
                 else:
                     return foo.get_attribute(a)
         elif f == 'v':
-            foo = WebDriverWait(d, 20).until(EC.visibility_of_element_located((By.ID, s + data_id)))
+            foo = WebDriverWait(d, 20).until(EC.visibility_of_element_located((By.ID, s)))
             wj(d)
             if a == '':
                 return foo
@@ -230,7 +240,7 @@ def p(d, t, f, s, a = '', data_id = ''):
                 else:
                     return foo.get_attribute(a)
         elif f == 'vs':
-            foo = WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.ID, s + data_id)))
+            foo = WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.ID, s)))
             wj(d)
             if a == '':
                 return foo
@@ -242,7 +252,7 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'vv':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
-                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.ID, s + data_id)))
+                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.ID, s)))
                 wj(d)
                 if a == '':
                     return foo
@@ -260,7 +270,7 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'p':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
-                foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.ID, s + data_id)))
+                foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.ID, s)))
                 wj(d)
                 if a == '':
                     return foo
@@ -277,7 +287,7 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'ps':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
-                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.ID, s + data_id)))
+                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.ID, s)))
                 wj(d)
                 if a == '':
                     return foo
@@ -295,7 +305,7 @@ def p(d, t, f, s, a = '', data_id = ''):
             return
     elif t == 'x':
         if   f == 'c':
-            foo = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.XPATH, s+data_id)))
+            foo = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.XPATH, s + data_id + e)))
             wj(d)
             if a == '':
                 return foo
@@ -305,7 +315,7 @@ def p(d, t, f, s, a = '', data_id = ''):
                 else:
                     return foo.get_attribute(a)
         elif f == 'v':
-            foo = WebDriverWait(d, 20).until(EC.visibility_of_element_located((By.XPATH, s+data_id)))
+            foo = WebDriverWait(d, 20).until(EC.visibility_of_element_located((By.XPATH, s + data_id + e)))
             wj(d)
             if a == '':
                 return foo
@@ -315,7 +325,7 @@ def p(d, t, f, s, a = '', data_id = ''):
                 else:
                     return foo.get_attribute(a)
         elif f == 'vs':
-            foo = WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.XPATH, s + data_id)))
+            foo = WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.XPATH, s + data_id + e)))
             wj(d)
             if a == '':
                 return foo
@@ -327,7 +337,7 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'vv':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
-                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.XPATH, s + data_id)))
+                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.XPATH, s + data_id + e)))
                 wj(d)
                 if a == '':
                     return foo
@@ -344,7 +354,7 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'p':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
-                foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.XPATH, s + data_id)))
+                foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.XPATH, s + data_id + e)))
                 wj(d)
                 if a == '':
                     return foo
@@ -361,7 +371,7 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'ps':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
-                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.XPATH, s + data_id)))
+                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.XPATH, s + data_id + e)))
                 wj(d)
                 if a == '':
                     return foo
@@ -379,7 +389,7 @@ def p(d, t, f, s, a = '', data_id = ''):
             return
     elif t == 'c':
         if   f == 'c':
-            foo = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.CLASS_NAME, s + data_id)))
+            foo = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.CLASS_NAME, s)))
             if a == '':
                 return foo
             else:
@@ -388,7 +398,7 @@ def p(d, t, f, s, a = '', data_id = ''):
                 else:
                     return foo.get_attribute(a)
         elif f == 'v':
-            foo = WebDriverWait(d, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, B[s]+data_id)))
+            foo = WebDriverWait(d, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, s)))
             if a == '':
                 return foo
             else:
@@ -397,7 +407,7 @@ def p(d, t, f, s, a = '', data_id = ''):
                 else:
                     return foo.get_attribute(a)
         elif f == 'vs':
-            foo = WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.CLASS_NAME, s + data_id)))
+            foo = WebDriverWait(d, 20).until(EC.visibility_of_any_elements_located((By.CLASS_NAME, s)))
             wj(d)
             if a == '':
                 return foo
@@ -409,7 +419,7 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'vv':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
-                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.CLASS_NAME, s + data_id)))
+                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.CLASS_NAME, s)))
                 wj(d)
                 if a == '':
                     return foo
@@ -426,7 +436,7 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'p':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
-                foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.CLASS_NAME, s + data_id)))
+                foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.CLASS_NAME, s)))
                 wj(d)
                 if a == '':
                     return foo
@@ -443,7 +453,7 @@ def p(d, t, f, s, a = '', data_id = ''):
         elif f == 'ps':
             if chk(d = d, t = t, s = s + data_id):
                 wj(d)
-                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.CLASS_NAME, s + data_id)))
+                foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.CLASS_NAME, s)))
                 wj(d)
                 if a == '':
                     return foo
