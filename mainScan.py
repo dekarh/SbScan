@@ -47,7 +47,7 @@ wj(driver)
 
 read_cursor.execute('SELECT inn FROM pre_scan WHERE id >-1;')
 pre_inns = read_cursor.fetchall()
-read_cursor.execute('SELECT inn FROM main WHERE data_id >-1;')
+read_cursor.execute('SELECT inn FROM main WHERE inn >-1;')
 had_inns_db = read_cursor.fetchall()
 had_inns = []
 for h in had_inns_db:
@@ -272,12 +272,12 @@ for pre_inn in pre_inns:
             while len(d) < 5:
                 d.append(None)
 
-            sql = 'INSERT INTO main( inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title, ' \
+            sql = 'INSERT INTO main(inn, kpp, firm_full_name, gen_info, act_num, act_list, ch_title, ' \
                   'ch_fio, summ, cost, sum_rat1, sum_rat2, cost_rat1, cost_rat2, t_phone_1, phone_1, t_phone_2,' \
                   ' phone_2, t_phone_3, phone_3, t_phone_4, phone_4, t_phone_5, phone_5, warn, emp_qty, address,' \
                   ' region, predstav, fils, ogrn, okpo, oktmo, reg_N_pfr, reg_comp, reg_gos, u1, u2, u3, u4, u5,' \
                   'd1, d2, d3, d4, d5) ' \
-                  'VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,' \
+                  'VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,' \
                   ' %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
             write_cursor.execute(sql, ( l(inn), l(kpp), firm_full_name, gen_info, l(act_num), act_list,
                                        ch_title, ch_fio, summ, cost, s_rats[0], s_rats[1], c_rats[0], c_rats[1],

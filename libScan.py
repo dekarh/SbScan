@@ -82,6 +82,12 @@ B = {
     'reg_org'   : {'t': 'x', 's': '//DIV[@class="ContragentCardRegistrationGosOrg-Data"]', 'a': 'text'},
     'uchred'    : {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//DIV[@class="ws-browser-cell-paddings"]'
                                   '/DIV[@title]', 'a': 'title'},
+   'uchred_innA': {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//SPAN[@class="Contragents-ContragentCardPersons_'
+                                  '_Inn"]', 'a': 'text'},
+    'uchred_%A' : {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//DIV[@class="Contragents-ContragentCardPersons_'
+                                  '_cellSharePercentage"]', 'a': 'text'},
+ 'uchred_nameA' : {'t': 'x', 's': '//DIV[@sbisname="brwУчредители"]//DIV[@class="ws-ellipsis"]/SPAN[not(@class)]',
+                   'a': 'text'},
     'dochki'    : {'t': 'x', 's': '//DIV[@sbisname="brwДочерниеКомпании"]//DIV[@class="ws-browser-cell-paddings"]'
                                   '/DIV[@title]', 'a': 'title'},
     'inn_spisA' : {'t': 'x', 's': '//DIV[@sbisname="contragentsBrowser"]//DIV[@class="Contragents-CommonRenders_'
@@ -95,6 +101,7 @@ B = {
    'okved-listD': {'t': 'x', 's': '//DIV[@sbisname="okvedSelector"]//TR[@data-id]//DIV[@title="'},
     'sbis-listA': {'t': 'x', 's': '//DIV[@sbisname="vdSelector"]//TR[@data-id]//DIV[text()]', 'a': 'text'},
     'sbis-listD': {'t': 'x', 's': '//DIV[@sbisname="vdSelector"]//TR[@data-id]//DIV[text()="'},
+    'more_uchr' : {'t': 'x', 's': '//DIV[@sbisname="btnЕщеУчредители"]'},
 
     'cats'      : {'t': 'c', 's': 'controls-DropdownList__item-text'},
     'firms_c'   : {'t': 'c', 's': 'controls-DataGridView__tr'},

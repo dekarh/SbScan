@@ -22,7 +22,7 @@ read_cursor = dbconn.cursor()
 write_cursor = dbconn.cursor()
 
 print('\n\n', datetime.strftime(datetime.now(), "%H:%M:%S"), 'Начинаем экспорт из БД в excel')
-read_cursor.execute('SELECT * FROM main WHERE data_id >-1;')
+read_cursor.execute('SELECT * FROM main WHERE inn >-1;')
 rows = read_cursor.fetchall()
 
 head = []                                           # Заголовок excel
@@ -44,7 +44,7 @@ for i, row in enumerate(rows):
                     rez_cell = '{:0>10d}'.format(cell)
             elif head[j] == 'kpp':
                 rez_cell = '{:0>9d}'.format(cell)
-            elif head[j] == 'data_id' or head[j] == 'act_num':
+            elif head[j] == 'id' or head[j] == 'act_num':
                 rez_cell = str(cell)
             elif head[j] == 'phone_1' or head[j] == 'phone_2' or head[j] == 'phone_3' or head[j] == 'phone_4' or \
                             head[j] == 'phone_5':
