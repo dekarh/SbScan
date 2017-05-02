@@ -190,10 +190,8 @@ driver.execute_script("return arguments[0].scrollIntoView();", elem) # Здес�
 driver.execute_script("window.scrollTo(0, 911)") # Здесь вообще не прокручивает
 
 """
-def chk(d, t, s, f = '', a = '', data_id = ''): # Проверка наличия элемента, не вызывающая исключения
+def chk(d, t, s, f = '', a = ''): # Проверка наличия элемента, не вызывающая исключения
     wj(d)
-    if data_id != '':
-        data_id += '"]'
     try:
         if   t == 'i':
             d.find_element(By.ID, s)
@@ -250,7 +248,7 @@ def p(d, t, f, s, a = '', data_id = '', e = ''):
                 else:
                     return [atr.get_attribute(a) for atr in foo]
         elif f == 'vv':
-            if chk(d = d, t = t, s = s + data_id):
+            if chk(d = d, t = t, s = s):
                 wj(d)
                 foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.ID, s)))
                 wj(d)
@@ -268,7 +266,7 @@ def p(d, t, f, s, a = '', data_id = '', e = ''):
                     return ['']
 
         elif f == 'p':
-            if chk(d = d, t = t, s = s + data_id):
+            if chk(d = d, t = t, s = s):
                 wj(d)
                 foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.ID, s)))
                 wj(d)
@@ -285,7 +283,7 @@ def p(d, t, f, s, a = '', data_id = '', e = ''):
                 else:
                     return ''
         elif f == 'ps':
-            if chk(d = d, t = t, s = s + data_id):
+            if chk(d = d, t = t, s = s):
                 wj(d)
                 foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.ID, s)))
                 wj(d)
@@ -335,7 +333,7 @@ def p(d, t, f, s, a = '', data_id = '', e = ''):
                 else:
                     return [atr.get_attribute(a) for atr in foo]
         elif f == 'vv':
-            if chk(d = d, t = t, s = s + data_id):
+            if chk(d = d, t = t, s = s + data_id + e):
                 wj(d)
                 foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.XPATH, s + data_id + e)))
                 wj(d)
@@ -352,7 +350,7 @@ def p(d, t, f, s, a = '', data_id = '', e = ''):
                 else:
                     return ['']
         elif f == 'p':
-            if chk(d = d, t = t, s = s + data_id):
+            if chk(d = d, t = t, s = s + data_id + e):
                 wj(d)
                 foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.XPATH, s + data_id + e)))
                 wj(d)
@@ -369,7 +367,7 @@ def p(d, t, f, s, a = '', data_id = '', e = ''):
                 else:
                     return ''
         elif f == 'ps':
-            if chk(d = d, t = t, s = s + data_id):
+            if chk(d = d, t = t, s = s + data_id + e):
                 wj(d)
                 foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.XPATH, s + data_id + e)))
                 wj(d)
@@ -417,7 +415,7 @@ def p(d, t, f, s, a = '', data_id = '', e = ''):
                 else:
                     return [atr.get_attribute(a) for atr in foo]
         elif f == 'vv':
-            if chk(d = d, t = t, s = s + data_id):
+            if chk(d = d, t = t, s = s):
                 wj(d)
                 foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.CLASS_NAME, s)))
                 wj(d)
@@ -434,7 +432,7 @@ def p(d, t, f, s, a = '', data_id = '', e = ''):
                 else:
                     return ['']
         elif f == 'p':
-            if chk(d = d, t = t, s = s + data_id):
+            if chk(d = d, t = t, s = s):
                 wj(d)
                 foo = WebDriverWait(d, 20).until(EC.presence_of_element_located((By.CLASS_NAME, s)))
                 wj(d)
@@ -451,7 +449,7 @@ def p(d, t, f, s, a = '', data_id = '', e = ''):
                 else:
                     return ''
         elif f == 'ps':
-            if chk(d = d, t = t, s = s + data_id):
+            if chk(d = d, t = t, s = s):
                 wj(d)
                 foo = WebDriverWait(d, 20).until(EC.presence_of_all_elements_located((By.CLASS_NAME, s)))
                 wj(d)

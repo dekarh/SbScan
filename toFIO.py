@@ -37,6 +37,11 @@ wj(driver)
 set_filter(driver, **scanconfig)
 wj(driver)
 
+read_cursor.execute('SELECT main_inn FROM main2fio WHERE id >-1 GROUP BY main_inn;')
+stored_inns_main2fio = read_cursor.fetchall()
+stored_inns = []
+for h in stored_inns_main2fio:
+    stored_inns.append(h[0])
 read_cursor.execute('SELECT inn FROM main WHERE inn >-1;')
 had_inns_db = read_cursor.fetchall()
 had_inns = []
@@ -46,6 +51,12 @@ print('\n\n\n----------------------------------\n', datetime.strftime(datetime.n
       'Начинаем доп. сканирование учредителей. Всего спарсено компаний:', len(had_inns),
       '\n----------------------------------\n\n\n')
 for i, had_inn in enumerate(had_inns):
+    pass_string = False
+    for h in stored_inns:
+        if h == had_inn:
+            pass_string = True
+    if pass_string:
+        continue
     g = 0
     while g < 1000:
         try:
