@@ -37,11 +37,13 @@ wj(driver)
 set_filter(driver, **scanconfig)
 wj(driver)
 
-read_cursor.execute('SELECT main_inn FROM main2fio WHERE id >-1 GROUP BY main_inn;')
-stored_inns_main2fio = read_cursor.fetchall()
-stored_inns = []
-for h in stored_inns_main2fio:
-    stored_inns.append(h[0])
+read_cursor.execute('SELECT inn_f FROM log WHERE id >-1 GROUP BY inn_f;')
+logged_inns_db = read_cursor.fetchall()
+logged_inns = []
+logged_inns_t = []
+for h in logged_inns_db:
+    logged_inns.append(h[0])
+    logged_inns_t.append((h[0],))
 read_cursor.execute('SELECT inn FROM main WHERE inn >-1;')
 had_inns_db = read_cursor.fetchall()
 had_inns = []
@@ -52,15 +54,18 @@ print('\n\n\n----------------------------------\n', datetime.strftime(datetime.n
       '\n----------------------------------\n\n\n')
 for i, had_inn in enumerate(had_inns):
     pass_string = False
-    for h in stored_inns:
+    for h in logged_inns:
         if h == had_inn:
             pass_string = True
     if pass_string:
         continue
     g = 0
+    inn = had_inn
+    logged_inns.append(had_inn)
+    logged_inns_t.append((had_inn,))
+#    inn = 3015055287
     while g < 1000:
         try:
-            inn = had_inn
             search = p(d = driver, f = 'c', **B['search'])
             wj(driver)
             if inn > 9999999999:
@@ -87,7 +92,6 @@ for i, had_inn in enumerate(had_inns):
             if firm_full_name == '':
                 firm_full_name = p(d = driver, f = 'p', **B['familyA']) + ' ' + p(d = driver, f = 'p', **B['nameA'])\
                                  + ' ' + p(d = driver, f = 'p', **B['surnameA'])
-
             firm_full_names = firm_full_name.split()
             for ffn_i in firm_full_names:
                 if ffn_i.strip().lower().startswith('акционерное') \
@@ -145,6 +149,8 @@ for i, had_inn in enumerate(had_inns):
             wj(driver)
             for j, uchred_id in enumerate(uchred_ids):
                 uchred_name = p(d=driver, f='p', data_id = uchred_id, **B['uchred_nameAD'])
+                if uchred_name == '':
+                    continue
                 uchred_inn = p(d=driver, f='p', data_id = uchred_id, **B['uchred_innAD'])
                 uchred_percent = p(d=driver, f='p', data_id = uchred_id, **B['uchred_%AD'])
                 if l(uchred_inn) > 9999999999 and l(uchred_percent) > 1:
@@ -180,7 +186,7 @@ for i, had_inn in enumerate(had_inns):
                 break
 
             print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Сохранил учредителей компании (ИНН ', inn_str,
-                  ') всего сохранено:', i, 'из:', len(had_inns))
+                  ') всего сохранено:', len(logged_inns), 'из:', len(had_inns))
             if len(had_inns) % 100 == 0:
                 print('\n---------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
                       'Спарсено', len(had_inns), '\n---------------------------\n')
@@ -198,6 +204,11 @@ for i, had_inn in enumerate(had_inns):
                driver.close()
                print('\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
                       'Слишком много ошибок: ', ee, '\n начнем-ка заново :)\n----------------------------------\n\n')
+
+               write_cursor.execute('DELETE FROM log WHERE id > -1')
+               logged_inns_t.pop()
+               write_cursor.executemany('INSERT INTO log(inn_f) VALUES(%s)', logged_inns_t)
+               dbconn.commit()
                sys.exit()
             print('\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
                   'Ошибка: ')
