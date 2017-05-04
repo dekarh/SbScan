@@ -38,6 +38,8 @@ set_filter(driver, **scanconfig)
 wj(driver)
 
 read_cursor.execute('SELECT inn_f FROM log WHERE id >-1 GROUP BY inn_f;')
+# Если надо добавить из mai2fio (не забыть закомментить DELETE FROM внизу)
+#read_cursor.execute('SELECT main_inn FROM main2fio WHERE id >-1 GROUP BY main_inn;')
 logged_inns_db = read_cursor.fetchall()
 logged_inns = []
 logged_inns_t = []
@@ -60,12 +62,12 @@ for i, had_inn in enumerate(had_inns):
     if pass_string:
         continue
     g = 0
-    inn = had_inn
-    logged_inns.append(had_inn)
-    logged_inns_t.append((had_inn,))
-#    inn = 3015055287
     while g < 1000:
         try:
+            inn = had_inn
+            logged_inns.append(had_inn)
+            logged_inns_t.append((had_inn,))
+            #    inn = 3015055287
             search = p(d = driver, f = 'c', **B['search'])
             wj(driver)
             if inn > 9999999999:
@@ -200,15 +202,16 @@ for i, had_inn in enumerate(had_inns):
             break
         except Exception as ee:
             err_count += 1
+            write_cursor.execute('DELETE FROM log WHERE id > -1')
+            logged_inns_t.pop()
+            logged_inns.pop()
+            write_cursor.executemany('INSERT INTO log(inn_f) VALUES(%s)', logged_inns_t)
+            dbconn.commit()
             if err_count > 10:
                driver.close()
                print('\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
                       'Слишком много ошибок: ', ee, '\n начнем-ка заново :)\n----------------------------------\n\n')
 
-               write_cursor.execute('DELETE FROM log WHERE id > -1')
-               logged_inns_t.pop()
-               write_cursor.executemany('INSERT INTO log(inn_f) VALUES(%s)', logged_inns_t)
-               dbconn.commit()
                sys.exit()
             print('\n\n----------------------------------\n', datetime.strftime(datetime.now(), "%H:%M:%S"),
                   'Ошибка: ')
