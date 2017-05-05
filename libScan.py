@@ -508,10 +508,8 @@ def to_spisok(driver):
             continue
         except Exception as ee:
             print(datetime.strftime(datetime.now(), "%H:%M:%S"), 'Ошибка в to_spisok', ee)
-            err_count += 1
-            if err_count > 10:
-                driver.close()
-                sys.exit()
+            driver.close()
+            sys.exit()
             continue
 
 def set_filter(driver, use_category = 'True', type_category = 'СБИС', category = 'Страхование, пенсионное обеспечение',
@@ -601,9 +599,7 @@ def set_filter(driver, use_category = 'True', type_category = 'СБИС', catego
             else:
                 return
         except Exception as ee:
-            err_count += 1
             print(datetime.strftime(datetime.now(), "%H:%M:%S"), ' Ошибка в set_filter:\n', ee)
-            if err_count > 10:
-                driver.close()
-                sys.exit()
+            driver.close()
+            sys.exit()
             continue
