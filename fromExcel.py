@@ -32,8 +32,22 @@ for i, row in enumerate(sheet.rows):
         continue
     id = l(row[0].value)
     id_fil = l(row[1].value)
+    name_words = []
     name = row[2].value
+    if str(type(name)) == "<class 'str'>":
+        for n in name.split(' '):                  # Формируем tuple для таблицы ключевых слов
+            name_words.append((id, n))
     full_name = row[3].value
+    if str(type(full_name)) == "<class 'str'>":    # Формируем tuple для таблицы ключевых слов
+        for n in full_name.split(' '):
+            name_words.append((id, n))
+    for j, nam in enumerate(name_words):
+        n = nam[1].lower()
+        if n == 'ооо' or n == 'ип' or n == 'ао' or n == 'аозт' or n == 'пао' or n == 'оао' or n == 'служба' \
+                or n == 'компания' or n == 'фирма' or n == 'магазин' or n == 'мастерская' or n == 'центр' \
+                or n == 'астрахань' or n == 'астрахани' or n == 'администрация' or n == 'организация' \
+                or n == 'отделение' or n == 'предприятие' or n == 'завод' or n == 'астраханская' or n == 'комитет':
+            name_words.pop(j)
     if row[4].value.lower().startswith('г. астрах'):
         address = row[4].value.upper() + ', ' + row[5].value.upper()
     else:
