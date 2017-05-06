@@ -9,7 +9,7 @@ from datetime import datetime
 import openpyxl
 from openpyxl import Workbook
 
-from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l, read_config
+from libScan import wj, p, B, chk, authorize, to_spisok, set_filter, l, read_config, norm_phone
 
 dbconfig = read_config(section='mysql')
 exlconfig = read_config(section='excel_input')
@@ -49,23 +49,33 @@ for i, row in enumerate(sheet.rows):
                 or n == 'отделение' or n == 'предприятие' or n == 'завод' or n == 'астраханская' or n == 'комитет':
             name_words.pop(j)
     if row[4].value.lower().startswith('г. астрах'):
-        address = row[4].value.upper() + ', ' + row[5].value.upper()
+        address = row[4].value.upper() + ', ' + row[5].value.upper() + ', ' + row[6].value.upper()
     else:
         address = 'АСТРАХАНСКАЯ ОБЛ, ' + row[4].value.upper().split(',')[1] + ', ' + row[4].value.upper().split(',')[0]\
-                  + ', '+ row[5].value.upper()
+                  + ', '+ row[5].value.upper() + ', ' + row[6].value.upper()
     phones_all = []
-    mob = row[6].value
+    mob = row[7].value
     if str(type(mob)) == "<class 'str'>":
         for phone in mob.split(';'):
-            phones_all.append((id, 'мобильный', phone))
-    no_mob = row[7].value
+            phones_all.append((id, 'мобильный', norm_phone(phone)))
+    no_mob = row[8].value
     if str(type(no_mob)) == "<class 'str'>":
         for phone in no_mob.split(';'):
-            phones_all.append((id, 'стационарный', phone))
-    fax = row[8].value
+            phones_all.append((id, 'стационарный', norm_phone(phone)))
+    fax = row[9].value
     if str(type(fax)) == "<class 'str'>":
         for phone in fax.split(';'):
-            phones_all.append((id, 'факс', phone))
+            phones_all.append((id, 'факс', norm_phone(phone)))
+    contacts = []
+    wwws = row[10].value
+    if str(type(wwws)) == "<class 'str'>":
+        for www in wwws.split('|'):
+            contacts.append((id, 'www', www.strip()))
+    emails = row[11].value
+    if str(type(emails)) == "<class 'str'>":
+        for email in emails.split(','):
+            contacts.append((id, 'e-mail', email.strip()))
+
     q=0
 
 

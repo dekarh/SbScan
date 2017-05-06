@@ -167,6 +167,19 @@ def l(a):
     except TypeError:
         return 0
 
+def norm_phone(tel):
+    tel = str(tel).strip()
+    if tel == '' or tel == None:
+        return None
+    else:
+        tel = ''.join([char for char in tel if char in string.digits])
+        if len(tel) == 11:
+            if tel[0] in ['8', '9']:
+                return int('7' + tel[1:])
+        elif len(tel) == 10:
+            return int('7' + tel)
+        else:
+            return  None
 
 
 def wj(driver):  # Ждем, пока динамическая ява завершит все свои процессы
