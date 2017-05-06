@@ -123,13 +123,16 @@ B = {
 
 def unique(lst):
     seen = set()
-    result = []
-    for x in lst:
-        if x in seen:
-            continue
-        seen.add(x)
-        result.append(x)
-    return result
+    j = 0
+    while j < len(lst)-1:
+        for i, x in enumerate(lst):
+            j = i
+            if x in seen:
+                lst.pop(i)
+                seen = set()
+                break
+            seen.add(x)
+    return
 
 def read_config(filename='config.ini', section='mysql'):
     """ Read database configuration file and return a dictionary object
@@ -167,6 +170,27 @@ def l(a):
     except TypeError:
         return 0
 
+def s(a):
+    try:
+        if a != None:
+            return str(a).strip().replace(u"\xa0", u" ")
+        return ''
+    except TypeError:
+        return ''
+
+def append_words(a, n_words):
+    try:
+        if a != None:
+            for a1 in a.split(','):
+                for a2 in a1.split(';'):
+                    for a3 in a2.split(' '):
+                        if a3 != '':
+                            n_words.append(a3)
+            unique(n_words)
+        return
+    except TypeError:
+        return
+
 def norm_phone(tel):
     tel = str(tel).strip()
     if tel == '' or tel == None:
@@ -176,10 +200,16 @@ def norm_phone(tel):
         if len(tel) == 11:
             if tel[0] in ['8', '9']:
                 return int('7' + tel[1:])
+            elif tel[0] == '7':
+                return int(tel)
+            else:
+                return None
         elif len(tel) == 10:
             return int('7' + tel)
+        elif len(tel) == 6:
+            return int('78512' + tel)
         else:
-            return  None
+            return None
 
 
 def wj(driver):  # Ждем, пока динамическая ява завершит все свои процессы

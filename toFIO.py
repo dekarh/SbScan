@@ -147,7 +147,7 @@ for i, had_inn in enumerate(had_inns):
                 time.sleep(4)
 
             uchred_ids = p(d=driver, f='ps', **B['uchredsA'])
-            uchred_ids = unique(uchred_ids)
+            unique(uchred_ids)
             wj(driver)
             for j, uchred_id in enumerate(uchred_ids):
                 uchred_name = p(d=driver, f='p', data_id = uchred_id, **B['uchred_nameAD'])
