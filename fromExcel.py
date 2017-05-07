@@ -109,7 +109,6 @@ try:
 except Exception as ee:
     q = 0
 
-wb.save(**exlconfig)
 dbconn.close()
 
 
