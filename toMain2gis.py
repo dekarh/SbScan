@@ -4,23 +4,12 @@
 # Поиск соответствий между базами
 #
 
-propusk = [
-    'ооо', 'ип', 'ао','ao' 'аозт', 'пао', 'оао', 'служба', 'компания', 'фирма', 'магазин', 'мастерская', 'центр',
-    'астрахань', 'астрахани', 'астраханская', 'астраханское', 'астраханский', 'астраханские', 'администрация',
-    'организация', 'отделение', 'предприятие', 'завод', 'комитет', 'филиал', 'и', 'а', 'в', 'от', 'под', 'на', 'или',
-    'общество', 'с', 'ограниченной', 'ответственностью', 'г', 'субфилиал', 'астраханской', 'области', 'дополнительного',
-    'образования', 'плюс', 'некоммерческая', 'некоммерческий', 'некоммерческое', 'профессионального', 'автономная',
-    'по', 'миграции', 'оказанию', 'помощи', 'школа', 'бюро', 'институт', 'рабочий', 'поселок', 'муниципального',
-    'фабрика', 'научно-исследовательский', 'производственное', 'объединение', 'производственная', 'торговый',
-    'строительная', 'комбинат', 'ассоциация', 'общественная'
-           ]
-
 from mysql.connector import MySQLConnection, Error
 from datetime import datetime
 import openpyxl
 from openpyxl import Workbook
 
-from libScan import l, s, read_config, norm_phone, append_words
+from libScan import l, s, read_config, norm_phone, append_words, propusk
 
 dbconfig = read_config(section='mysql')
 dbconn = MySQLConnection(**dbconfig)  # Открываем БД из конфиг-файла
@@ -42,13 +31,21 @@ for i, row in enumerate(rows):
     n_words = []
     append_words(firm_full_name.replace('"',' ').replace('.',' ').replace('(',' ').replace(')',' '), n_words)
     for n in n_words:
-        if n.lower() in propusk:
-            continue
-        else:
+        is_skip = False
+        for p in propusk:
+            if p[len(p)-1:] == '%':
+                if n.lower().startswith(p[:len(p)-1]):
+                    is_skip = True
+                    break
+            else:
+                if n.lower() == p:
+                    is_skip = True
+                    break
+        if not is_skip:
             name_words.append(n)
     if len(name_words) > 0:
         name_words_t = (name_words[0],)
-        sql = 'SELECT id_from_gis, name_word FROM new_scan.name_words WHERE '
+        sql = 'SELECT id_from_gis, name_word FROM name_words WHERE '
         for j, n in enumerate(name_words):
             if j == 0:
                 sql += 'name_word = %s'

@@ -163,12 +163,12 @@ for i, had_inn in enumerate(had_inns):
                         surname_fio = fio_fio[2]
                     else:
                         surname_fio = ''
-                    read_cursor.execute('SELECT * FROM fio WHERE fio.inn_fio = %s;', (uchred_inn,))
+                    read_cursor.execute('SELECT * FROM fio WHERE inn_fio = %s;', (uchred_inn,))
                     had_fio = read_cursor.fetchall()
                     if len(had_fio) < 1:
                         sql = 'INSERT INTO fio(inn_fio, name, surname, family) VALUES(%s,%s,%s,%s)'
                         write_cursor.execute(sql, (uchred_inn, name_fio, surname_fio, family_fio))
-                    read_cursor.execute('SELECT * FROM main WHERE main.inn = %s AND main.kpp = %s;', (inn, kpp))
+                    read_cursor.execute('SELECT * FROM main WHERE inn = %s AND kpp = %s;', (inn, kpp))
                     had_main = read_cursor.fetchall()
                     if len(had_main) < 1:
                         sql = 'INSERT INTO main(inn, kpp, firm_full_name, cost, summ) VALUES(%s,%s,%s,%s,%s)'

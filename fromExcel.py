@@ -4,18 +4,12 @@
 # Загрузка базы фирм из excel
 #
 
-propusk = [
-    'ооо', 'ип', 'ао','ao' 'аозт', 'пао', 'оао', 'служба', 'компания', 'фирма', 'магазин', 'мастерская', 'центр',
-    'астрахань', 'астрахани', 'астраханская', 'астраханское', 'астраханский', 'астраханские', 'администрация',
-    'организация', 'отделение', 'предприятие', 'завод', 'комитет', 'филиал', 'и', 'а', 'в', 'от', 'под', 'на', 'или'
-           ]
-
 from mysql.connector import MySQLConnection, Error
 from datetime import datetime
 import openpyxl
 from openpyxl import Workbook
 
-from libScan import l, s, read_config, norm_phone, append_words
+from libScan import l, s, read_config, norm_phone, append_words, propusk
 
 dbconfig = read_config(section='mysql')
 exlconfig = read_config(section='excel_input')
@@ -46,10 +40,18 @@ try:
         append_words(name,n_words)
         append_words(full_name,n_words)
         for n in n_words:
-            if n.lower() in propusk:
-                continue
-            else:
-                name_words.append((id,n))
+            is_skip = False
+            for p in propusk:
+                if p[len(p) - 1:] == '%':
+                    if n.lower().startswith(p[:len(p)-1]):
+                        is_skip = True
+                        break
+                else:
+                    if n.lower() == p:
+                        is_skip = True
+                        break
+            if not is_skip:
+                name_words.append((id, n))
         if len(s(row[4].value).upper().split(',')) < 2:
             address = s(row[4].value).upper() + ', ' + s(row[5].value).upper() + ', ' + s(row[6].value).upper()
         else:
