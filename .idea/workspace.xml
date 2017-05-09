@@ -4,6 +4,7 @@
     <list default="true" id="1a46294c-e140-42a2-acde-f031ebcfc596" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fromExcel.py" afterPath="$PROJECT_DIR$/fromExcel.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libScan.py" afterPath="$PROJECT_DIR$/libScan.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,10 +15,10 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/SbScan$toFIO.coverage" NAME="toFIO Coverage Results" MODIFIED="1494008494121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SbScan$toMain2gis.coverage" NAME="toMain2gis Coverage Results" MODIFIED="1494179711320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SbScan$toMain2gis.coverage" NAME="toMain2gis Coverage Results" MODIFIED="1494246282464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SbScan$preScan.coverage" NAME="preScan Coverage Results" MODIFIED="1493261472673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SbScan$mainScan.coverage" NAME="mainScan Coverage Results" MODIFIED="1493476925146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SbScan$fromExcel.coverage" NAME="fromExcel Coverage Results" MODIFIED="1494182805203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SbScan$fromExcel.coverage" NAME="fromExcel Coverage Results" MODIFIED="1494243458635" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -52,7 +53,7 @@
       <file leaf-file-name="mainScan.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mainScan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5022">
+            <state relative-caret-position="18">
               <caret line="294" column="24" lean-forward="false" selection-start-line="294" selection-start-column="24" selection-end-line="294" selection-end-column="24" />
               <folding>
                 <element signature="e#114#144#0" expanded="true" />
@@ -87,29 +88,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fromExcel.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fromExcel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fromExcel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+            <state relative-caret-position="332">
+              <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
               <folding>
                 <element signature="e#60#110#0" expanded="true" />
-                <marker date="1494183861201" expanded="true" signature="685:717" ph="SELECT * FRO... main" />
-                <marker date="1494183861201" expanded="true" signature="3736:3779" ph="SELECT * FRO... two_gis" />
-                <marker date="1494183861201" expanded="true" signature="3885:3978" ph="INSERT INTO two_gis... " />
-                <marker date="1494183861201" expanded="true" signature="4081:4141" ph="INSERT INTO name_words... " />
-                <marker date="1494183861201" expanded="true" signature="4208:4271" ph="INSERT INTO phones... " />
-                <marker date="1494183861201" expanded="true" signature="4338:4405" ph="INSERT INTO phones... " />
+                <marker date="1494243296212" expanded="true" signature="685:717" ph="SELECT * FRO... main" />
+                <marker date="1494243296212" expanded="true" signature="4041:4084" ph="SELECT * FRO... two_gis" />
+                <marker date="1494243296212" expanded="true" signature="4178:4271" ph="INSERT INTO two_gis... " />
+                <marker date="1494243296212" expanded="true" signature="4366:4426" ph="INSERT INTO name_words... " />
+                <marker date="1494243296212" expanded="true" signature="4485:4548" ph="INSERT INTO phones... " />
+                <marker date="1494243296212" expanded="true" signature="4607:4674" ph="INSERT INTO phones... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="toMain2gis.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="toMain2gis.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/toMain2gis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="36" column="52" lean-forward="false" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+            <state relative-caret-position="972">
+              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding>
                 <element signature="e#64#114#0" expanded="true" />
                 <marker date="1494180079358" expanded="true" signature="559:614" ph="SELECT inn, main" />
@@ -163,8 +164,8 @@
       <file leaf-file-name="libScan.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libScan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+            <state relative-caret-position="-1132">
+              <caret line="123" column="13" lean-forward="false" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
               <folding>
                 <element signature="e#51#81#0" expanded="true" />
               </folding>
@@ -230,7 +231,7 @@
     <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -243,24 +244,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SbScan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SbScan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -284,7 +268,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.fromExcel">
+  <component name="RunManager" selected="Python.toMain2gis">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -784,7 +768,21 @@
       <option name="project" value="LOCAL" />
       <updated>1494182750693</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Убрал сохранение экселевского файла, открытого на чтение :)">
+      <created>1494183906210</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1494183906210</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Добавил слов в propusk">
+      <created>1494189884240</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1494189884240</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -866,8 +864,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил функцию i() для преобразования строки в целое посимвольно" />
-    <MESSAGE value="Сделал data_id автогенерируемым ключом в таблице main&#10;Разобрался с конвертацией целых чисел" />
     <MESSAGE value="Отладил конвертацию целых чисел&#10;Отладил и оптимизировал preScan.py&#10;Сделал информативный лог в preScan.py" />
     <MESSAGE value="Сделал информативный лог в mainScan.py&#10;Сделал пропуск сбойных ИНН, не находящихся в категории" />
     <MESSAGE value="Добавил конвертер в excel toExcel.py&#10;Перенес функцию read_config в  libScan.py" />
@@ -891,7 +887,9 @@
     <MESSAGE value="fromExcel.py отладил" />
     <MESSAGE value="toMain2gis.py написал и отладил" />
     <MESSAGE value="Перевел propusk в libScan.py&#10;Убрал название БД в SQL запросах&#10;Добавил еще один вызов unique() в append_words&#10;Добавил и отладил возможность использования % в propusk" />
-    <option name="LAST_COMMIT_MESSAGE" value="Перевел propusk в libScan.py&#10;Убрал название БД в SQL запросах&#10;Добавил еще один вызов unique() в append_words&#10;Добавил и отладил возможность использования % в propusk" />
+    <MESSAGE value="Убрал сохранение экселевского файла, открытого на чтение :)" />
+    <MESSAGE value="Добавил слов в propusk" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил слов в propusk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -906,11 +904,6 @@
           <line>183</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/fromExcel.py</url>
-          <line>109</line>
-          <option name="timeStamp" value="118" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -919,16 +912,9 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="153" />
+      <option name="time" value="158" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="len(lst)" language="Python" />
-        <watch expression="s(row[4].value).lower().replace(u&quot;\xa0&quot;, u&quot; &quot;).startswith('г. астрах')" language="Python" />
-        <watch expression="ord(s(row[4].value)[2])" language="Python" />
-        <watch expression="words[0]" language="Python" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///usr/lib/python3/dist-packages/mysql/connector/network.py">
@@ -1296,19 +1282,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mainScan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5022">
-          <caret line="294" column="24" lean-forward="false" selection-start-line="294" selection-start-column="24" selection-end-line="294" selection-end-column="24" />
-          <folding>
-            <element signature="e#114#144#0" expanded="true" />
-            <marker date="1493716830047" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
-            <marker date="1493716830047" expanded="true" signature="1570:1604" ph="SELECT inn F... main" />
-            <marker date="1493716830047" expanded="true" signature="11848:12552" ph="INSERT INTO main... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SbScan.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4788">
@@ -1391,42 +1364,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mainScan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="294" column="24" lean-forward="false" selection-start-line="294" selection-start-column="24" selection-end-line="294" selection-end-column="24" />
+          <folding>
+            <element signature="e#114#144#0" expanded="true" />
+            <marker date="1493716830047" expanded="true" signature="1474:1511" ph="SELECT inn F... pre_scan" />
+            <marker date="1493716830047" expanded="true" signature="1570:1604" ph="SELECT inn F... main" />
+            <marker date="1493716830047" expanded="true" signature="11848:12552" ph="INSERT INTO main... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/libScan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+        <state relative-caret-position="-1132">
+          <caret line="123" column="13" lean-forward="false" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
           <folding>
             <element signature="e#51#81#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fromExcel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding>
+            <element signature="e#60#110#0" expanded="true" />
+            <marker date="1494243296212" expanded="true" signature="685:717" ph="SELECT * FRO... main" />
+            <marker date="1494243296212" expanded="true" signature="4041:4084" ph="SELECT * FRO... two_gis" />
+            <marker date="1494243296212" expanded="true" signature="4178:4271" ph="INSERT INTO two_gis... " />
+            <marker date="1494243296212" expanded="true" signature="4366:4426" ph="INSERT INTO name_words... " />
+            <marker date="1494243296212" expanded="true" signature="4485:4548" ph="INSERT INTO phones... " />
+            <marker date="1494243296212" expanded="true" signature="4607:4674" ph="INSERT INTO phones... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/toMain2gis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="36" column="52" lean-forward="false" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+        <state relative-caret-position="972">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
             <element signature="e#64#114#0" expanded="true" />
             <marker date="1494180079358" expanded="true" signature="559:614" ph="SELECT inn, main" />
             <marker date="1494180079358" expanded="true" signature="601:614" ph="SELECT * FRO... main" />
             <marker date="1494180079358" expanded="true" signature="1443:1494" ph="SELECT id_fr... name_words" />
             <marker date="1494180079358" expanded="true" signature="1942:2021" ph="INSERT INTO main2gis... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fromExcel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding>
-            <element signature="e#60#110#0" expanded="true" />
-            <marker date="1494183861201" expanded="true" signature="685:717" ph="SELECT * FRO... main" />
-            <marker date="1494183861201" expanded="true" signature="3736:3779" ph="SELECT * FRO... two_gis" />
-            <marker date="1494183861201" expanded="true" signature="3885:3978" ph="INSERT INTO two_gis... " />
-            <marker date="1494183861201" expanded="true" signature="4081:4141" ph="INSERT INTO name_words... " />
-            <marker date="1494183861201" expanded="true" signature="4208:4271" ph="INSERT INTO phones... " />
-            <marker date="1494183861201" expanded="true" signature="4338:4405" ph="INSERT INTO phones... " />
           </folding>
         </state>
       </provider>
