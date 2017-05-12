@@ -11,6 +11,7 @@ from PyQt5.QtCore import QDate
 from comparing_slots import MainWindowSlots
 
 
+
 class MainWindow(MainWindowSlots):
 
     # При инициализации класса нам необходимо выполнить некоторые операции
@@ -22,9 +23,10 @@ class MainWindow(MainWindowSlots):
 
     # Подключаем слоты к виджетам (для каждого действия, которое надо обработать - свой слот)
     def connect_slots(self):
-        self.pushButton.clicked.connect(self.calc_from_mysql)
-        self.calendarWidget.clicked.connect(self.chk_calendar)
-        self.calendarWidget_2.clicked.connect(self.chk_calendar)
+        self.tableFIOmain.clicked.connect(self.click_tableFIOmain)
+        self.tableFirms.clicked.connect(self.click_tableFirms)
+        self.tableFirm2gis.clicked.connect(self.click_table2GIS)
+#        self.pushButton.clicked.connect(sys(exit(app.exec())))
         return None
 
 if __name__ == '__main__':
