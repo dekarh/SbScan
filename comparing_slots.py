@@ -15,19 +15,22 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.dbconn = MySQLConnection(**dbconfig)  # Открываем БД из конфиг-файла
         self.read_cursor = self.dbconn.cursor()
         self.write_cursor = self.dbconn.cursor()
-        self.setup_tableFIOmain()
+        self.histories = {}
         self.okwed_lists = []
         self.tableFirms_inns = []
         self.GISids = []
         self.GISaddreses = []
         self.GISabouts = []
+        self.setup_tableFIOmain()
+        self.innFIO = self.tableFIOmain.model().index(0, 0).data()
+        self.last_innFIO = self.tableFIOmain.model().index(0, 0).data()
         return
 
     def setup_tableFIOmain(self):
         self.read_cursor.execute('SELECT f.inn_fio, f.family, f.`name`, f.surname, FORMAT((select sum(q.summ) '
                             'FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0),'
-                            'FORMAT((select sum(q.cost) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0) '
-                            'FROM fio AS f WHERE ROUND(f.inn_fio/10000000000)=30 '
+                            'FORMAT((select sum(q.cost) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0), '
+                            'f.history FROM fio AS f WHERE ROUND(f.inn_fio/10000000000)=30 '
                             'AND (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio)>10000000 '
                             'ORDER BY (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio) DESC;')
         rows = self.read_cursor.fetchall()
@@ -35,7 +38,10 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.tableFIOmain.setRowCount(len(rows))        # Кол-во строк из таблицы
         for i, row in enumerate(rows):
             for j, cell in enumerate(row):
-                self.tableFIOmain.setItem(i, j, QTableWidgetItem(str(cell)))
+                if j == len(row) - 1:
+                    self.histories[row[0]] = cell
+                else:
+                    self.tableFIOmain.setItem(i, j, QTableWidgetItem(str(cell)))
 
         # Устанавливаем заголовки таблицы
         self.tableFIOmain.setHorizontalHeaderLabels(["ИНН", "Фамилия", "Имя", "Отчество", "Прибыль", "Стоимость"])
@@ -61,7 +67,9 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         return
 
     def click_tableFIOmain(self, index):
-        self.setup_tableFirms(self.tableFIOmain.model().index(index.row(), 0).data())
+        self.innFIO = self.tableFIOmain.model().index(index.row(), 0).data()
+        self.updateHistory()
+        self.setup_tableFirms()
         self.click_tableFirms()
         self.click_table2GIS()
         g = 0
@@ -71,11 +79,24 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
 
         return None
 
-    def setup_tableFirms(self, inn_fio):
+    def updateHistory(self):
+        current = self.textHistory.toPlainText()
+        if self.histories[int(self.last_innFIO)] == None:
+            past = ''
+        else:
+            past = self.histories[int(self.last_innFIO)]
+        if current != past:
+            self.write_cursor.execute('UPDATE fio SET history = %s WHERE inn_fio = %s', (current, self.last_innFIO))
+            self.dbconn.commit()
+            self.histories[int(self.last_innFIO)] = current
+        self.last_innFIO = self.innFIO
+        self.textHistory.setText(self.histories[int(self.innFIO)])
+
+    def setup_tableFirms(self):
         self.read_cursor.execute("SELECT IF(LEFT(UCASE(m.firm_full_name),8) = 'ОБЩЕСТВО', "
                 "REPLACE(SUBSTR(UCASE(m.firm_full_name),42),'\"',' '), UCASE(m.firm_full_name)) AS `OOO`,"
                 " m.predstav, m.address, m.phone_1, m.phone_2, m.phone_3, m.phone_4, m.phone_5, m.act_list, m.inn "
-                "FROM main2fio AS q LEFT JOIN main AS m ON m.inn = q.main_inn WHERE q.fio_inn_fio = %s", (inn_fio,))
+                "FROM main2fio AS q LEFT JOIN main AS m ON m.inn = q.main_inn WHERE q.fio_inn_fio = %s", (self.innFIO,))
         rows = self.read_cursor.fetchall()
         self.tableFirms.setColumnCount(8)               # Устанавливаем кол-во колонок
         self.tableFirms.setRowCount(len(rows))          # Кол-во строк из таблицы
@@ -110,6 +131,7 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.setup_tableOKWED(self.okwed_lists[index.row()])
         self.setup_table2GIS(self.tableFirms_inns[index.row()])
         self.setup_tableFIO(self.tableFirms_inns[index.row()])
+        self.updateHistory()
         g = 0
 
     def setup_tableOKWED(self, okwed_list):
@@ -179,6 +201,8 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         if index == None:
             index = self.tableFirms.model().index(0, 0)
         self.setup_tableContacts2gis(index.row())
+        self.updateHistory()
+
 
     def setup_tableContacts2gis(self, row_number):
         self.read_cursor.execute('SELECT `type`, contact FROM contacts WHERE id_from_gis = %s',
