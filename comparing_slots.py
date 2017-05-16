@@ -131,6 +131,7 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         a = self.tableFirms.model().index(index.row(), 0).data()
         self.setup_tableOKWED(self.okwed_lists[index.row()])
         self.setup_table2GIS(self.tableFirms_inns[index.row()])
+        self.click_table2GIS()
         self.setup_tableFIO(self.tableFirms_inns[index.row()])
         self.updateHistory()
         g = 0
@@ -165,6 +166,8 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         return
 
     def setup_table2GIS(self, inn):
+        self.tableFirm2gis.setColumnCount(0)
+        self.tableFirm2gis.setRowCount(0)
         self.read_cursor.execute("SELECT g.word, t.full_name, t.id, t.address, t.opisan FROM main2gis AS g "
                                  "LEFT JOIN two_gis AS t ON g.id_from_gis=t.id "
                                  "LEFT JOIN main AS m ON g.main_inn=m.inn WHERE m.inn = %s", (inn,))
@@ -206,6 +209,10 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
 
 
     def setup_tableContacts2gis(self, row_number):
+        self.label_desc.clear()
+        self.label_addres.clear()
+        self.tableContacts2gis.setColumnCount(0)
+        self.tableContacts2gis.setRowCount(0)
         self.read_cursor.execute('SELECT `type`, contact FROM contacts WHERE id_from_gis = %s',
                                  (int(self.GISids[row_number]),))
         rows = self.read_cursor.fetchall()
@@ -230,6 +237,8 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         return
 
     def setup_tableFIO(self, inn):
+        self.tableFIO.setColumnCount(0)
+        self.tableFIO.setRowCount(0)
         self.read_cursor.execute('SELECT family, `name`, surname FROM main2fio AS q LEFT JOIN fio AS f '
                                  'ON q.fio_inn_fio = f.inn_fio WHERE q.main_inn = %s ORDER BY family', (inn,))
         rows = self.read_cursor.fetchall()
