@@ -95,10 +95,11 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
     def setup_tableFirms(self):
         self.read_cursor.execute("SELECT IF(LEFT(UCASE(m.firm_full_name),8) = 'ОБЩЕСТВО', "
                 "REPLACE(SUBSTR(UCASE(m.firm_full_name),42),'\"',' '), UCASE(m.firm_full_name)) AS `OOO`,"
-                " m.predstav, m.address, m.phone_1, m.phone_2, m.phone_3, m.phone_4, m.phone_5, m.act_list, m.inn "
+                " m.predstav, m.address, m.phone_1, m.phone_2, m.phone_3, m.phone_4, m.phone_5, FORMAT(q.summ,0),"
+                "FORMAT(q.cost,0), m.act_list, m.inn "
                 "FROM main2fio AS q LEFT JOIN main AS m ON m.inn = q.main_inn WHERE q.fio_inn_fio = %s", (self.innFIO,))
         rows = self.read_cursor.fetchall()
-        self.tableFirms.setColumnCount(8)               # Устанавливаем кол-во колонок
+        self.tableFirms.setColumnCount(10)               # Устанавливаем кол-во колонок
         self.tableFirms.setRowCount(len(rows))          # Кол-во строк из таблицы
         self.okwed_lists = []
         self.tableFirms_inns = []
@@ -113,7 +114,7 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
 
         # Устанавливаем заголовки таблицы
         self.tableFirms.setHorizontalHeaderLabels(['ООО', 'Представитель', 'Адрес', 'тел.1', 'тел.2', 'тел.3',
-                                                     'тел.4', 'тел.5'])
+                                                     'тел.4', 'тел.5', 'Сумма', 'Стоимость'])
 
         # Устанавливаем выравнивание на заголовки
         for i in range(8):
