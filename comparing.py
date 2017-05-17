@@ -23,6 +23,7 @@ class MainWindow(MainWindowSlots):
 
     # Подключаем слоты к виджетам (для каждого действия, которое надо обработать - свой слот)
     def connect_slots(self):
+        self.tableFIOmain.pressed.connect(self.click_tableFIOmain)
         self.tableFIOmain.clicked.connect(self.click_tableFIOmain)
         self.tableFirms.clicked.connect(self.click_tableFirms)
         self.tableFirm2gis.clicked.connect(self.click_table2GIS)
