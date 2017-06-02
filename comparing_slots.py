@@ -105,7 +105,7 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
                 "FORMAT(q.cost,0), m.inn, m.act_list, m.description "
                 "FROM main2fio AS q LEFT JOIN main AS m ON m.inn = q.main_inn WHERE q.fio_inn_fio = %s", (self.innFIO,))
         rows = self.read_cursor.fetchall()
-        self.tableFirms.setColumnCount(10)               # Устанавливаем кол-во колонок
+        self.tableFirms.setColumnCount(11)               # Устанавливаем кол-во колонок
         self.tableFirms.setRowCount(len(rows))          # Кол-во строк из таблицы
         self.okwed_lists = []
         self.tableFirms_inns = []
@@ -113,6 +113,10 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
             for j, cell in enumerate(row):
                 if j == len(row) - 3:
                     self.tableFirms_inns.append(cell)
+                    if cell == None:
+                        self.tableFirms.setItem(i, j, QTableWidgetItem(''))
+                    else:
+                        self.tableFirms.setItem(i, j, QTableWidgetItem(str(cell)))
                 if j == len(row) - 2:
                     self.okwed_lists.append(str(cell))
                 elif j == len(row) - 1:
@@ -125,7 +129,7 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
 
         # Устанавливаем заголовки таблицы
         self.tableFirms.setHorizontalHeaderLabels(['ООО', 'Представитель', 'Адрес', '', '', '',
-                                                     '', '', 'Сумма', 'Стоимость'])
+                                                     '', '', 'Сумма', 'Стоимость', 'ИНН'])
 
         # Устанавливаем выравнивание на заголовки
         for i in range(8):
