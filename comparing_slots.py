@@ -31,14 +31,14 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         return
 
     def setup_tableFIOmain(self):
-        self.read_cursor.execute('SELECT f.inn_fio, f.family, f.`name`, f.surname, FORMAT((select sum(q.summ) '
-                            'FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0),'
+        self.read_cursor.execute('SELECT f.inn_fio, CONCAT_WS(" ", f.`name`, f.surname, f.family), '
+                            'FORMAT((select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0),'
                             'FORMAT((select sum(q.cost) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0), '
                             'f.history FROM fio AS f WHERE ROUND(f.inn_fio/10000000000)=30 '
                             'AND (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio)>10000000 '
                             'ORDER BY (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio) DESC;')
         rows = self.read_cursor.fetchall()
-        self.tableFIOmain.setColumnCount(6)             # Устанавливаем кол-во колонок
+        self.tableFIOmain.setColumnCount(4)             # Устанавливаем кол-во колонок
         self.tableFIOmain.setRowCount(len(rows))        # Кол-во строк из таблицы
         for i, row in enumerate(rows):
             for j, cell in enumerate(row):
@@ -48,23 +48,19 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
                     self.tableFIOmain.setItem(i, j, QTableWidgetItem(str(cell)))
 
         # Устанавливаем заголовки таблицы
-        self.tableFIOmain.setHorizontalHeaderLabels(["ИНН", "Фамилия", "Имя", "Отчество", "Прибыль", "Стоимость"])
+        self.tableFIOmain.setHorizontalHeaderLabels(["ИНН", "Имя Отчество Фамилия", "Прибыль", "Стоимость"])
 
         # Устанавливаем всплывающие подсказки на заголовки
         self.tableFIOmain.horizontalHeaderItem(0).setToolTip("ИНН")
-        self.tableFIOmain.horizontalHeaderItem(1).setToolTip("Фамилия")
-        self.tableFIOmain.horizontalHeaderItem(2).setToolTip("Имя")
-        self.tableFIOmain.horizontalHeaderItem(3).setToolTip("Отчество")
-        self.tableFIOmain.horizontalHeaderItem(4).setToolTip("Прибыль")
-        self.tableFIOmain.horizontalHeaderItem(5).setToolTip("Стоимость")
+        self.tableFIOmain.horizontalHeaderItem(1).setToolTip("Имя Отчество Фамилия")
+        self.tableFIOmain.horizontalHeaderItem(2).setToolTip("Прибыль")
+        self.tableFIOmain.horizontalHeaderItem(3).setToolTip("Стоимость")
 
         # Устанавливаем выравнивание на заголовки
         self.tableFIOmain.horizontalHeaderItem(0).setTextAlignment(Qt.AlignCenter)
         self.tableFIOmain.horizontalHeaderItem(1).setTextAlignment(Qt.AlignCenter)
         self.tableFIOmain.horizontalHeaderItem(2).setTextAlignment(Qt.AlignCenter)
         self.tableFIOmain.horizontalHeaderItem(3).setTextAlignment(Qt.AlignCenter)
-        self.tableFIOmain.horizontalHeaderItem(4).setTextAlignment(Qt.AlignCenter)
-        self.tableFIOmain.horizontalHeaderItem(5).setTextAlignment(Qt.AlignCenter)
 
         # делаем ресайз колонок по содержимому
         self.tableFIOmain.resizeColumnsToContents()
@@ -105,8 +101,8 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
                 "FORMAT(q.cost,0), m.inn, m.act_list, m.description "
                 "FROM main2fio AS q LEFT JOIN main AS m ON m.inn = q.main_inn WHERE q.fio_inn_fio = %s", (self.innFIO,))
         rows = self.read_cursor.fetchall()
-        self.tableFirms.setColumnCount(11)               # Устанавливаем кол-во колонок
-        self.tableFirms.setRowCount(len(rows))          # Кол-во строк из таблицы
+        self.tableFirms.setColumnCount(12)               # Устанавливаем кол-во колонок
+        self.tableFirms.setRowCount(len(rows))           # Кол-во строк из таблицы
         self.okwed_lists = []
         self.tableFirms_inns = []
         for i, row in enumerate(rows):
@@ -278,17 +274,23 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
     def setup_tableFIO(self, inn):
         self.tableFIO.setColumnCount(0)
         self.tableFIO.setRowCount(0)
-        self.read_cursor.execute('SELECT family, `name`, surname FROM main2fio AS q LEFT JOIN fio AS f '
-                                 'ON q.fio_inn_fio = f.inn_fio WHERE q.main_inn = %s ORDER BY family', (inn,))
+        self.read_cursor.execute('SELECT f.inn_fio, CONCAT_WS(" ", f.`name`, f.surname, f.family), '
+                                 'FORMAT(q.summ,0), '
+                                 'FORMAT((select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0),'
+                                 'FORMAT(q.cost,0), '                                 
+                                 'FORMAT((select sum(q.cost) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0) '
+                                 'FROM main2fio AS q '
+                                 'LEFT JOIN fio AS f ON q.fio_inn_fio = f.inn_fio WHERE q.main_inn = %s '
+                                 'ORDER BY family', (inn,))
         rows = self.read_cursor.fetchall()
-        self.tableFIO.setColumnCount(3)             # Устанавливаем кол-во колонок
+        self.tableFIO.setColumnCount(6)             # Устанавливаем кол-во колонок
         self.tableFIO.setRowCount(len(rows))        # Кол-во строк из таблицы
         for i, row in enumerate(rows):
             for j, cell in enumerate(row):
                 self.tableFIO.setItem(i, j, QTableWidgetItem(str(cell)))
 
         # Устанавливаем заголовки таблицы
-        self.tableFIO.setHorizontalHeaderLabels(["Фамилия", "Имя", "Отчество"])
+        self.tableFIO.setHorizontalHeaderLabels(["ИНН", "Имя Отчество Фамилия","Прибыль","ИТОГО","Стоимость","ИТОГО"])
 
         # Устанавливаем выравнивание на заголовки
         self.tableFIO.horizontalHeaderItem(0).setTextAlignment(Qt.AlignCenter)

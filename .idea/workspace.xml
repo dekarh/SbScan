@@ -14,7 +14,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/SbScan$toFIO.coverage" NAME="toFIO Coverage Results" MODIFIED="1494008494121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SbScan$comparing.coverage" NAME="comparing Coverage Results" MODIFIED="1496338882242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SbScan$comparing.coverage" NAME="comparing Coverage Results" MODIFIED="1496891559558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SbScan$toMain2gis.coverage" NAME="toMain2gis Coverage Results" MODIFIED="1494571851920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SbScan$preScan.coverage" NAME="preScan Coverage Results" MODIFIED="1493261472673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SbScan$mainScan.coverage" NAME="mainScan Coverage Results" MODIFIED="1493476925146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -99,8 +99,8 @@
       <file leaf-file-name="comparing.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/comparing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="26" column="66" lean-forward="false" selection-start-line="26" selection-start-column="66" selection-end-line="26" selection-end-column="66" />
+            <state relative-caret-position="182">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
                 <element signature="e#46#56#0" expanded="true" />
               </folding>
@@ -111,29 +111,33 @@
       <file leaf-file-name="comparing_slots.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/comparing_slots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="131" column="87" lean-forward="false" selection-start-line="131" selection-start-column="87" selection-end-line="131" selection-end-column="87" />
+            <state relative-caret-position="188">
+              <caret line="285" column="38" lean-forward="false" selection-start-line="285" selection-start-column="38" selection-end-line="285" selection-end-column="38" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <marker date="1496338882199" expanded="true" signature="1301:1308" ph="SELECT inn_f... fio" />
-                <marker date="1496338882199" expanded="true" signature="1301:1462" ph="SELECT f.inn... " />
-                <marker date="1496338882199" expanded="true" signature="1301:1631" ph="SELECT f.inn... fio" />
-                <marker date="1496338882199" expanded="true" signature="1301:1669" ph="SELECT f.inn... fio" />
-                <marker date="1496338882199" expanded="true" signature="1301:1785" ph="SELECT f.inn... fio" />
-                <marker date="1496338882199" expanded="true" signature="1301:1825" ph="SELECT f.inn... fio" />
-                <marker date="1496338882199" expanded="true" signature="1301:1902" ph="SELECT f.inn... fio" />
-                <marker date="1496338882199" expanded="true" signature="1358:1458" ph="select sum(q... main2fio" />
-                <marker date="1496338882199" expanded="true" signature="1502:1571" ph="select sum(q... main2fio" />
-                <marker date="1496338882199" expanded="true" signature="1706:1775" ph="select sum(q... main2fio" />
-                <marker date="1496338882199" expanded="true" signature="1827:1896" ph="select sum(q... main2fio" />
-                <marker date="1496338882199" expanded="true" signature="4449:4495" ph="UPDATE fio S... " />
-                <marker date="1496338882199" expanded="true" signature="4793:4800" ph="SELECT inn_f... fio" />
-                <marker date="1496338882199" expanded="true" signature="4793:5245" ph="SELECT inn, main" />
-                <marker date="1496338882199" expanded="true" signature="7196:7243" ph="UPDATE main " />
-                <marker date="1496338882199" expanded="true" signature="8369:8406" ph="SELECT okwed... okwed" />
-                <marker date="1496338882199" expanded="true" signature="9341:9587" ph="SELECT g.wor... main2gis" />
-                <marker date="1496338882199" expanded="true" signature="11256:11315" ph="SELECT `type... contacts" />
-                <marker date="1496338882199" expanded="true" signature="12926:13097" ph="SELECT famil... main2fio" />
+                <marker date="1496891559514" expanded="true" signature="1301:1308" ph="SELECT inn_f... fio" />
+                <marker date="1496891559514" expanded="true" signature="1301:1478" ph="SELECT f.inn... " />
+                <marker date="1496891559514" expanded="true" signature="1301:1647" ph="SELECT f.inn... fio" />
+                <marker date="1496891559514" expanded="true" signature="1301:1685" ph="SELECT f.inn... fio" />
+                <marker date="1496891559514" expanded="true" signature="1301:1801" ph="SELECT f.inn... fio" />
+                <marker date="1496891559514" expanded="true" signature="1301:1841" ph="SELECT f.inn... fio" />
+                <marker date="1496891559514" expanded="true" signature="1301:1918" ph="SELECT f.inn... fio" />
+                <marker date="1496891559514" expanded="true" signature="1405:1474" ph="select sum(q... main2fio" />
+                <marker date="1496891559514" expanded="true" signature="1518:1587" ph="select sum(q... main2fio" />
+                <marker date="1496891559514" expanded="true" signature="1722:1791" ph="select sum(q... main2fio" />
+                <marker date="1496891559514" expanded="true" signature="1843:1912" ph="select sum(q... main2fio" />
+                <marker date="1496891559514" expanded="true" signature="4165:4211" ph="UPDATE fio S... " />
+                <marker date="1496891559514" expanded="true" signature="4509:4516" ph="SELECT inn_f... fio" />
+                <marker date="1496891559514" expanded="true" signature="4509:4961" ph="SELECT inn, main" />
+                <marker date="1496891559514" expanded="true" signature="6913:6960" ph="UPDATE main " />
+                <marker date="1496891559514" expanded="true" signature="8086:8123" ph="SELECT okwed... okwed" />
+                <marker date="1496891559514" expanded="true" signature="9058:9304" ph="SELECT g.wor... main2gis" />
+                <marker date="1496891559514" expanded="true" signature="10973:11032" ph="SELECT `type... contacts" />
+                <marker date="1496891559514" expanded="true" signature="12643:13194" ph="SELECT f.inn... main2fio" />
+                <marker date="1496891559514" expanded="true" signature="12643:13297" ph="SELECT famil... main2fio" />
+                <marker date="1496891559514" expanded="true" signature="12751:12757" ph="select sum(q... main2fio" />
+                <marker date="1496891559514" expanded="true" signature="12806:12875" ph="select sum(q... main2fio" />
+                <marker date="1496891559514" expanded="true" signature="13011:13080" ph="select sum(q... main2fio" />
               </folding>
             </state>
           </provider>
@@ -223,7 +227,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="643" />
     <option name="y" value="24" />
-    <option name="width" value="1257" />
+    <option name="width" value="1255" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
@@ -850,7 +854,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494992450240</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Добавил вывод ИНН для таблицы Firms">
+      <created>1496368768003</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1496368768003</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView">
@@ -863,18 +874,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="643" y="24" width="1257" height="1056" extended-state="4" />
+    <frame x="643" y="24" width="1255" height="1056" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2698283" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34946236" sideWeight="0.5028854" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293578" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2698283" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293578" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34946236" sideWeight="0.4971146" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293578" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -885,7 +897,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -942,7 +953,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил перезагрузку при 10 ошибках. Обнуляется когда 100 шт закачает в базу" />
     <MESSAGE value="Добавил распечатку трассировки ошибки через модуль traceback" />
     <MESSAGE value="Усовершенствовал лог" />
     <MESSAGE value="Добавил и отладил дополнительный сканер учредителей. &#10;Изменил структуру БД" />
@@ -967,7 +977,8 @@
     <MESSAGE value="Добавил сумму и стоимость в таблицу фирм" />
     <MESSAGE value="Отладил очистку таблиц" />
     <MESSAGE value="Добавил descrption для таблицы Firms.&#10;Отформатировал таблички для улучшения вида" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил descrption для таблицы Firms.&#10;Отформатировал таблички для улучшения вида" />
+    <MESSAGE value="Добавил вывод ИНН для таблицы Firms" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил вывод ИНН для таблицы Firms" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1441,8 +1452,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/comparing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="26" column="66" lean-forward="false" selection-start-line="26" selection-start-column="66" selection-end-line="26" selection-end-column="66" />
+        <state relative-caret-position="182">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
             <element signature="e#46#56#0" expanded="true" />
           </folding>
@@ -1451,29 +1462,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/comparing_slots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="131" column="87" lean-forward="false" selection-start-line="131" selection-start-column="87" selection-end-line="131" selection-end-column="87" />
+        <state relative-caret-position="188">
+          <caret line="285" column="38" lean-forward="false" selection-start-line="285" selection-start-column="38" selection-end-line="285" selection-end-column="38" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <marker date="1496338882199" expanded="true" signature="1301:1308" ph="SELECT inn_f... fio" />
-            <marker date="1496338882199" expanded="true" signature="1301:1462" ph="SELECT f.inn... " />
-            <marker date="1496338882199" expanded="true" signature="1301:1631" ph="SELECT f.inn... fio" />
-            <marker date="1496338882199" expanded="true" signature="1301:1669" ph="SELECT f.inn... fio" />
-            <marker date="1496338882199" expanded="true" signature="1301:1785" ph="SELECT f.inn... fio" />
-            <marker date="1496338882199" expanded="true" signature="1301:1825" ph="SELECT f.inn... fio" />
-            <marker date="1496338882199" expanded="true" signature="1301:1902" ph="SELECT f.inn... fio" />
-            <marker date="1496338882199" expanded="true" signature="1358:1458" ph="select sum(q... main2fio" />
-            <marker date="1496338882199" expanded="true" signature="1502:1571" ph="select sum(q... main2fio" />
-            <marker date="1496338882199" expanded="true" signature="1706:1775" ph="select sum(q... main2fio" />
-            <marker date="1496338882199" expanded="true" signature="1827:1896" ph="select sum(q... main2fio" />
-            <marker date="1496338882199" expanded="true" signature="4449:4495" ph="UPDATE fio S... " />
-            <marker date="1496338882199" expanded="true" signature="4793:4800" ph="SELECT inn_f... fio" />
-            <marker date="1496338882199" expanded="true" signature="4793:5245" ph="SELECT inn, main" />
-            <marker date="1496338882199" expanded="true" signature="7196:7243" ph="UPDATE main " />
-            <marker date="1496338882199" expanded="true" signature="8369:8406" ph="SELECT okwed... okwed" />
-            <marker date="1496338882199" expanded="true" signature="9341:9587" ph="SELECT g.wor... main2gis" />
-            <marker date="1496338882199" expanded="true" signature="11256:11315" ph="SELECT `type... contacts" />
-            <marker date="1496338882199" expanded="true" signature="12926:13097" ph="SELECT famil... main2fio" />
+            <marker date="1496891559514" expanded="true" signature="1301:1308" ph="SELECT inn_f... fio" />
+            <marker date="1496891559514" expanded="true" signature="1301:1478" ph="SELECT f.inn... " />
+            <marker date="1496891559514" expanded="true" signature="1301:1647" ph="SELECT f.inn... fio" />
+            <marker date="1496891559514" expanded="true" signature="1301:1685" ph="SELECT f.inn... fio" />
+            <marker date="1496891559514" expanded="true" signature="1301:1801" ph="SELECT f.inn... fio" />
+            <marker date="1496891559514" expanded="true" signature="1301:1841" ph="SELECT f.inn... fio" />
+            <marker date="1496891559514" expanded="true" signature="1301:1918" ph="SELECT f.inn... fio" />
+            <marker date="1496891559514" expanded="true" signature="1405:1474" ph="select sum(q... main2fio" />
+            <marker date="1496891559514" expanded="true" signature="1518:1587" ph="select sum(q... main2fio" />
+            <marker date="1496891559514" expanded="true" signature="1722:1791" ph="select sum(q... main2fio" />
+            <marker date="1496891559514" expanded="true" signature="1843:1912" ph="select sum(q... main2fio" />
+            <marker date="1496891559514" expanded="true" signature="4165:4211" ph="UPDATE fio S... " />
+            <marker date="1496891559514" expanded="true" signature="4509:4516" ph="SELECT inn_f... fio" />
+            <marker date="1496891559514" expanded="true" signature="4509:4961" ph="SELECT inn, main" />
+            <marker date="1496891559514" expanded="true" signature="6913:6960" ph="UPDATE main " />
+            <marker date="1496891559514" expanded="true" signature="8086:8123" ph="SELECT okwed... okwed" />
+            <marker date="1496891559514" expanded="true" signature="9058:9304" ph="SELECT g.wor... main2gis" />
+            <marker date="1496891559514" expanded="true" signature="10973:11032" ph="SELECT `type... contacts" />
+            <marker date="1496891559514" expanded="true" signature="12643:13194" ph="SELECT f.inn... main2fio" />
+            <marker date="1496891559514" expanded="true" signature="12643:13297" ph="SELECT famil... main2fio" />
+            <marker date="1496891559514" expanded="true" signature="12751:12757" ph="select sum(q... main2fio" />
+            <marker date="1496891559514" expanded="true" signature="12806:12875" ph="select sum(q... main2fio" />
+            <marker date="1496891559514" expanded="true" signature="13011:13080" ph="select sum(q... main2fio" />
           </folding>
         </state>
       </provider>
