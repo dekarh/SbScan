@@ -4,7 +4,7 @@ from mysql.connector import MySQLConnection, Error
 from libScan import read_config
 from PyQt5.QtCore import QDate, QDateTime, QSize, Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QGridLayout, QWidget, QTableWidget, QTableWidgetItem
-from libScan import read_config
+from libScan import read_config, STEP
 
 
 class MainWindowSlots(Ui_Form):   # Определяем функции, которые будем вызывать в слотах
@@ -16,6 +16,12 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.read_cursor = self.dbconn.cursor()
         self.write_cursor = self.dbconn.cursor()
         self.histories = {}
+        self.steps = {}
+        self.step_filter = 1
+        self.comboBoxFilter.addItems(STEP)
+        self.comboBoxFilter.setCurrentIndex(self.step_filter)
+        self.comboBoxTek.addItems(STEP)
+        self.comboBoxTek.setCurrentIndex(6)
         self.descriptions = {}
         self.okwed_lists = []
         self.tableFirms_inns = []
@@ -34,16 +40,20 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.read_cursor.execute('SELECT f.inn_fio, CONCAT_WS(" ", f.`name`, f.surname, f.family), '
                             'FORMAT((select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0),'
                             'FORMAT((select sum(q.cost) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0), '
-                            'f.history FROM fio AS f WHERE ROUND(f.inn_fio/10000000000)=30 '
+                            'f.history, f.step FROM fio AS f WHERE ROUND(f.inn_fio/10000000000)=30 '
                             'AND (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio)>10000000 '
-                            'ORDER BY (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio) DESC;')
+                            'AND f.step >= %s '
+                            'ORDER BY (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio) DESC;',
+                            (self.step_filter,))
         rows = self.read_cursor.fetchall()
         self.tableFIOmain.setColumnCount(4)             # Устанавливаем кол-во колонок
         self.tableFIOmain.setRowCount(len(rows))        # Кол-во строк из таблицы
         for i, row in enumerate(rows):
             for j, cell in enumerate(row):
-                if j == len(row) - 1:
+                if j == len(row) - 2:
                     self.histories[row[0]] = cell
+                if j == len(row) - 1:
+                    self.steps[row[0]] = cell
                 else:
                     self.tableFIOmain.setItem(i, j, QTableWidgetItem(str(cell)))
 
@@ -74,12 +84,19 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.setup_tableFirms()
         self.click_tableFirms()
         self.click_table2GIS()
-        g = 0
-
-        #        self.label_4.setText('Сумма должна быть больше 0')
-        #        return None
-
+        self.comboBoxTek.setCurrentIndex(int(self.steps[int(self.innFIO)]))
         return None
+
+    def click_comboBoxTek(self):
+        self.write_cursor.execute('UPDATE fio SET step = %s WHERE inn_fio = %s',
+                                  (self.comboBoxTek.currentIndex(), self.innFIO))
+        self.dbconn.commit()
+        self.steps[int(self.innFIO)] = self.comboBoxTek.currentIndex()
+        q=0
+
+    def click_comboBoxFilter(self):
+        self.step_filter = self.comboBoxFilter.currentIndex()
+        self.setup_tableFIOmain()
 
     def updateHistory(self):
         current = self.textHistory.toPlainText()
@@ -161,6 +178,7 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.inn = self.tableFirms_inns[index.row()]
         self.updateDescription()
         g = 0
+#        google-chrome "duckduckgo.com/?q=+телефон+ИВАНЧУГСКИЙ+КОНСЕРВНЫЙ+ЗАВОД"
 
     def setup_tableOKWED(self, okwed_list):
         okwed_list_with_or = ''

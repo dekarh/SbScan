@@ -27,6 +27,8 @@ class MainWindow(MainWindowSlots):
         self.tableFIOmain.clicked.connect(self.click_tableFIOmain)
         self.tableFirms.clicked.connect(self.click_tableFirms)
         self.tableFirm2gis.clicked.connect(self.click_table2GIS)
+        self.comboBoxTek.activated[str].connect(self.click_comboBoxTek)
+        self.comboBoxFilter.activated[str].connect(self.click_comboBoxFilter)
 #        self.pushButton.clicked.connect(sys(exit(app.exec())))
         return None
 
