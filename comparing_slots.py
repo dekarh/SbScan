@@ -17,9 +17,12 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.write_cursor = self.dbconn.cursor()
         self.histories = {}
         self.steps = {}
-        self.step_filter = 1
-        self.comboBoxFilter.addItems(STEP)
-        self.comboBoxFilter.setCurrentIndex(self.step_filter)
+        self.step_good = 14
+        self.step_poor = 1
+        self.comboBoxGood.addItems(STEP)
+        self.comboBoxGood.setCurrentIndex(self.step_good)
+        self.comboBoxPoor.addItems(STEP)
+        self.comboBoxPoor.setCurrentIndex(self.step_poor)
         self.comboBoxTek.addItems(STEP)
         self.comboBoxTek.setCurrentIndex(6)
         self.descriptions = {}
@@ -42,9 +45,9 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
                             'FORMAT((select sum(q.cost) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0), '
                             'f.history, f.step FROM fio AS f WHERE ROUND(f.inn_fio/10000000000)=30 '
                             'AND (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio)>10000000 '
-                            'AND f.step >= %s '
+                            'AND f.step <= %s AND f.step >= %s '
                             'ORDER BY (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio) DESC;',
-                            (self.step_filter,))
+                            (self.step_good, self.step_poor))
         rows = self.read_cursor.fetchall()
         self.tableFIOmain.setColumnCount(4)             # Устанавливаем кол-во колонок
         self.tableFIOmain.setRowCount(len(rows))        # Кол-во строк из таблицы
@@ -94,8 +97,12 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.steps[int(self.innFIO)] = self.comboBoxTek.currentIndex()
         q=0
 
-    def click_comboBoxFilter(self):
-        self.step_filter = self.comboBoxFilter.currentIndex()
+    def click_comboBoxPoor(self):
+        self.step_poor = self.comboBoxPoor.currentIndex()
+        self.setup_tableFIOmain()
+
+    def click_comboBoxGood(self):
+        self.step_good = self.comboBoxGood.currentIndex()
         self.setup_tableFIOmain()
 
     def updateHistory(self):
