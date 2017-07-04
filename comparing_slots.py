@@ -5,7 +5,7 @@ from libScan import read_config
 from PyQt5.QtCore import QDate, QDateTime, QSize, Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QGridLayout, QWidget, QTableWidget, QTableWidgetItem
 from os import popen
-from libScan import read_config, STEP
+from libScan import read_config, STEP, l
 
 
 class MainWindowSlots(Ui_Form):   # Определяем функции, которые будем вызывать в слотах
@@ -16,6 +16,7 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.dbconn = MySQLConnection(**dbconfig)  # Открываем БД из конфиг-файла
         self.read_cursor = self.dbconn.cursor()
         self.write_cursor = self.dbconn.cursor()
+        self.FilterValue = 0
         self.histories = {}
         self.steps = {}
         self.step_good = 14
@@ -42,7 +43,11 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.curOOO = self.tableFirms.model().index(0, 0).data()
         return
 
-    def buttonClicked(self):
+    def onLEChanged(self):
+        self.FilterValue = l(self.lineEdit.text())
+        q = 0
+
+    def buttonFindClicked(self):
         sa = '+'
         sb = '%20'
         popen('google-chrome "https://www.google.ru/search?newwindow=1&site=&source=hp&q=' +
@@ -50,19 +55,29 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         popen('google-chrome "duckduckgo.com/?q=' + sa.join(self.curFIO.split() + self.curOOO.split()).replace('-', '+')
               + '+Астрахань+телефон"')
         popen('google-chrome "https://yandex.ru/people?text=' + sb.join(self.curFIO.split()) + '&lr=37&ps_geo=Астрахань"')
+        popen('google-chrome "http://www.find-man.com/search/inn/?val='+self.innFIO+'"')
 
 
-
+    def buttonFilterClicked(self):
+        self.setup_tableFIOmain()
 
     def setup_tableFIOmain(self):
-        self.read_cursor.execute('SELECT f.inn_fio, CONCAT_WS(" ", f.`name`, f.surname, f.family), '
-                            'FORMAT((select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0),'
-                            'FORMAT((select sum(q.cost) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0), '
-                            'f.history, f.step FROM fio AS f WHERE ROUND(f.inn_fio/10000000000)=30 '
-                            'AND (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio)>10000000 '
-                            'AND f.step <= %s AND f.step >= %s '
-                            'ORDER BY (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio) DESC;',
-                            (self.step_good, self.step_poor))
+        if self.FilterValue > 1:
+            self.read_cursor.execute('SELECT f.inn_fio, CONCAT_WS(" ", f.`name`, f.surname, f.family), '
+                                'FORMAT((select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0),'
+                                'FORMAT((select sum(q.cost) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0), '
+                                'f.history, f.step FROM fio AS f WHERE f.inn_fio = %s '
+                                'ORDER BY (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio) DESC;',
+                                (self.FilterValue, ))
+        else:
+            self.read_cursor.execute('SELECT f.inn_fio, CONCAT_WS(" ", f.`name`, f.surname, f.family), '
+                                'FORMAT((select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0),'
+                                'FORMAT((select sum(q.cost) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio),0), '
+                                'f.history, f.step FROM fio AS f WHERE ROUND(f.inn_fio/10000000000)=30 '
+                                'AND (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio)>10000000 '
+                                'AND f.step <= %s AND f.step >= %s '
+                                'ORDER BY (select sum(q.summ) FROM main2fio AS q WHERE f.inn_fio = q.fio_inn_fio) DESC;',
+                                (self.step_good, self.step_poor))
         rows = self.read_cursor.fetchall()
         self.tableFIOmain.setColumnCount(4)             # Устанавливаем кол-во колонок
         self.tableFIOmain.setRowCount(len(rows))        # Кол-во строк из таблицы
