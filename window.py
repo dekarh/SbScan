@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1483, 911)
+        Form.resize(1693, 911)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
@@ -46,6 +46,11 @@ class Ui_Form(object):
         self.comboBoxGood.setMaximumSize(QtCore.QSize(400, 16777215))
         self.comboBoxGood.setObjectName("comboBoxGood")
         self.horizontalLayout_4.addWidget(self.comboBoxGood)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem)
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout_4.addWidget(self.pushButton)
         self.label_2 = QtWidgets.QLabel(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -165,6 +170,7 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label_3.setText(_translate("Form", "<-- от  ФИЛЬТР  до -->"))
+        self.pushButton.setText(_translate("Form", "Поиск"))
         self.label_2.setText(_translate("Form", "   |   Текущее значение для этого имени -->"))
         self.textHistory.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

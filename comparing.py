@@ -30,6 +30,7 @@ class MainWindow(MainWindowSlots):
         self.comboBoxTek.activated[str].connect(self.click_comboBoxTek)
         self.comboBoxGood.activated[str].connect(self.click_comboBoxGood)
         self.comboBoxPoor.activated[str].connect(self.click_comboBoxPoor)
+        self.pushButton.clicked.connect(self.buttonClicked)
 #        self.pushButton.clicked.connect(sys(exit(app.exec())))
         return None
 

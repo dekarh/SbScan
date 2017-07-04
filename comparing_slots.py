@@ -4,6 +4,7 @@ from mysql.connector import MySQLConnection, Error
 from libScan import read_config
 from PyQt5.QtCore import QDate, QDateTime, QSize, Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QGridLayout, QWidget, QTableWidget, QTableWidgetItem
+from os import popen
 from libScan import read_config, STEP
 
 
@@ -37,7 +38,21 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
         self.setup_tableFirms()
         self.inn = self.tableFirms_inns[0]
         self.last_inn = self.tableFirms_inns[0]
+        self.curFIO = self.tableFIOmain.model().index(0, 1).data()
+        self.curOOO = self.tableFirms.model().index(0, 0).data()
         return
+
+    def buttonClicked(self):
+        sa = '+'
+        sb = '%20'
+        popen('google-chrome "https://www.google.ru/search?newwindow=1&site=&source=hp&q=' +
+              sa.join(self.curFIO.split() + self.curOOO.split()).replace('-', '+') + '+Астрахань+телефон"')
+        popen('google-chrome "duckduckgo.com/?q=' + sa.join(self.curFIO.split() + self.curOOO.split()).replace('-', '+')
+              + '+Астрахань+телефон"')
+        popen('google-chrome "https://yandex.ru/people?text=' + sb.join(self.curFIO.split()) + '&lr=37&ps_geo=Астрахань"')
+
+
+
 
     def setup_tableFIOmain(self):
         self.read_cursor.execute('SELECT f.inn_fio, CONCAT_WS(" ", f.`name`, f.surname, f.family), '
@@ -81,6 +96,7 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
 
     def click_tableFIOmain(self, index):
         self.innFIO = self.tableFIOmain.model().index(index.row(), 0).data()
+        self.curFIO = self.tableFIOmain.model().index(index.row(), 1).data()
         self.updateHistory()
         self.inn = self.tableFirms_inns[0]
         self.updateDescription()
@@ -177,6 +193,7 @@ class MainWindowSlots(Ui_Form):   # Определяем функции, кот�
     def click_tableFirms(self, index=None):
         if index == None:
             index = self.tableFirms.model().index(0, 0)
+        self.curOOO = self.tableFirms.model().index(index.row(), 0).data()
         self.setup_tableOKWED(self.okwed_lists[index.row()])
         self.setup_table2GIS(self.tableFirms_inns[index.row()])
         self.click_table2GIS()
